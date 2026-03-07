@@ -2,9 +2,10 @@
 #include <cstdint>
 #include "Logger.hpp"
 namespace bm {
-    static constexpr int RE_MAX_DIMS = 16;
-    static constexpr int RE_MAX_REACTANTS = 3;
-    constexpr uint64_t MAX_RE_METHODS = 1024;
+    static constexpr uint32_t RE_MAX_DIMS = 16;
+    static constexpr uint32_t RE_MAX_ARGS = 16;
+    static constexpr uint32_t RE_MAX_REACTANTS = 3;
+    constexpr uint32_t MAX_RE_METHODS = 1024;
 
     //////////////////////////////////////////////////////////
     /////////////////**************************///////////////
@@ -52,6 +53,7 @@ namespace bm {
         EXP       = 0X0A,
         LOG       = 0X0B,
         CLIP      = 0X0C,
+        ARANGE      = 0X0D,
 
         MAX_OPS    = 0XFF
     };

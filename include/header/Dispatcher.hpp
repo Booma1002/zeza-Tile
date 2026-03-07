@@ -23,7 +23,9 @@ namespace bm {
          * @param a
          * @param b
          */
-        static void execute_binary(OpCode op, Jade &out, const Jade &a, const Jade &b);
+
+        template<typename... Args>
+        static void execute_binary(OpCode op, Jade &out, const Jade &a, const Jade &b, Args... args);
 
         /**
          *
@@ -31,10 +33,13 @@ namespace bm {
          * @param out
          * @param a
          */
-        static void
-        execute_unary(OpCode op, Jade &out, const Jade &a, const double left = 0.f, const double right = 0.f);
 
-        static void execute_scalar(OpCode op, Jade &out, double a);
+        template<typename... Args>
+        static void execute_unary(OpCode op, Jade &out, const Jade &a, Args... args);
+
+
+        template<typename... Args>
+        static void execute_scalar(OpCode op, Jade &out, double a, Args... args);
     };
 
 }// namespace bm

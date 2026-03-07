@@ -29,10 +29,10 @@ namespace bm {
         [[nodiscard]] const char *what() const noexcept override { return msg.c_str(); }
     };
 
-    enum class ReactorMethod {
-        ENSURE_CAPACITY = 0,
-        CALC_STRIDES = 1,
-        RESHAPE = 2,
+    enum class ReactorMethod: uint32_t{
+        ENSURE_CAPACITY              = 0X00,
+        CALC_STRIDES                 = 0X01,
+        RESHAPE                      = 0X02,
         MAX_METHODS [[maybe_unused]] = MAX_RE_METHODS
     };
 
@@ -73,10 +73,9 @@ namespace bm {
         uint64_t ndims = 0;
         uint64_t num_elements = 0;
         uint64_t inner_k = 0;
-        double Val = 0.f;
-        double Left = 0.f;
-        double Right = 0.f;
+        void* args[RE_MAX_ARGS];
 
+        uint64_t opcode;
         uint64_t shape[RE_MAX_DIMS]{};
         uint64_t strides[RE_MAX_REACTANTS][RE_MAX_DIMS]{};
         void* phys[RE_MAX_REACTANTS]{};
@@ -152,7 +151,7 @@ namespace bm {
  * @brief Generates a type-erased trampoline for member function invocation.
  * Creates a stateless lambda that casts the opaque `void*` context back to the
  * concrete instance type `T`, and invokes the member pointer `MemberPtr`.
- * This allows storing disparate member functions in a unified function pointer array.
+ * This allows storing disparate member functions in a unified function pointer array_like.
  * @tparam T The concrete class type of the context object.
  * @tparam Args The parameter pack expected by the member function.
  * @tparam MemberPtr The pointer-to-member function.
@@ -192,7 +191,9 @@ namespace bm {
  * @param b The second input jade.
  * @return A configured `JadeReactor` ready for kernel dispatch.
  */
-        static JadeReactor react_binary(Jade &out, const Jade &a, const Jade &b);
+
+        template<typename... Args>
+        static JadeReactor react_binary(OpCode opcode, Jade &out, const Jade &a, const Jade &b, Args... args);
 
 /**
  * @brief Constructs an execution context for a single-reactant jade reaction.
@@ -204,9 +205,13 @@ namespace bm {
  * @param a The source jade.
  * @return A configured `JadeReactor`.
  */
-        static JadeReactor react_unary(Jade &out, const Jade &a, const double left = 0.f, const double right = 0.f);
 
-        static JadeReactor react_scalar(Jade &out, double Val);
+        template<typename... Args>
+        static JadeReactor react_unary(OpCode opcode, Jade &out, const Jade &a, Args... args);
+
+
+        template<typename... Args>
+        static JadeReactor react_scalar(OpCode opcode, Jade &out, Args... args);
 
 /**
  * @brief Prepares an execution context for General Matrix Multiplication (GEMM).
@@ -220,7 +225,9 @@ namespace bm {
  * @param b Right reactant jade.
  * @return A configured `JadeReactor`.
  */
-        static JadeReactor react_matmul(Jade &out, const Jade &a, const Jade &b);
+
+        template<typename... Args>
+        static JadeReactor react_matmul(OpCode opcode, Jade &out, const Jade &a, const Jade &b, Args... args);
     };
 
 /**

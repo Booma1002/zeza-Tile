@@ -98,7 +98,11 @@ std::unique_ptr<uint64_t[]> Jade::broadcast(uint64_t* A_shape, uint64_t A_ndims,
         if(a==b) shape_out[i++] = a;
         else if(a==1) shape_out[i++] = b;
         else if(b==1) shape_out[i++] = a;
-        else throw BroadcastException("Can't Broadcast The Given Jades.");
+        else {
+            std::string msg = "Can't Broadcast The Given Jades.";
+            LOG_WARN(msg);
+            throw BroadcastException(msg);
+        }
     }
     reverse(shape_out.get(), max_dims);
     return shape_out;

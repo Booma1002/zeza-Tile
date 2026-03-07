@@ -3,15 +3,16 @@
 using namespace bm;
 Jade  Jade::transpose() {
     Jade newJade(*this);
-    array arr = std::make_unique<uint64_t[]>(ndims);
-    array strd = std::make_unique<uint64_t[]>(ndims);
+    array_like arr = std::make_unique<uint64_t[]>(ndims);
+    array_like strd = std::make_unique<uint64_t[]>(ndims);
     std::memcpy(arr.get(), shape.get(), ndims * sizeof(uint64_t));
     std::memcpy(strd.get(), strides.get(), ndims * sizeof(uint64_t));
     reverse(arr.get(), ndims);
     reverse(strd.get(), ndims);
     std::memcpy(newJade.shape.get(), arr.get(), ndims * sizeof(uint64_t));
     std::memcpy(newJade.strides.get(), strd.get(), ndims * sizeof(uint64_t));
-//        std::cout << "Transposed " << this->repr() <<" Into " << newJade.repr() << std::endl;
+    std::string msg = std::format("Transposed {} into {}.", repr(), newJade.repr());
+    LOG_INFO(msg);
     return newJade;
 }
 
@@ -26,8 +27,6 @@ Jade Jade::fill_like(const Jade& other, const double val){
 }
 
 Jade Jade::pad(double fill_val, const uint64_t* pads) const {
-    // TODO : UNFINISHED;
-    // TODO : NEED TESTING;
     auto new_shape = std::make_unique<uint64_t[]>(ndims);
     for(size_t i=0; i<ndims; ++i)
         new_shape[i] = shape[i] + pads[i*2] + pads[i*2+1];
@@ -53,7 +52,9 @@ Jade Jade::copy(){
 }
 
 
-Jade& Jade::flatten(){};
+Jade& Jade::flatten(){
+
+};
 
 
 

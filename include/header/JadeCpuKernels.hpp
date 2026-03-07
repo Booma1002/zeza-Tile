@@ -18,7 +18,7 @@ namespace bm {
     ;
 
     template<typename Func>
-    void cpu_elementwise_unary_invoke(JadeReactor &react, Func op);
+    void cpu_elementwise_unary_invoke(JadeReactor &jr, Func kernel);
 
     template<typename Func>
     void cpu_elementwise_scalar_invoke(JadeReactor &react, Func op);
@@ -35,31 +35,31 @@ namespace bm {
 // ======================================================
     ;
 
-    void cpu_add_kernel(JadeReactor &re);
+    void cpu_add_kernel(JadeReactor &jr);
 
-    void cpu_sub_kernel(JadeReactor &re);
+    void cpu_sub_kernel(JadeReactor &jr);
 
-    void cpu_matmul_kernel(JadeReactor &re);
+    void cpu_matmul_kernel(JadeReactor &jr);
 
-    void cpu_copy_kernel(JadeReactor &re);
+    void cpu_copy_kernel(JadeReactor &jr);
 
-    void cpu_fill_kernel(JadeReactor &re);
+    void cpu_fill_kernel(JadeReactor &jr);
 
-    void cpu_mul_kernel(JadeReactor &re);
+    void cpu_mul_kernel(JadeReactor &jr);
 
-    void cpu_mul_kernel(JadeReactor &re);
+    void cpu_mul_kernel(JadeReactor &jr);
 
-    void cpu_sin_kernel(JadeReactor &re);
+    void cpu_sin_kernel(JadeReactor &jr);
 
-    void cpu_cos_kernel(JadeReactor &re);
+    void cpu_cos_kernel(JadeReactor &jr);
 
-    void cpu_tan_kernel(JadeReactor &re);
+    void cpu_tan_kernel(JadeReactor &jr);
 
-    void cpu_exp_kernel(JadeReactor &re);
+    void cpu_exp_kernel(JadeReactor &jr);
 
-    void cpu_log_kernel(JadeReactor &re);
+    void cpu_log_kernel(JadeReactor &jr);
 
-    void cpu_clip_kernel(JadeReactor &react)
+    void cpu_clip_kernel(JadeReactor &jr)
 
 // ===========================================================
 // =========={..........Registration..........}===============
@@ -78,7 +78,7 @@ namespace bm {
     REGISTER_KERNEL(EXP, CPU, cpu_exp_kernel);
     REGISTER_KERNEL(LOG, CPU, cpu_log_kernel);
     REGISTER_KERNEL(CLIP, CPU, cpu_clip_kernel);
-
+    REGISTER_KERNEL(ARANGE, CPU, cpu_arange_kernel);
 
 }
 

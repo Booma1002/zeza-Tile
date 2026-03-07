@@ -5,35 +5,17 @@ std::atomic_uint64_t watching;
 void see(Jade& t, std::string msg =""){
     std::cout << std::format("\n\n{:x}) {}:-\n",
              watching.load(std::memory_order::relaxed), msg);
-    atomic_fetch_add(&watching, 1);
-    t.display(2, 1);
+    watching.fetch_add(1, std::memory_order_relaxed);
+    t.display(2, 6);
 }
 
 int main(){
     LOG_INFO("[Engine] Initiating Bare Metal (BM) Ignition Sequence...");
     watching.store(0, std::memory_order_relaxed);
-    Jade a(DType::UINT64, 7000, 100, 10, 10);
-    bm::Jade b =a;
-    see(b);
-    b = bm::Jade(a);
-    see(b, "SIN");
-    b = bm::Jade(a);
-    see(b, "COS");
-    b = Jade(a);
-    see(b, "TAN");
-    Jade c = Jade::clip(a, -10, 10);
-    b = Jade(c);
-    see(b, "LOG");
-    b = Jade(a);
-    see(b);
-    b = Jade::clip(a, -103, 105);
-    see(b, "CLIP");
-    a = 10000;
-    b = Jade::clip(a, -103, 105);
-    see(b, "CLIP");
-    double y = 7000;
-    uint64_t z;
-    auto x = static_cast<decltype(z)>(y);
-    std::cout << x;
 
+    bm::Jade W(DType::FLOAT64, 6.1f, 128, 64);
+    bm::Jade b(DType::FLOAT64, 4.3f, 64);
+    W+=b;
+    see(W, "W");
+    see(b,"b");
 }

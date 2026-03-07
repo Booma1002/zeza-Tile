@@ -91,7 +91,7 @@ namespace bm {
     ////////////////////////////////////////////////////////////////////
     ;
     /**
-     * @brief Core multi-dimensional array abstraction.
+     * @brief Core multi-dimensional array_like abstraction.
      * The `Jade` class decouples physical memory (`Storage`) from logical layout
      * (`shape`, `strides`, `offset`). This allows zero-copy transformations like slicing,
      * transposing, and reshaping by simply manipulating the metadata.
@@ -106,9 +106,9 @@ namespace bm {
     /////////////////////////////////////////////////////////////////
 
     public:
-        using array = std::unique_ptr<uint64_t []>;
-        array shape;
-        array strides;
+        using array_like = std::unique_ptr<uint64_t []>;
+        array_like shape;
+        array_like strides;
         uint64_t ndims;
         uint64_t offset=0;
         DType dtype = DType::NONE;
@@ -134,21 +134,21 @@ namespace bm {
         explicit Jade(DType dtype, double Val=0.0f, Dims... dims);
 
         /**
-     * @brief Allocates a new jade from a pre-computed shape array.
+     * @brief Allocates a new jade from a pre-computed shape array_like.
      * Takes ownership of the logical layout by dynamically copying `shape_ptr` and
      * computing the contiguous strides from first principles.
      * @param Val The scalar double value to fill the memory with.
-     * @param shape_ptr Pointer to an array containing the dimension sizes.
+     * @param shape_ptr Pointer to an array_like containing the dimension sizes.
      * @param ndims The rank of the jade.
      */
         Jade(DType dtype, double Val, uint64_t* shape_ptr, uint64_t ndims);
 
         /**
-     * @brief Allocates a new jade and ingests an existing raw double array.
+     * @brief Allocates a new jade and ingests an existing raw double array_like.
      * Creates a new physical `Storage` buffer and copies the data from the provided
      * raw pointer.
-     * @warning Assumes the `data` pointer points to a contiguous array of size
-     * exactly equal to the product of `dimensions...`. Passing a smaller array results in a segfault.
+     * @warning Assumes the `data` pointer points to a contiguous array_like of size
+     * exactly equal to the product of `dimensions...`. Passing a smaller array_like results in a segfault.
      * @tparam Dims Variadic integer sizes.
      * @param data Reference to the raw double pointer to copy from.
      * @param dimensions The dimension sizes.
@@ -195,8 +195,8 @@ namespace bm {
     * @usage Used internally by slicing
     * and advanced padding reactions.
     * @warning Assumes ownership of the `unique_ptr` metadata arrays.
-    * @param new_shape Managed array of the new logical shape.
-    * @param new_stride Managed array of the new logical strides.
+    * @param new_shape Managed array_like of the new logical shape.
+    * @param new_stride Managed array_like of the new logical strides.
     * @param new_ndims The rank of the new view.
     * @param new_off The physical memory offset from the shared storage base.
     * @param new_mem Shared pointer to the physical backend.
@@ -370,7 +370,7 @@ namespace bm {
      * offset of a temporary view to logically align with the center of the new memory space.
      * It then deep-copies the original data into this center.
      * @param fill_val The value to populate the expanded margins.
-     * @param pads array of size `ndims * 2` containing the [before, after] pairs per dimension.
+     * @param pads array_like of size `ndims * 2` containing the [before, after] pairs per dimension.
      * @return A newly allocated jade containing the padded data.
      */
         Jade pad(double fill_val, const uint64_t* pads) const;
@@ -404,24 +404,24 @@ namespace bm {
     ;
 
         template<typename... Dims>
-        Jade& zeros(const Dims... dims);
+        Jade zeros(DType dtype, const Dims... dims);
 
         template<typename... Dims>
-        Jade& ones(const Dims... dims);
+        Jade ones(DType dtype, const Dims... dims);
 
-        Jade& arange(Slice range);
-
-        template<typename... Dims>
-        Jade& Array(const Dims... dims);
+        Jade arange(DType dtype, Slice range);
 
         template<typename... Dims>
-        Jade& rand(const Dims... dims);
+        Jade array(DType dtype, const Dims... dims);
 
         template<typename... Dims>
-        Jade& randn(const Dims... dims);
+        Jade rand(DType dtype, const Dims... dims);
 
         template<typename... Dims>
-        Jade& randint(const Dims... dims);
+        Jade randn(DType dtype, const Dims... dims);
+
+        template<typename... Dims>
+        Jade randint(DType dtype, const Dims... dims);
 
 
     /**
@@ -512,7 +512,7 @@ namespace bm {
      * @throws BroadcastException if the dimensions are mathematically incompatible.
      * @param A The left jade.
      * @param B The right jade.
-     * @return A managed array containing the finalized broadcasted shape.
+     * @return A managed array_like containing the finalized broadcasted shape.
      */
         static std::unique_ptr<uint64_t[]> broadcast(Jade A, Jade B);
 
@@ -521,11 +521,11 @@ namespace bm {
     * Compares dimensions starting from the trailing (inner-most) dimension.
     * Two dimensions are compatible if they are equal, or if one of them is 1.
     * @throws BroadcastException if the dimensions are mathematically incompatible.
-    * @param A_shape Pointer to the left reactant's shape array.
+    * @param A_shape Pointer to the left reactant's shape array_like.
     * @param A_ndims Rank of the left reactant.
-    * @param B_shape Pointer to the right reactant's shape array.
+    * @param B_shape Pointer to the right reactant's shape array_like.
     * @param B_ndims Rank of the right reactant.
-    * @return A managed array containing the finalized broadcasted shape.
+    * @return A managed array_like containing the finalized broadcasted shape.
     */
         static std::unique_ptr<uint64_t[]> broadcast(uint64_t* A_shape, uint64_t A_ndims, uint64_t* B_shape, uint64_t B_ndims );
 
@@ -553,19 +553,19 @@ namespace bm {
      * @usage Used internally for iterator traversals or debug printing where flat iteration
      * requires understanding of the multi-dimensional position.
      * @param linear_idx The flat memory index.
-     * @param cursor Output array to store the resolved multi-dimensional indices.
-     * @param shape Pointer to the shape array.
+     * @param cursor Output array_like to store the resolved multi-dimensional indices.
+     * @param shape Pointer to the shape array_like.
      * @param ndims Rank of the jade.
      */
         static constexpr void get_cursor(uint64_t linear_idx, uint64_t* cursor, const uint64_t* shape, uint64_t ndims) ;
 
         /**
-     * @brief In-place array reversal utility.
+     * @brief In-place array_like reversal utility.
      * @usage Used heavily for stride calculation and NumPy broadcast alignment where trailing
      * dimensions must be evaluated first.
-     * @param arr Pointer to the array to reverse.
-     * @param N The number of elements in the array.
-     * @return Pointer to the modified array.
+     * @param arr Pointer to the array_like to reverse.
+     * @param N The number of elements in the array_like.
+     * @return Pointer to the modified array_like.
      */
         static uint64_t* reverse(uint64_t* arr, uint64_t N);
 
@@ -584,8 +584,8 @@ namespace bm {
      * @param dim The current dimension index.
      * @param ndim_tracker By-ref tracker for the new view's rank.
      * @param offset_tracker By-ref tracker for the physical memory offset.
-     * @param shp_2 Output array for the new view's shape.
-     * @param str_2 Output array for the new view's strides.
+     * @param shp_2 Output array_like for the new view's shape.
+     * @param str_2 Output array_like for the new view's strides.
      */
         void apply_slice(uint64_t dim, uint64_t& ndim_tracker, uint64_t& offset_tracker,
                          uint64_t* shp_2, uint64_t* str_2) const;
@@ -600,8 +600,8 @@ namespace bm {
      * @param dim The current dimension being processed.
      * @param ndim_tracker By-ref tracker for the new jade's rank.
      * @param offset_tracker By-ref tracker for the physical memory offset.
-     * @param shape_out Output array for the new view's shape.
-     * @param stride_out Output array for the new view's strides.
+     * @param shape_out Output array_like for the new view's shape.
+     * @param stride_out Output array_like for the new view's strides.
      * @param cur The current slice token.
      * @param rest The remaining slice tokens.
      */
@@ -613,8 +613,8 @@ namespace bm {
     * @brief Bootstraps logical layouts and calculates strictly contiguous strides.
     * Standard C-contiguous layout generation. Traverses dimensions right-to-left,
     * multiplying the running product of shapes to determine jump sizes.
-    * @param sh Pointer to the shape array.
-    * @param st Pointer to the stride array to populate.
+    * @param sh Pointer to the shape array_like.
+    * @param st Pointer to the stride array_like to populate.
     * @param ndims Rank of the jade.
     */
         static void calc_strides(const uint64_t* sh, uint64_t* st, uint64_t ndims);
@@ -678,8 +678,8 @@ namespace bm {
     private:
 
         /**
-     * @brief Flattens an array into a comma-separated string enclosed in parentheses.
-     * @param Arr Pointer to the array to format.
+     * @brief Flattens an array_like into a comma-separated string enclosed in parentheses.
+     * @param Arr Pointer to the array_like to format.
      * @param len Number of elements to read.
      * @return Formatted string representation.
      */

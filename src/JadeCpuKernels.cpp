@@ -32,59 +32,64 @@ constexpr void get_cursor(uint64_t linear_idx, uint64_t* cursor, const uint64_t*
 // =========={..........Kernels..........}===============
 // ======================================================
 ;
-void cpu_add_kernel(JadeReactor& re){
-    DISPATCH_DTYPE(re.dtype, cpu_elementwise_binary_invoke, re, [](auto a, auto b) { return a + b; });
+void cpu_add_kernel(JadeReactor& jr){
+    DISPATCH_DTYPE(jr.dtype, cpu_elementwise_binary_invoke, jr, [](auto a, auto b) { return a + b; });
 }
 
-void cpu_mul_kernel(JadeReactor& re){
-    DISPATCH_DTYPE(re.dtype, cpu_elementwise_binary_invoke, re, [](auto a, auto b) {return a * b;});
+void cpu_mul_kernel(JadeReactor& jr){
+    DISPATCH_DTYPE(jr.dtype, cpu_elementwise_binary_invoke, jr, [](auto a, auto b) {return a * b;});
 }
 
-void cpu_sub_kernel(JadeReactor& re) {
-    DISPATCH_DTYPE(re.dtype, cpu_elementwise_binary_invoke, re, [](auto a, auto b) { return a - b; });
+void cpu_sub_kernel(JadeReactor& jr) {
+    DISPATCH_DTYPE(jr.dtype, cpu_elementwise_binary_invoke, jr, [](auto a, auto b) { return a - b; });
 }
 
-void cpu_matmul_kernel(JadeReactor& re) {
-    DISPATCH_DTYPE(re.dtype, cpu_MatMul_binary_invoke, re);
+void cpu_matmul_kernel(JadeReactor& jr) {
+    DISPATCH_DTYPE(jr.dtype, cpu_MatMul_binary_invoke, jr);
 }
 
-void cpu_copy_kernel(JadeReactor& re) {
-    DISPATCH_DTYPE(re.dtype, cpu_elementwise_unary_invoke, re, [](auto a) { return a; });
+void cpu_copy_kernel(JadeReactor& jr) {
+    DISPATCH_DTYPE(jr.dtype, cpu_elementwise_unary_invoke, jr, [](auto a) { return a; });
 }
 
-void cpu_fill_kernel(JadeReactor& re) {
-    DISPATCH_DTYPE(re.dtype, cpu_elementwise_scalar_invoke, re, [&re](auto a) { return re.Val; });
+void cpu_fill_kernel(JadeReactor& jr) {
+    auto val = *static_cast<double*>(jr.args[0]);
+    DISPATCH_DTYPE(jr.dtype, cpu_elementwise_scalar_invoke, jr, [&val](auto a) { return val; });
 }
 
-void cpu_sin_kernel(JadeReactor& re) {
-    DISPATCH_DTYPE(re.dtype, cpu_elementwise_unary_invoke, re, [](auto a) { return static_cast<decltype(a)>(std::sin(a)); });
+void cpu_sin_kernel(JadeReactor& jr) {
+    DISPATCH_DTYPE(jr.dtype, cpu_elementwise_unary_invoke, jr, [](auto a) { return static_cast<decltype(a)>(std::sin(a)); });
 }
 
-void cpu_cos_kernel(JadeReactor& re) {
-    DISPATCH_DTYPE(re.dtype, cpu_elementwise_unary_invoke, re, [](auto a) { return static_cast<decltype(a)>(std::cos(a)); });
+void cpu_cos_kernel(JadeReactor& jr) {
+    DISPATCH_DTYPE(jr.dtype, cpu_elementwise_unary_invoke, jr, [](auto a) { return static_cast<decltype(a)>(std::cos(a)); });
 }
 
-void cpu_tan_kernel(JadeReactor& re) {
-    DISPATCH_DTYPE(re.dtype, cpu_elementwise_unary_invoke, re, [](auto a) { return static_cast<decltype(a)>(std::tan(a)); });
+void cpu_tan_kernel(JadeReactor& jr) {
+    DISPATCH_DTYPE(jr.dtype, cpu_elementwise_unary_invoke, jr, [](auto a) { return static_cast<decltype(a)>(std::tan(a)); });
 }
 
-void cpu_exp_kernel(JadeReactor& re) {
-    DISPATCH_DTYPE(re.dtype, cpu_elementwise_unary_invoke, re, [](auto a) { return static_cast<decltype(a)>(std::exp(a)); });
+void cpu_exp_kernel(JadeReactor& jr) {
+    DISPATCH_DTYPE(jr.dtype, cpu_elementwise_unary_invoke, jr, [](auto a) { return static_cast<decltype(a)>(std::exp(a)); });
 }
 
-void cpu_log_kernel(JadeReactor& re) {
-    DISPATCH_DTYPE(re.dtype, cpu_elementwise_unary_invoke, re, [](auto a) { return static_cast<decltype(a)>(std::log(a)); });
+void cpu_log_kernel(JadeReactor& jr) {
+    DISPATCH_DTYPE(jr.dtype, cpu_elementwise_unary_invoke, jr, [](auto a) { return static_cast<decltype(a)>(std::log(a)); });
 }
 
-void cpu_clip_kernel(JadeReactor& react) {
-    DISPATCH_DTYPE(react.dtype, cpu_elementwise_unary_invoke, react,
-                   [&react](auto a) {
-                       auto l = react.Left;
-                       auto r = react.Right;
+void cpu_clip_kernel(JadeReactor& jr) {
+    auto l = *static_cast<double*>(jr.args[0]);
+    auto r = *static_cast<double*>(jr.args[1]);
+    DISPATCH_DTYPE(jr.dtype, cpu_elementwise_unary_invoke, jr,
+                   [&l, &r](auto a) {
                        auto res = (a < l) ? l :
                                   (a > r) ? r : a;
                        return static_cast<decltype(a)>(res);
                    });
+}
+void cpu_arange_kernel(JadeReactor& jr) {
+    DISPATCH_DTYPE(jr.dtype, cpu_elementwise_unary_invoke, jr,
+                   [](auto a) { return a;});
 }
 
 }
