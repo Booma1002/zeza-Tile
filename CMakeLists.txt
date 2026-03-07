@@ -20,11 +20,11 @@ include_directories(${PYBIND_INCLUDE_LIST})
 # Compiles bindings.cpp AND the core engine files so Python can access them
 add_library(my_engine SHARED
         bindings/bindings.cpp
-        src/Tile.cpp
+        src/Jade.cpp
         src/Dispatcher.cpp
-        src/TileKernelsCpu.cpp
-        src/TileOperator.cpp
-        src/TileKernelsGpu.cpp
+        src/JadeCpuKernels.cpp
+        src/JadeReactor.cpp
+        src/JadeGpuKernels.cpp
 )
 set_target_properties(my_engine PROPERTIES SUFFIX ".pyd")
 # Let the library see the .hpp files
@@ -35,23 +35,23 @@ target_include_directories(my_engine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 add_executable(cpp_runner
         examples/playground.cpp
         examples/main.cpp
-        src/Tile.cpp
+        src/Jade.cpp
         src/Dispatcher.cpp
-        src/TileKernelsCpu.cpp
-        src/TileOperator.cpp
-        src/TileKernelsGpu.cpp
+        src/JadeCpuKernels.cpp
+        src/JadeReactor.cpp
+        src/JadeGpuKernels.cpp
         src/Registry.cpp
         src/Storage.cpp
         src/Allocator.cpp
         include/header/Logger.hpp
         src/Logger.cpp
         src/Logger.cpp
-        src/TileFactories.cpp
-        src/TileTransformations.cpp
-        src/TileMath.cpp
-        src/TileReductions.cpp
-        include/temp/TileFactories.tpp
-        include/temp/TileTransformations.tpp
+        src/JadeFactories.cpp
+        src/JadeTransformations.cpp
+        src/JadeMath.cpp
+        src/JadeReductions.cpp
+        include/temp/JadeFactories.tpp
+        include/temp/JadeTransformations.tpp
         include/header/Engine.hpp
         include/header/Heatmap.hpp
         src/Heatmap.cpp

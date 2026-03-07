@@ -6,15 +6,15 @@
 #include <string>
 #include "Enums.hpp"
 
-namespace zeza {
+namespace bm {
 /////////////////////////////////////////////////////////////////////
 /////////////////************************************////////////////
-/////////////////**  TileOperator Struct Assets  **////////////////
+/////////////////**  JadeReactor Struct Assets  **////////////////
 /////////////////************************************////////////////
 /////////////////////////////////////////////////////////////////////
     ;
 
-    class Tile;
+    class Jade;
 
 /**
  * @brief Exception wrapper specific to the Operator module.
@@ -47,24 +47,24 @@ namespace zeza {
 
 /////////////////////////////////////////////////////////////////////////////
 /////////////////********************************************////////////////
-/////////////////**  TileOperator Struct Initialization  **////////////////
+/////////////////**  JadeReactor Struct Initialization  **////////////////
 /////////////////********************************************////////////////
 /////////////////////////////////////////////////////////////////////////////
     ;
 
 /**
- * @brief Execution context and dispatcher for tile math kernels.
- * This struct bridges high-level `Tile` objects with low-level compute kernels.
+ * @brief Execution context and dispatcher for jade math kernels.
+ * This struct bridges high-level `Jade` objects with low-level compute kernels.
  * It normalizes memory layouts, computes strides across multiple operands,
  * and holds type-erased function pointers (thunks) for lazy evaluation.
  * @note Assumptions:
  * - Maximum dimensions and operands are strictly bounded by `OPER_MAX_DIMS` and `OPER_MAX_OPERANDS`.
  * - Memory pointers (`phys`) assume data is stored as `DType`.
  */
-    struct TileOperator {
+    struct JadeReactor {
 ///////////////////////////////////////////////////////////////////////
 /////////////////**************************************////////////////
-/////////////////**  TileOperator Struct Settings  **////////////////
+/////////////////**  JadeReactor Struct Settings  **////////////////
 /////////////////**************************************////////////////
 ///////////////////////////////////////////////////////////////////////
     public:
@@ -89,7 +89,7 @@ namespace zeza {
 
 ////////////////////////////////////////////////////////////////
 /////////////////********************************///////////////
-/////////////////**  TileOperator Utilities  **///////////////
+/////////////////**  JadeReactor Utilities  **///////////////
 /////////////////********************************///////////////
 ////////////////////////////////////////////////////////////////
         ;
@@ -119,7 +119,7 @@ namespace zeza {
  * oper.bound_obj = &in_out;\n
  * oper.bind(OperatorMethod::ENSURE_CAPACITY, \n
  * +[](void* obj, uint64_t size, double scale, bool f, DType val) {\n
- * static_cast<Tile*>(obj)->ensure_capacity(size, scale, f, val);\n
+ * static_cast<Jade*>(obj)->ensure_capacity(size, scale, f, val);\n
  * });
  */
         template<typename Func>
@@ -158,7 +158,7 @@ namespace zeza {
  * @tparam MemberPtr The pointer-to-member function.
  * @param id The target dispatch slot.
  * @example
- * static void bind(TileOperator* op, OperatorMethod id) {\n
+ * static void bind(JadeReactor* op, OperatorMethod id) {\n
  *      op->template create_thunk<T, Args..., MemberFunc>(id);\n
  *  }
  */
@@ -175,38 +175,38 @@ namespace zeza {
 
 ///////////////////////////////////////////////////////////////
 /////////////////*******************************///////////////
-/////////////////**  TileOperator Contexts  **///////////////
+/////////////////**  JadeReactor Contexts  **///////////////
 /////////////////*******************************///////////////
 ///////////////////////////////////////////////////////////////
         ;
 
 /**
- * @brief Constructs an execution context for a two-operand tile operation.
- * Extracts shapes, strides, and physical memory pointers from an output tile
- * and two input tile. It automatically attempts to collapse contiguous dimensions
+ * @brief Constructs an execution context for a two-operand jade operation.
+ * Extracts shapes, strides, and physical memory pointers from an output jade
+ * and two input jades. It automatically attempts to collapse contiguous dimensions
  * via `merge_dims()` to optimize kernel loop limits.
- * @note Assumptions: Ranks (`ndims`) must perfectly match across all three tiles.
+ * @note Assumptions: Ranks (`ndims`) must perfectly match across all three jades.
  * @warning Edge Case: Broadcasting is currently disabled. Shape mismatches will throw a runtime error.
- * @param out The destination tile.
- * @param a The first input tile.
- * @param b The second input tile.
- * @return A configured `TileOperator` ready for kernel dispatch.
+ * @param out The destination jade.
+ * @param a The first input jade.
+ * @param b The second input jade.
+ * @return A configured `JadeReactor` ready for kernel dispatch.
  */
-        static TileOperator operate_binary(Tile &out, const Tile &a, const Tile &b);
+        static JadeReactor operate_binary(Jade &out, const Jade &a, const Jade &b);
 
 /**
- * @brief Constructs an execution context for a single-operand tile operation.
- * Normalizes strides and memory layouts between an input and output tile.
- * Fuses memory dimensions to treat multi-dimensional contiguous tile as flat 1D arrays
+ * @brief Constructs an execution context for a single-operand jade operation.
+ * Normalizes strides and memory layouts between an input and output jade.
+ * Fuses memory dimensions to treat multi-dimensional contiguous jade as flat 1D arrays
  * where possible, maximizing memory coalescing during kernel execution.
  * @note Assumptions: Exact shape match is required between `out` and `a`.
- * @param out The destination tile.
- * @param a The source tile.
- * @return A configured `TileOperator`.
+ * @param out The destination jade.
+ * @param a The source jade.
+ * @return A configured `JadeReactor`.
  */
-        static TileOperator operate_unary(Tile &out, const Tile &a, const double left = 0.f, const double right = 0.f);
+        static JadeReactor operate_unary(Jade &out, const Jade &a, const double left = 0.f, const double right = 0.f);
 
-        static TileOperator operate_scalar(Tile &out, double Val);
+        static JadeReactor operate_scalar(Jade &out, double Val);
 
 /**
  * @brief Prepares an execution context for General Matrix Multiplication (GEMM).
@@ -215,12 +215,12 @@ namespace zeza {
  * but the output demands >1).
  * @note Assumptions: The last dimension of `a` is strictly treated as the reduction dimension (`K`).
  * @note Explicitly flags the context as non-contiguous, forcing kernels to rely on stride math.
- * @param out Destination tile for the matrix product.
+ * @param out Destination jade for the matrix product.
  * @param a Left operand matrix.
  * @param b Right operand matrix.
- * @return A configured `TileOperator`.
+ * @return A configured `JadeReactor`.
  */
-        static TileOperator operate_matmul(Tile &out, const Tile &a, const Tile &b);
+        static JadeReactor operate_matmul(Jade &out, const Jade &a, const Jade &b);
     };
 
 /**
@@ -252,5 +252,5 @@ namespace zeza {
     struct Binder<MemberFunc, Ret (T::*)(Args...) const noexcept>;
 
 
-}// namespace zeza
-#include "temp/TileOperator.tpp"
+}// namespace bm
+#include "temp/JadeReactor.tpp"

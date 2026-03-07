@@ -1,15 +1,15 @@
-#include "header/TileOperator.hpp"
-using namespace zeza;
-TileOperator TileOperator::operate_binary(Tile& out, const Tile& a, const Tile& b) {
+#include "header/JadeReactor.hpp"
+using namespace bm;
+JadeReactor JadeReactor::operate_binary(Jade& out, const Jade& a, const Jade& b) {
     if (a.dtype != b.dtype) {
         std::string msg = "DType Mismatch: Type Promotion not yet supported.";
         LOG_WARN(msg);
         throw std::runtime_error(msg);
     }
     try{
-        auto shapes = Tile::broadcast(a, b);
+        auto shapes = Jade::broadcast(a, b);
         auto ndm = std::max(a.ndims, b.ndims);
-        auto y = Tile::broadcast(out.shape.get(), out.ndims, shapes.get(), ndm);
+        auto y = Jade::broadcast(out.shape.get(), out.ndims, shapes.get(), ndm);
     }
     catch(...){
         std::string msg;
@@ -18,7 +18,7 @@ TileOperator TileOperator::operate_binary(Tile& out, const Tile& a, const Tile& 
         LOG_ERR(msg);
         throw ShapeMismatchException(msg);
     }
-    TileOperator oper;
+    JadeReactor oper;
     oper.ndims = out.ndims;
     for(long long i = 0; i < oper.ndims; ++i) {
         oper.shape[i] = out.shape[i];
@@ -77,7 +77,7 @@ TileOperator TileOperator::operate_binary(Tile& out, const Tile& a, const Tile& 
     return oper;
 }
 
-TileOperator TileOperator::operate_unary(Tile& out, const Tile& a, const double left, const double right){
+JadeReactor JadeReactor::operate_unary(Jade& out, const Jade& a, const double left, const double right){
     if (out.ndims != a.ndims) {
         std::string msg;
         msg += std::format("[Unary Operator] Rank Mismatch. \nA: ",  a.repr() ,  "\nOutput: ",  out.repr());
@@ -92,7 +92,7 @@ TileOperator TileOperator::operate_unary(Tile& out, const Tile& a, const double 
             throw ShapeMismatchException(msg);
         }
 
-    TileOperator oper;
+    JadeReactor oper;
     oper.dtype = out.dtype;
     std::string msg;
     oper.Left = left;
@@ -132,8 +132,8 @@ TileOperator TileOperator::operate_unary(Tile& out, const Tile& a, const double 
     return oper;
 }
 
-TileOperator TileOperator::operate_scalar(Tile& out, double Val){
-    TileOperator oper;
+JadeReactor JadeReactor::operate_scalar(Jade& out, double Val){
+    JadeReactor oper;
     oper.dtype = out.dtype;
     oper.Val = Val;
     oper.num_elements = out.get_size();
@@ -171,13 +171,13 @@ TileOperator TileOperator::operate_scalar(Tile& out, double Val){
 }
 
 
-TileOperator TileOperator::operate_matmul(Tile& out, const Tile& a, const Tile& b) {
+JadeReactor JadeReactor::operate_matmul(Jade& out, const Jade& a, const Jade& b) {
     if (a.dtype != b.dtype){
         std::string msg = "DType Mismatch: Type Promotion not yet supported.";
         LOG_WARN(msg);
         throw std::runtime_error(msg);
     }
-    TileOperator oper;
+    JadeReactor oper;
     oper.dtype = out.dtype;
     oper.inner_k = a.shape[a.ndims - 1];
     oper.ndims = out.ndims;
@@ -226,7 +226,7 @@ TileOperator TileOperator::operate_matmul(Tile& out, const Tile& a, const Tile& 
 
 
 
-void TileOperator::merge_dims() {
+void JadeReactor::merge_dims() {
     if (ndims <= 1) return;
     for (int cur = ndims - 1; cur > 0; --cur) {
         int mother = cur - 1;

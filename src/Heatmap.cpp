@@ -1,7 +1,7 @@
 #include "header/Heatmap.hpp"
-using namespace zeza;
+using namespace bm;
 /*
  * get min, max,
- * normalize tile.
+ * normalize jade.
  *
  */

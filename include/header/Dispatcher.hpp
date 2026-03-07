@@ -1,6 +1,6 @@
 #pragma once
 #include "Registry.hpp"
-namespace zeza {
+namespace bm {
 ////////////////////////////////////////////////////////////////////////
 /////////////////***************************************////////////////
 /////////////////**  Dispatcher Class Initialization  **////////////////
@@ -8,7 +8,7 @@ namespace zeza {
 ////////////////////////////////////////////////////////////////////////
     ;
 
-    class Tile;
+    class Jade;
 
     struct Dispatcher {
 /////////////////////////////////////////////////////////////
@@ -23,7 +23,7 @@ namespace zeza {
          * @param a
          * @param b
          */
-        static void execute_binary(OpCode op, Tile &out, const Tile &a, const Tile &b);
+        static void execute_binary(OpCode op, Jade &out, const Jade &a, const Jade &b);
 
         /**
          *
@@ -32,11 +32,11 @@ namespace zeza {
          * @param a
          */
         static void
-        execute_unary(OpCode op, Tile &out, const Tile &a, const double left = 0.f, const double right = 0.f);
+        execute_unary(OpCode op, Jade &out, const Jade &a, const double left = 0.f, const double right = 0.f);
 
-        static void execute_scalar(OpCode op, Tile &out, double a);
+        static void execute_scalar(OpCode op, Jade &out, double a);
     };
 
-}// namespace zeza
+}// namespace bm
 
 #include "temp/Dispatcher.tpp"

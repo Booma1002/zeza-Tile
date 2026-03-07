@@ -7,7 +7,7 @@ cpp_args = ['/std:c++17', '/O2'] # MSVC flags for C++17 and Optimization
 ext_modules = [
     Extension(
         'my_engine',
-        ['bindings.cpp'],  # Only compile the bindings file (which includes tile.hpp)
+        ['bindings.cpp'],  # Only compile the bindings file (which includes jade.hpp)
         include_dirs=[pybind11.get_include()],
         language='c++',
         extra_compile_args=cpp_args,

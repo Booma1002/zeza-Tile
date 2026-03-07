@@ -9,7 +9,7 @@
 #include <atomic>
 #include <chrono>
 #include <array>
-namespace zeza {
+namespace bm {
     enum class LogLevel {
         DEBUG,
         INFO,
@@ -62,4 +62,4 @@ namespace zeza {
 #define LOG_ERR(msg)   if (Logger::get().get_level() <= LogLevel::ERR)   Logger::get().log(LogLevel::ERR, std::string(__FILE__) + ":" + std::to_string(__LINE__) + " " + msg)
 #define LOG_FATAL(msg) if (Logger::get().get_level() <= LogLevel::FATAL) Logger::get().log(LogLevel::FATAL, msg)
 
-}// namespace zeza
+}// namespace bm

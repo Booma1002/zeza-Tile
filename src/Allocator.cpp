@@ -1,7 +1,7 @@
 #include "header/Allocator.hpp"
 
 #include <utility>
-using namespace zeza;
+using namespace bm;
 
 class AllocatorException : public std::exception {
     std::string msg;

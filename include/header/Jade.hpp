@@ -5,17 +5,17 @@
 #include <iomanip>
 #include <cstring>
 #include "Storage.hpp"
-namespace zeza {
+namespace bm {
     ////////////////////////////////////////////////////////////
     /////////////////***************************////////////////
-    /////////////////**  Tile Class Assets  **////////////////
+    /////////////////**  Jade Class Assets  **////////////////
     /////////////////***************************////////////////
     ////////////////////////////////////////////////////////////
-    struct TileOperator;
+    struct JadeReactor;
     struct Dispatcher;
 
     /**
-     * @brief Exception thrown when tile dimensions or ranks are incompatible for an operation.
+     * @brief Exception thrown when jade dimensions or ranks are incompatible for an operation.
      * Usually triggered during binary operations, broadcasting attempts, or matrix multiplications
      * where the underlying algebraic rules or loop bounds are violated.
      */
@@ -57,7 +57,7 @@ namespace zeza {
         virtual const char *what() const noexcept override { return msg.c_str(); }
     };
     /**
-     * @brief Exception thrown when two tiles cannot be logically aligned via NumPy-style broadcasting.
+     * @brief Exception thrown when two jades cannot be logically aligned via NumPy-style broadcasting.
      */
     class BroadcastException : public std::exception {
         std::string msg;
@@ -66,7 +66,7 @@ namespace zeza {
         virtual const char *what() const noexcept override { return msg.c_str(); }
     };
     /**
-     * @brief Represents a Python-like slice interval for tile viewing.
+     * @brief Represents a Python-like slice interval for jade viewing.
      * Used heavily by the overloaded `operator[]` to compute new offsets and strides
      * without moving underlying physical memory.
      * @note Assumptions: Currently assumes `step` is strictly positive. Negative strides
@@ -86,22 +86,22 @@ namespace zeza {
 
     ////////////////////////////////////////////////////////////////////
     /////////////////***********************************////////////////
-    /////////////////**  Tile Class Initialization  **////////////////
+    /////////////////**  Jade Class Initialization  **////////////////
     /////////////////***********************************////////////////
     ////////////////////////////////////////////////////////////////////
     ;
     /**
      * @brief Core multi-dimensional array abstraction.
-     * The `Tile` class decouples physical memory (`Storage`) from logical layout
+     * The `Jade` class decouples physical memory (`Storage`) from logical layout
      * (`shape`, `strides`, `offset`). This allows zero-copy transformations like slicing,
      * transposing, and reshaping by simply manipulating the metadata.
-     * @warning UB Warning: Modifying the underlying `Storage` of a tile will affect
-     * all other tile (views) sharing that same memory pointer.
+     * @warning UB Warning: Modifying the underlying `Storage` of a jade will affect
+     * all other jade (views) sharing that same memory pointer.
      */
-    class Tile{
+    class Jade{
     /////////////////////////////////////////////////////////////////
     /////////////////*****************************///////////////////
-    /////////////////**  Tile Class Settings  **///////////////////
+    /////////////////**  Jade Class Settings  **///////////////////
     /////////////////*****************************///////////////////
     /////////////////////////////////////////////////////////////////
 
@@ -113,17 +113,17 @@ namespace zeza {
         uint64_t offset=0;
         DType dtype = DType::NONE;
     private:
-        friend struct TileOperator;
+        friend struct JadeReactor;
         std::shared_ptr<Storage> memory;
     public:
     ////////////////////////////////////////////////////////////
     /////////////////***************************////////////////
-    /////////////////**  Tile Constructors  **////////////////
+    /////////////////**  Jade Constructors  **////////////////
     /////////////////***************************////////////////
     ////////////////////////////////////////////////////////////
     ;
         /**
-         * @brief Allocates a new tile and fills it with a scalar value.
+         * @brief Allocates a new jade and fills it with a scalar value.
          * Computes required memory capacity from the variadic `dims` pack, allocates
          * a new `Storage` buffer, and initializes all elements to `Val`.
          * @tparam Dims Variadic integer types representing the size of each dimension.
@@ -131,20 +131,20 @@ namespace zeza {
          * @param dims The dimension sizes.
          */
         template <typename... Dims>
-        explicit Tile(DType dtype, double Val=0.0f, Dims... dims);
+        explicit Jade(DType dtype, double Val=0.0f, Dims... dims);
 
         /**
-     * @brief Allocates a new tile from a pre-computed shape array.
+     * @brief Allocates a new jade from a pre-computed shape array.
      * Takes ownership of the logical layout by dynamically copying `shape_ptr` and
      * computing the contiguous strides from first principles.
      * @param Val The scalar double value to fill the memory with.
      * @param shape_ptr Pointer to an array containing the dimension sizes.
-     * @param ndims The rank of the tile.
+     * @param ndims The rank of the jade.
      */
-        Tile(DType dtype, double Val, uint64_t* shape_ptr, uint64_t ndims);
+        Jade(DType dtype, double Val, uint64_t* shape_ptr, uint64_t ndims);
 
         /**
-     * @brief Allocates a new tile and ingests an existing raw double array.
+     * @brief Allocates a new jade and ingests an existing raw double array.
      * Creates a new physical `Storage` buffer and copies the data from the provided
      * raw pointer.
      * @warning Assumes the `data` pointer points to a contiguous array of size
@@ -154,40 +154,40 @@ namespace zeza {
      * @param dimensions The dimension sizes.
      */
         template <typename... Dims>
-        explicit Tile(DType dtype, const double *& data, Dims... dimensions);
+        explicit Jade(DType dtype, const double *& data, Dims... dimensions);
 
     /**
-     * @brief Zero-copy logical reshape of an existing tile.
-     * Creates a new `Tile` that shares the exact same `Storage` backend as `other`,
+     * @brief Zero-copy logical reshape of an existing jade.
+     * Creates a new `Jade` that shares the exact same `Storage` backend as `other`,
      * but recalculates metadata for the new `dims`.
      * @warning Throws `ShapeMismatchException` if the total physical size of the new
-     * dimensions does not perfectly match the original tile's size.
+     * dimensions does not perfectly match the original jade's size.
      * @tparam Dims Variadic integer sizes for the new shape.
-     * @param other The source tile to reshape.
+     * @param other The source jade to reshape.
      * @param dims The new dimension sizes.
      */
         template <typename... Dims>
-        explicit Tile (DType dtype, Tile& other, Dims... dims);
+        explicit Jade (DType dtype, Jade& other, Dims... dims);
 
         /**
      * @brief Zero-copy copy constructor (Creates a View).
      * Copies the logical metadata (`shape`, `strides`, `offset`) and shares the
-     * underlying `Storage` pointer. Mutating the memory of this tile mutates the original.
-     * @param other The source tile to view.
-     * @usage Used for creating a `Tile View` from existing tiles.
-     * @specialization non-const (Tile& other)
+     * underlying `Storage` pointer. Mutating the memory of this jade mutates the original.
+     * @param other The source jade to view.
+     * @usage Used for creating a `Jade View` from existing jades.
+     * @specialization non-const (Jade& other)
      */
-        Tile (Tile& other);
+        Jade (Jade& other);
 
         /**
     * @brief Zero-copy copy constructor (Creates a View).
     * Copies the logical metadata (`shape`, `strides`, `offset`) and shares the
-    * underlying `Storage` pointer. Mutating the memory of this tile mutates the original.
-    * @param other The source tile to view.
-    * @usage Used for creating a `Tile View` from existing tiles.
-    * @specialization const (Tile& other)
+    * underlying `Storage` pointer. Mutating the memory of this jade mutates the original.
+    * @param other The source jade to view.
+    * @usage Used for creating a `Jade View` from existing jades.
+    * @specialization const (Jade& other)
     */
-        Tile(const Tile& other);
+        Jade(const Jade& other);
 
         /**
     * @brief Explicit metadata constructor for creating advanced views.
@@ -201,150 +201,150 @@ namespace zeza {
     * @param new_off The physical memory offset from the shared storage base.
     * @param new_mem Shared pointer to the physical backend.
     */
-        Tile(DType dtype, std::unique_ptr<uint64_t[]> new_shape, std::unique_ptr<uint64_t[]> new_stride,
+        Jade(DType dtype, std::unique_ptr<uint64_t[]> new_shape, std::unique_ptr<uint64_t[]> new_stride,
              uint64_t new_ndims, uint64_t new_off, std::shared_ptr<Storage> new_mem);
 
     ////////////////////////////////////////////////////////////
     /////////////***********************************////////////
-    /////////////**  Tile Operator-Overloading  **////////////
+    /////////////**  Jade Operator-Overloading  **////////////
     /////////////***********************************////////////
     ////////////////////////////////////////////////////////////
         ;
         /**
      * @brief Element-wise addition dispatcher.
-     * Allocates a new, zero-initialized tile matching the current logical shape,
+     * Allocates a new, zero-initialized jade matching the current logical shape,
      * then dispatches `OpCode::ADD` to the hardware registry.
-     * @warning Assumes both tiles have exactly matching shapes (broadcasting not dynamically resolved here).
+     * @warning Assumes both jades have exactly matching shapes (broadcasting not dynamically resolved here).
      * @param other The right-hand operand.
-     * @return A newly allocated tile containing the element-wise sum.
+     * @return A newly allocated jade containing the element-wise sum.
      */
-        Tile operator+(const Tile& other) const;
+        Jade operator+(const Jade& other) const;
 
         /**
     * @brief Element-wise addition dispatcher.
-    * Allocates a new, zero-initialized tile, and another val-fill-initialized tile
+    * Allocates a new, zero-initialized jade, and another val-fill-initialized jade
     * matching the current logical shape, then dispatches `OpCode::ADD` to the hardware registry.
     * @param val The value of the right operand.
-    * @return A newly allocated tile containing the element-wise sum.
+    * @return A newly allocated jade containing the element-wise sum.
     */
-        Tile operator+(const double & val) const;
+        Jade operator+(const double & val) const;
 
         /**
     * @brief Element-wise subtraction dispatcher.
-    * Allocates a new, zero-initialized tile, and another val-fill-initialized tile
+    * Allocates a new, zero-initialized jade, and another val-fill-initialized jade
     * matching the current logical shape, then dispatches `OpCode::ADD` to the hardware registry.
     * @param val The value of the right operand.
-    * @return A newly allocated tile containing the element-wise difference.
+    * @return A newly allocated jade containing the element-wise difference.
     */
-        Tile operator-(const uint64_t & val) const;
+        Jade operator-(const uint64_t & val) const;
 
         /**
      * @brief Element-wise subtraction dispatcher.
-     * Allocates a new, zero-initialized tile matching the current logical shape,
+     * Allocates a new, zero-initialized jade matching the current logical shape,
      * then dispatches `OpCode::SUB` to the hardware registry.
-     * @warning Assumes both tiles have exactly matching shapes.
+     * @warning Assumes both jades have exactly matching shapes.
      * @param other The right-hand operand to subtract.
-     * @return A newly allocated tile containing the element-wise difference.
+     * @return A newly allocated jade containing the element-wise difference.
      */
-        Tile operator-(const Tile& other) const;
-        Tile operator-(const double & val) const;
+        Jade operator-(const Jade& other) const;
+        Jade operator-(const double & val) const;
 
 
         /**
      * @brief Batched Matrix Multiplication (GEMM) dispatcher.
      * Resolves batch dimension broadcasting using NumPy rules. Computes the required output
-     * shape (Batch..., M, N), allocates a new zero-initialized tile, and dispatches `OpCode::MATMUL`.
+     * shape (Batch..., M, N), allocates a new zero-initialized jade, and dispatches `OpCode::MATMUL`.
      * @throws ShapeMismatchException if trailing dimensions do not align (A.cols != B.rows) or
      * if ranks are strictly less than 2D.
-     * @param other The right-hand matrix/tile operand.
-     * @return A newly allocated tile containing the matrix product.
+     * @param other The right-hand jade operand.
+     * @return A newly allocated jade containing the matrix product.
      */
-        Tile operator*(const Tile &other) const;
-        Tile operator*(const double &val) const;
+        Jade operator*(const Jade &other) const;
+        Jade operator*(const double &val) const;
 
         /**
      * @brief In-place element-wise multiplication.
-     * Reassigns the current tile to point to the result of `*this * other`.
+     * Reassigns the current jade to point to the result of `*this * other`.
      * @warning UB Warning: This drops the original `Storage` reference. Any views pointing to
      * the original memory will not reflect this multiplication; they will retain the old data.
-     * @param other The multiplier tile.
+     * @param other The multiplier jade.
      */
-        void operator*=(const Tile& other) ;
+        void operator*=(const Jade& other) ;
         void operator*=(const double & val) ;
 
         /**
      * @brief In-place element-wise subtraction.
-     * Reassigns the current tile to point to the result of `*this - other`.
+     * Reassigns the current jade to point to the result of `*this - other`.
      * @warning UB Warning: Drops original memory reference. Does not mutate the original physical memory.
-     * @param other The subtrahend tile.
+     * @param other The subtrahend jade.
      */
-        void operator-=(const Tile& other);
+        void operator-=(const Jade& other);
         void operator-=(const double & val);
 
         /**
      * @brief In-place element-wise addition.
-     * Reassigns the current tile to point to the result of `*this + other`.
+     * Reassigns the current jade to point to the result of `*this + other`.
      * @warning UB Warning: Drops original memory reference. Does not mutate the original physical memory.
-     * @param other The addend tile.
+     * @param other The addend jade.
      */
-        void operator+=(Tile& other);
+        void operator+=(Jade& other);
         void operator+=(const double & val);
 
         /**
-     * @brief Generates a zero-copy sub-tile view via variadic slicing.
+     * @brief Generates a zero-copy sub-jade view via variadic slicing.
      * Recursively computes a new physical `offset` and modifies `shape` and `strides`
      * based on the provided `Slice` arguments or exact indices. Memory is NOT duplicated.
      * @warning UB Warning: If the number of slice arguments exceeds `ndims`, a
      * `ShapeMismatchException` is thrown. Passing out-of-bounds discrete indices throws `std::out_of_range`.
      * @tparam Args Variadic parameter pack of integers (exact indices) or `Slice` structs.
      * @param args The slicing parameters per dimension.
-     * @return A new `Tile` object acting as a view into the original memory.
+     * @return A new `Jade` object acting as a view into the original memory.
      */
         template <typename... Args>
-        Tile operator[](Args... args) const;
+        Jade operator[](Args... args) const;
 
         /**
-     * @brief Reassigns the tile to become a view of another tile.
+     * @brief Reassigns the jade to become a view of another jade.
      * Safely drops the current `Storage` reference (triggering cleanup if refcount hits 0)
      * and deeply copies the metadata of `other`, adopting its physical backend.
-     * @param other The tile to mirror.
-     * @return Reference to the updated tile.
+     * @param other The jade to mirror.
+     * @return Reference to the updated jade.
      */
-        Tile& operator=(const Tile& val) &;
-        Tile& operator=(const Tile& val) &&;
-        Tile& operator=(const double val);
+        Jade& operator=(const Jade& val) &;
+        Jade& operator=(const Jade& val) &&;
+        Jade& operator=(const double val);
 
 
     ////////////////////////////////////////////////////
     ///////////////**********************///////////////
-    ///////////////**  Tile MathOps  **///////////////
+    ///////////////**  Jade MathOps  **///////////////
     ///////////////**********************///////////////
     ////////////////////////////////////////////////////
     ;
-        static Tile sin(const Tile& input);
-        static Tile cos(const Tile& input);
-        static Tile tan(const Tile& input);
-        static Tile exp(const Tile& input);
-        static Tile log(const Tile& input);
-        static Tile clip(const Tile& input, const double lower, const double upper);
+        static Jade sin(const Jade& input);
+        static Jade cos(const Jade& input);
+        static Jade tan(const Jade& input);
+        static Jade exp(const Jade& input);
+        static Jade log(const Jade& input);
+        static Jade clip(const Jade& input, const double lower, const double upper);
 
     ///////////////////////////////////////////////////////
     ///////////////*************************///////////////
-    ///////////////**  Tile Reductions  **///////////////
+    ///////////////**  Jade Reductions  **///////////////
     ///////////////*************************///////////////
     ///////////////////////////////////////////////////////
     ;
-        Tile& std(const Tile& input);
-        Tile& mean(const Tile& input);
-        Tile& max(const Tile& input);
-        Tile& min(const Tile& input);
-        Tile& argmax(const Tile& input);
-        Tile& argmin(const Tile& input);
-        Tile& dot(const Tile& input);
+        Jade& std(const Jade& input);
+        Jade& mean(const Jade& input);
+        Jade& max(const Jade& input);
+        Jade& min(const Jade& input);
+        Jade& argmax(const Jade& input);
+        Jade& argmin(const Jade& input);
+        Jade& dot(const Jade& input);
 
     ////////////////////////////////////////////////////////////
     ///////////////******************************///////////////
-    ///////////////**  Tile Transformations  **///////////////
+    ///////////////**  Jade Transformations  **///////////////
     ///////////////******************************///////////////
     ////////////////////////////////////////////////////////////
     ;
@@ -352,16 +352,16 @@ namespace zeza {
      * @brief Performs a zero-copy transpose.
      * Reverses the logical `shape` and `strides` arrays. The physical memory remains
      * untouched, but future access via `get()` or kernels will read the data transposed.
-     * @return A new transposed `Tile` view.
+     * @return A new transposed `Jade` view.
      */
-        Tile transpose();
+        Jade transpose();
 
 
-        Tile& flatten();
+        Jade& flatten();
 
 
         template<typename... Dims>
-        Tile& reshape(Dims... dims);
+        Jade& reshape(Dims... dims);
 
 
         /**
@@ -371,82 +371,82 @@ namespace zeza {
      * It then deep-copies the original data into this center.
      * @param fill_val The value to populate the expanded margins.
      * @param pads array of size `ndims * 2` containing the [before, after] pairs per dimension.
-     * @return A newly allocated tile containing the padded data.
+     * @return A newly allocated jade containing the padded data.
      */
-        Tile pad(double fill_val, const uint64_t* pads) const;
+        Jade pad(double fill_val, const uint64_t* pads) const;
 
 
         void reshape_like(const uint64_t* dims, uint64_t* strides, uint64_t N);
 
         /**
      * @brief Overwrites physical memory using a strided copy kernel.
-     * Dispatches `OpCode::COPY` to overwrite the current tile's memory with `other`'s memory.
+     * Dispatches `OpCode::COPY` to overwrite the current jade's memory with `other`'s memory.
      * Safely handles contiguous and non-contiguous layouts via the kernel registry.
-     * @warning Assumes both tiles share the exact same rank and shape. Mutates underlying `Storage`.
-     * @param other The source tile to copy data from.
+     * @warning Assumes both jades share the exact same rank and shape. Mutates underlying `Storage`.
+     * @param other The source jade to copy data from.
      */
-        void copy_from(const Tile& other);
+        void copy_from(const Jade& other);
 
         /**
-     * @brief Performs a deep, physical copy of the tile.
+     * @brief Performs a deep, physical copy of the jade.
      * Allocates a completely independent `Storage` backend and uses `OpCode::COPY` to
      * pull data from the current layout into a densely packed, C-contiguous format.
-     * @return A newly allocated, contiguous tile.
+     * @return A newly allocated, contiguous jade.
      */
-        Tile copy();
+        Jade copy();
 
 
     ///////////////////////////////////////////////////////
     ///////////////*************************///////////////
-    ///////////////**  Tile Factories  **////////////////
+    ///////////////**  Jade Factories  **////////////////
     ///////////////*************************///////////////
     ///////////////////////////////////////////////////////
     ;
 
         template<typename... Dims>
-        Tile& zeros(const Dims... dims);
+        Jade& zeros(const Dims... dims);
 
         template<typename... Dims>
-        Tile& ones(const Dims... dims);
+        Jade& ones(const Dims... dims);
 
-        Tile& arange(Slice range);
-
-        template<typename... Dims>
-        Tile& Array(const Dims... dims);
+        Jade& arange(Slice range);
 
         template<typename... Dims>
-        Tile& rand(const Dims... dims);
+        Jade& Array(const Dims... dims);
 
         template<typename... Dims>
-        Tile& randn(const Dims... dims);
+        Jade& rand(const Dims... dims);
 
         template<typename... Dims>
-        Tile& randint(const Dims... dims);
+        Jade& randn(const Dims... dims);
+
+        template<typename... Dims>
+        Jade& randint(const Dims... dims);
 
 
     /**
-     * @brief Creates an identical uninitialized tile with the same logical layout.
+     * @brief Creates an identical uninitialized jade with the same logical layout.
      * Allocates a fresh `Storage` buffer filled with zeros, copying the shape and rank
-     * of the reference tile.
-     * @param other The reference tile.
-     * @return A new physical tile.
+     * of the reference jade.
+     * @param other The reference jade.
+     * @return A new physical jade.
      */
-        static Tile zeros_like(const Tile& other);
+        static Jade zeros_like(const Jade& other);
 
         /**
-     * @brief Creates an identical uninitialized tile with the same logical layout.
+     * @brief Creates an identical uninitialized jade with the same logical layout.
      * Allocates a fresh `Storage` buffer filled with specified value, copying the shape and rank
-     * of the reference tile.
-     * @param other The reference tile.
+     * of the reference jade.
+     * @param other The reference jade.
      * @param val The fill value.
-     * @return A new physical tile.
+     * @return A new physical jade.
      */
-        static Tile fill_like(const Tile& other, const double val);
+        static Jade fill_like(const Jade& other, const double val);
 
 
     ////////////////////////////////////////////////////////////
     ///////////////****************************/////////////////
-    ///////////////**  Tile Encapsulation  **/////////////////
+    ///////////////**  Jade Encapsulation  **/////////////////
     ///////////////****************************/////////////////
     ////////////////////////////////////////////////////////////
         ;
@@ -459,8 +459,8 @@ namespace zeza {
         [[nodiscard]] uint64_t get_capacity() const;
 
         /**
-     * @brief Fetches the logical element count of the tile.
-     * Returns the product of the tile's logical shape dimensions. Does not reflect
+     * @brief Fetches the logical element count of the jade.
+     * Returns the product of the jade's logical shape dimensions. Does not reflect
      * physical byte capacity.
      * @return Total number of logical elements.
      */
@@ -470,7 +470,7 @@ namespace zeza {
 
     ////////////////////////////////////////////////////////////
     ///////////////////***********************//////////////////
-    ///////////////////**  Tile Indexers  **//////////////////
+    ///////////////////**  Jade Indexers  **//////////////////
     ///////////////////***********************//////////////////
     ////////////////////////////////////////////////////////////
     ;
@@ -489,7 +489,7 @@ namespace zeza {
         /**
      * @brief Mutates a specific physical location via logical coordinates.
      * Computes the strided memory address and overwrites it.
-     * @warning UB Warning: Mutates the underlying `Storage`. If this tile is a view,
+     * @warning UB Warning: Mutates the underlying `Storage`. If this jade is a view,
      * the mutation will be visible to all other views sharing the memory.
      * @tparam Indices Variadic pack of dimensional coordinates.
      * @param val The new scalar value.
@@ -501,23 +501,23 @@ namespace zeza {
 
     ////////////////////////////////////////////////////////////
     /////////////////************************///////////////////
-    /////////////////**  Tile Utilities  **///////////////////
+    /////////////////**  Jade Utilities  **///////////////////
     /////////////////************************///////////////////
     ////////////////////////////////////////////////////////////
     ;
         /**
-     * @brief Calculates the broadcasted shape of two tiles following NumPy rules.
+     * @brief Calculates the broadcasted shape of two jades following NumPy rules.
      * Compares dimensions starting from the trailing (inner-most) dimension.
      * Two dimensions are compatible if they are equal, or if one of them is 1.
      * @throws BroadcastException if the dimensions are mathematically incompatible.
-     * @param A The left tile.
-     * @param B The right tile.
+     * @param A The left jade.
+     * @param B The right jade.
      * @return A managed array containing the finalized broadcasted shape.
      */
-        static std::unique_ptr<uint64_t[]> broadcast(Tile A, Tile B);
+        static std::unique_ptr<uint64_t[]> broadcast(Jade A, Jade B);
 
         /**
-    * @brief Calculates the broadcasted shape of two tiles following NumPy rules.
+    * @brief Calculates the broadcasted shape of two jades following NumPy rules.
     * Compares dimensions starting from the trailing (inner-most) dimension.
     * Two dimensions are compatible if they are equal, or if one of them is 1.
     * @throws BroadcastException if the dimensions are mathematically incompatible.
@@ -530,20 +530,20 @@ namespace zeza {
         static std::unique_ptr<uint64_t[]> broadcast(uint64_t* A_shape, uint64_t A_ndims, uint64_t* B_shape, uint64_t B_ndims );
 
         /**
-     * @brief Validates if two tiles can undergo General Matrix Multiplication (GEMM).
+     * @brief Validates if two jades can undergo General Matrix Multiplication (GEMM).
      * Checks if the batch dimensions (everything except the last two) can broadcast,
      * and verifies the standard inner-matrix dimension matching rule: `A.columns == B.rows`.
-     * @param A The left tile.
-     * @param B The right tile.
+     * @param A The left jade.
+     * @param B The right jade.
      * @return True if MatMul is valid, false otherwise.
      */
-        static bool can_matmul(Tile& A, Tile& B);
+        static bool can_matmul(Jade& A, Jade& B);
 
     private:
 
     ////////////////////////////////////////////////////////////
     ///////////////////**********************///////////////////
-    ///////////////////**  Tile Helpers  **///////////////////
+    ///////////////////**  Jade Helpers  **///////////////////
     ///////////////////**********************///////////////////
     ////////////////////////////////////////////////////////////
         ;
@@ -555,7 +555,7 @@ namespace zeza {
      * @param linear_idx The flat memory index.
      * @param cursor Output array to store the resolved multi-dimensional indices.
      * @param shape Pointer to the shape array.
-     * @param ndims Rank of the tile.
+     * @param ndims Rank of the jade.
      */
         static constexpr void get_cursor(uint64_t linear_idx, uint64_t* cursor, const uint64_t* shape, uint64_t ndims) ;
 
@@ -571,7 +571,7 @@ namespace zeza {
 
         /**
      * @brief Forwards capacity requests to the `Storage` backend.
-     * @usage Used by kernels (via `TileOperator`) to trigger re-allocations prior to in-place mutation.
+     * @usage Used by kernels (via `JadeReactor`) to trigger re-allocations prior to in-place mutation.
      * @tparam Args Argument types required by `Storage::ensure_capacity`.
      * @param args Arguments forwarded to the allocator.
      */
@@ -598,7 +598,7 @@ namespace zeza {
      * @tparam T Type of the current slice argument (int or Slice).
      * @tparam Rest Remaining variadic slice arguments.
      * @param dim The current dimension being processed.
-     * @param ndim_tracker By-ref tracker for the new tile's rank.
+     * @param ndim_tracker By-ref tracker for the new jade's rank.
      * @param offset_tracker By-ref tracker for the physical memory offset.
      * @param shape_out Output array for the new view's shape.
      * @param stride_out Output array for the new view's strides.
@@ -615,20 +615,20 @@ namespace zeza {
     * multiplying the running product of shapes to determine jump sizes.
     * @param sh Pointer to the shape array.
     * @param st Pointer to the stride array to populate.
-    * @param ndims Rank of the tile.
+    * @param ndims Rank of the jade.
     */
         static void calc_strides(const uint64_t* sh, uint64_t* st, uint64_t ndims);
 
     ////////////////////////////////////////////////////////////
     ///////////////*****************************////////////////
-    ///////////////**  Tile Infrastructure  **////////////////
+    ///////////////**  Jade Infrastructure  **////////////////
     ///////////////*****************************////////////////
     ////////////////////////////////////////////////////////////
         ;
         /**
      * @brief Initializes logical shape and stride metadata from variadic dimensions.
      * Calculates contiguous strides right-to-left.
-     * @usage Used during initial tile construction.
+     * @usage Used during initial jade construction.
      * @tparam Dims Variadic integer parameters.
      * @param dimensions The specific sizes of each axis.
      */
@@ -638,12 +638,12 @@ namespace zeza {
         void init_metadata_like(const uint64_t* dimensions);
 
         /**
-     * @brief Deep-copies the metadata arrays from another tile.
+     * @brief Deep-copies the metadata arrays from another jade.
      * Allocates new `unique_ptr` arrays for shape and strides to ensure logical independence
      * from the parent when creating views.
-     * @param other The tile whose metadata will be cloned.
+     * @param other The jade whose metadata will be cloned.
      */
-        void clone_metadata(const Tile& other);
+        void clone_metadata(const Jade& other);
 
     /**
      * @brief Supply the initial physical backend.
@@ -654,20 +654,20 @@ namespace zeza {
 
     /////////////////////////////////////////////////////////////////
     /////////////////*****************************///////////////////
-    /////////////////**  Tile Interpretation  **///////////////////
+    /////////////////**  Jade Interpretation  **///////////////////
     /////////////////*****************************///////////////////
     /////////////////////////////////////////////////////////////////
     public:
 
         /**
-     * @brief Serializes the tile data into a human-readable nested string.
+     * @brief Serializes the jade data into a human-readable nested string.
      * Defaults to 2 decimal places of precision.
      * @return Formatted string representation.
      */
         [[nodiscard]] std::string display() const;
 
         /**
-     * @brief Serializes the tile data into a human-readable nested string with custom precision.
+     * @brief Serializes the jade data into a human-readable nested string with custom precision.
      * Recursively traverses dimensions using stride math to construct bracketed `[ ... ]`
      * string representations of the layout.
      * @param round Number of decimal places to print for double values.
@@ -698,12 +698,12 @@ namespace zeza {
 
     public:
     /**
-    * @brief Generates a brief signature string for the tile.
+    * @brief Generates a brief signature string for the jade.
     * Includes rank, physical type sizes, allocated byte capacity, and logical shape tuples.
     * @return Signature string
-    * @example `{Tile\<"2D", 32-bit; 64Bytes> (4,4)}`
+    * @example `{Jade\<"2D", 32-bit; 64Bytes> (4,4)}`
     */
         [[nodiscard]] std::string repr() const;
     };
 
-}// namespace zeza
+}// namespace bm

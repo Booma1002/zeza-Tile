@@ -148,10 +148,10 @@
 		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/include/header/Logger.hpp">
 			<Option target="cpp_runner"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/include/temp/TileFactories.tpp">
+		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/include/temp/JadeFactories.tpp">
 			<Option target="cpp_runner"/>
 		</Unit>
-		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/include/temp/TileTransformations.tpp">
+		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/include/temp/JadeTransformations.tpp">
 			<Option target="cpp_runner"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/Allocator.cpp">
@@ -164,6 +164,34 @@
 		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/Heatmap.cpp">
 			<Option target="cpp_runner"/>
 		</Unit>
+		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/Jade.cpp">
+			<Option target="my_engine"/>
+			<Option target="cpp_runner"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeCpuKernels.cpp">
+			<Option target="my_engine"/>
+			<Option target="cpp_runner"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeFactories.cpp">
+			<Option target="cpp_runner"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeGpuKernels.cpp">
+			<Option target="my_engine"/>
+			<Option target="cpp_runner"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeMath.cpp">
+			<Option target="cpp_runner"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeReactor.cpp">
+			<Option target="my_engine"/>
+			<Option target="cpp_runner"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeReductions.cpp">
+			<Option target="cpp_runner"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeTransformations.cpp">
+			<Option target="cpp_runner"/>
+		</Unit>
 		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/Logger.cpp">
 			<Option target="cpp_runner"/>
 		</Unit>
@@ -171,34 +199,6 @@
 			<Option target="cpp_runner"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/Storage.cpp">
-			<Option target="cpp_runner"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/Tile.cpp">
-			<Option target="my_engine"/>
-			<Option target="cpp_runner"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/TileFactories.cpp">
-			<Option target="cpp_runner"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/TileKernelsCpu.cpp">
-			<Option target="my_engine"/>
-			<Option target="cpp_runner"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/TileKernelsGpu.cpp">
-			<Option target="my_engine"/>
-			<Option target="cpp_runner"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/TileMath.cpp">
-			<Option target="cpp_runner"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/TileOperator.cpp">
-			<Option target="my_engine"/>
-			<Option target="cpp_runner"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/TileReductions.cpp">
-			<Option target="cpp_runner"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/src/TileTransformations.cpp">
 			<Option target="cpp_runner"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/Booma/CLionProjects/CppForML/CMakeLists.txt">

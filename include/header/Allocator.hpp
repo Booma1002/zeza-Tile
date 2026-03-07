@@ -9,7 +9,7 @@
 #if defined(_MSC_VER) || defined(_WIN32)
 #include <malloc.h>
 #endif
-namespace zeza {
+namespace bm {
 /**
  * @brief Exception thrown during failed low-level memory allocations.
  * @usage Triggered when OS-specific aligned allocation routines (like `_aligned_malloc` or
@@ -34,7 +34,7 @@ namespace zeza {
  * @brief Abstract base class for hardware-specific memory allocators.
  * Decouples physical memory acquisition from the logical `Storage` containers.
  * This enables seamless swapping between CPU RAM, Pinned Host Memory, and GPU VRAM
- * without modifying the higher-level Tile architecture.
+ * without modifying the higher-level Jade architecture.
  */
     struct Allocator {
 
@@ -157,4 +157,4 @@ namespace zeza {
     };
 
 
-}// namespace zeza
+}// namespace bm

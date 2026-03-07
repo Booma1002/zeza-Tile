@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 #include "Logger.hpp"
-namespace zeza {
+namespace bm {
     static constexpr int OPER_MAX_DIMS = 16;
     static constexpr int OPER_MAX_OPERANDS = 3;
     constexpr uint64_t MAX_OP_METHODS = 1024;
@@ -13,7 +13,7 @@ namespace zeza {
     //////////////////////////////////////////////////////////
     ;
     /**
-     * @brief Specifies the hardware being fetched by the `Tile`
+     * @brief Specifies the hardware being fetched by the `Jade`
      * @Switching Use `CPU` to select the central processing unit.
      * @Switching Use `CUDA` to select the graphics processing unit.
      * @usage To register a new hardware, manually add it to the enum class 'Device',
@@ -90,4 +90,4 @@ namespace zeza {
             default: return 0;
         }
     }
-}// namespace zeza
+}// namespace bm

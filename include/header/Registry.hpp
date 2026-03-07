@@ -3,15 +3,15 @@
 #include <cstdint>
 #include <stdexcept>
 #include <iostream>
-namespace zeza {
-    struct TileOperator;
+namespace bm {
+    struct JadeReactor;
 
 /**
  * @brief Pointer to a function (i.e. Kernel).
- * @accepts accepts a reference to a 'TileOperator' object.
+ * @accepts accepts a reference to a 'JadeReactor' object.
  * @returns returns void;
  */
-    using Kernel = void (*)(TileOperator &);
+    using Kernel = void (*)(JadeReactor &);
 
     class RegistryException : public std::exception {
         std::string msg;
@@ -98,7 +98,7 @@ namespace zeza {
  * @returns True if _reg_Dev_Op is successfully registered.
  * @example
  * @code
- *  void cpu_add_kernel(TileOperator& op) {
+ *  void cpu_add_kernel(JadeReactor& op) {
  *      ...
  *  }
  *  REGISTER_KERNEL(ADD, CPU, cpu_add_kernel);
@@ -111,4 +111,4 @@ namespace zeza {
     }();
     ;;;;;;;;;;
 
-}// namespace zeza
+}// namespace bm

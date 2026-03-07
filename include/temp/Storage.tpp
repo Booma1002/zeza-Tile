@@ -1,5 +1,5 @@
 #pragma once
-namespace zeza {
+namespace bm {
     template<typename T>
     T *Storage::data() {
         return static_cast<T *>(memory);

@@ -1,8 +1,8 @@
 #pragma once
-#include "Tile.hpp"
-#include "../temp/Tile.tpp"
+#include "Jade.hpp"
+#include "../temp/Jade.tpp"
 
-namespace zeza {
+namespace bm {
 
 
 

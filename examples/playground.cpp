@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
-#include "header/Tile.hpp"
+#include "header/Jade.hpp"
 #include "header/Dispatcher.hpp"
 
 void assert_eq(float a, float b, std::string msg) {
@@ -13,13 +13,13 @@ void assert_eq(float a, float b, std::string msg) {
 int main() {
     try {
         std::cout << "\n=== TEST 3: The Contiguous Trap ===\n";
-        // 2x2 Tile. Memory: [1, 2, 3, 4]
-        Tile t(0.0f, 2, 2);
+        // 2x2 Jade. Memory: [1, 2, 3, 4]
+        Jade t(0.0f, 2, 2);
         t.set(1.0f, 0,0); t.set(2.0f, 0,1);
         t.set(3.0f, 1,0); t.set(4.0f, 1,1);
 
         // Pad Inner Dim (1) ONLY. Outer Dim (0) is unpadded.
-        // This tricks your sort into treating Dim 0 as a contiguous tile.
+        // This tricks your sort into treating Dim 0 as a contiguous jade.
         std::cout << "Padding Inner Dimension (1) by 1...\n";
         t.pad_inplace(0.0f, 0, 1);
         t.display();

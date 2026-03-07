@@ -1,14 +1,15 @@
 #pragma once
 
-namespace zeza {
+namespace bm {
+    ;
 ////////////////////////////////////////////////////////////
 /////////////////***************************////////////////
-/////////////////**  Tile Constructors  **////////////////
+/////////////////**  Jade Constructors  **////////////////
 /////////////////***************************////////////////
 ////////////////////////////////////////////////////////////
 
     template<typename... Dims>
-    Tile::Tile(DType dtype, double Val, Dims... dims) : ndims(sizeof...(Dims)), dtype(dtype) {
+    Jade::Jade(DType dtype, double Val, Dims... dims) : ndims(sizeof...(Dims)), dtype(dtype) {
         init_metadata(dims...);
         allocate_storage();
         if (Val != 0.0f) {
@@ -19,8 +20,8 @@ namespace zeza {
     }
 
     template<typename... Dims>
-    Tile::Tile(DType dtype, const double *&data, Dims... dimensions) : ndims(sizeof...(Dims)), dtype(dtype) {
-        // Tile data filler constructor.
+    Jade::Jade(DType dtype, const double *&data, Dims... dimensions) : ndims(sizeof...(Dims)), dtype(dtype) {
+        // Jade data filler constructor.
         init_metadata(dimensions...);
         allocate_storage();
         std::string msg = std::format("New {}{}", this->repr(), ".");
@@ -28,23 +29,23 @@ namespace zeza {
     }
 
     template<typename... Dims>
-    Tile::Tile(DType dtype, Tile &other, Dims... dims):
+    Jade::Jade(DType dtype, Jade &other, Dims... dims):
             ndims(sizeof...(Dims)), memory(other.memory), dtype(dtype) {
         uint64_t sz = 1;
         ((sz *= dims), ...); // check size match
         if (other.get_size() != sz) {
-            std::string msg = "Cannot reshape Tile into the given dims.";
+            std::string msg = "Cannot reshape Jade into the given dims.";
             LOG_ERR(msg);
             throw ShapeMismatchException(msg);
         }
-        init_metadata(dims...); // initialize new tile
+        init_metadata(dims...); // initialize new jade
         std::string msg = std::format("Reshaped {}{}{}", other.repr(), " Into ", this->repr());
         LOG_INFO(msg);
     }
 
 //////////////////////////////////////////////////////
 /////////////******************************///////////
-/////////////**  Tile Transformations  **///////////
+/////////////**  Jade Transformations  **///////////
 /////////////******************************///////////
 //////////////////////////////////////////////////////
 
@@ -53,18 +54,18 @@ namespace zeza {
 
 //////////////////////////////////////////////////////
 /////////////*****************************////////////
-/////////////**  Tile Infrastructure  **////////////
+/////////////**  Jade Infrastructure  **////////////
 /////////////*****************************////////////
 //////////////////////////////////////////////////////
 
     template<typename... Args>
-    void Tile::ensure_capacity(Args... args) const {
+    void Jade::ensure_capacity(Args... args) const {
         this->memory->ensure_capacity(args...);
     }
 
 
     template<typename... Dims>
-    void Tile::init_metadata(Dims... dimensions) {
+    void Jade::init_metadata(Dims... dimensions) {
         shape = std::make_unique<uint64_t[]>(ndims);
         strides = std::make_unique<uint64_t[]>(ndims);
         uint64_t shape_array[] = {static_cast<uint64_t>(dimensions)...};
@@ -76,15 +77,15 @@ namespace zeza {
 
 ////////////////////////////////////////////////
 /////////////***********************////////////
-/////////////**  Tile Indexers  **////////////
+/////////////**  Jade Indexers  **////////////
 /////////////***********************////////////
 ////////////////////////////////////////////////
     template<typename... Args>
-    Tile Tile::operator[](Args... args) const {
+    Jade Jade::operator[](Args... args) const {
 
         int constexpr newaxes = (0 + ... + (std::is_same_v<Args, NewAxis_t> ? 1 : 0));
         if (sizeof...(Args) - newaxes != ndims) {
-            std::string msg = "Telemetry dimensions arguments count doesn't match tile's ndims.";
+            std::string msg = "Telemetry dimensions arguments count doesn't match jade's ndims.";
             LOG_ERR(msg);
             throw ShapeMismatchException(msg);
         }
@@ -96,7 +97,7 @@ namespace zeza {
 
         apply_slice(0, new_ndims, new_offset, new_shape.get(), new_strides.get(), args...);
 
-        Tile view(*this);
+        Jade view(*this);
         view.ndims = new_ndims;
         view.offset = new_offset;
         view.shape = std::move(new_shape);
@@ -105,9 +106,9 @@ namespace zeza {
     }
 
     template<typename... Indices>
-    double Tile::get(Indices... indices) const {
+    double Jade::get(Indices... indices) const {
         if (sizeof...(Indices) != ndims) {
-            std::string msg = "Number of indices must match Tile rank.";
+            std::string msg = "Number of indices must match Jade rank.";
             LOG_ERR(msg);
             throw ShapeMismatchException(msg);
         }
@@ -118,9 +119,9 @@ namespace zeza {
     }
 
     template<typename... Indices>
-    void Tile::set(const double val, Indices... indices) {
+    void Jade::set(const double val, Indices... indices) {
         if (sizeof...(Indices) != ndims) {
-            std::string msg = "Number of indices must match Tile rank.";
+            std::string msg = "Number of indices must match Jade rank.";
             LOG_ERR(msg);
             throw ShapeMismatchException(msg);
         }
@@ -131,7 +132,7 @@ namespace zeza {
     }
 
     template<typename T, typename... Rest>
-    void Tile::apply_slice(uint64_t dim, uint64_t &ndim_tracker, uint64_t &offset_tracker,
+    void Jade::apply_slice(uint64_t dim, uint64_t &ndim_tracker, uint64_t &offset_tracker,
                            uint64_t *shape_out, uint64_t *stride_out, T cur, Rest... rest) const {
         if constexpr (std::is_same_v<T, NewAxis_t>) {
             shape_out[ndim_tracker] = 1;
@@ -143,7 +144,7 @@ namespace zeza {
             auto i = static_cast<long long>(cur);
             if (i < 0) i += shape[dim];
             if (i < 0 || static_cast<uint64_t>(i) >= shape[dim]) {
-                std::string msg = "Tile index out of range.";
+                std::string msg = "Jade index out of range.";
                 LOG_ERR(msg);
                 throw SlicingException(msg);
             }

@@ -1,8 +1,8 @@
 #include "header/Engine.hpp"
-using namespace zeza;
+using namespace bm;
 
 std::atomic_uint64_t watching;
-void see(Tile& t, std::string msg =""){
+void see(Jade& t, std::string msg =""){
     std::cout << std::format("\n\n{:x}) {}:-\n",
              watching.load(std::memory_order::relaxed), msg);
     atomic_fetch_add(&watching, 1);
@@ -11,24 +11,24 @@ void see(Tile& t, std::string msg =""){
 
 int main(){
     watching.store(0, std::memory_order_relaxed);
-    Tile a(DType::UINT64, 7000, 100, 10, 10);
-    zeza::Tile b =a;
+    Jade a(DType::UINT64, 7000, 100, 10, 10);
+    bm::Jade b =a;
     see(b);
-    b = Tile::sin(a);
+    b = bm::Jade(a);
     see(b, "SIN");
-    b = Tile::cos(a);
+    b = bm::Jade(a);
     see(b, "COS");
-    b = Tile::tan(a);
+    b = Jade(a);
     see(b, "TAN");
-    Tile c = Tile::clip(a, -10, 10);
-    b = Tile::log(c);
+    Jade c = Jade::clip(a, -10, 10);
+    b = Jade(c);
     see(b, "LOG");
-    b = Tile(a);
+    b = Jade(a);
     see(b);
-    b = Tile::clip(a, -103, 105);
+    b = Jade::clip(a, -103, 105);
     see(b, "CLIP");
     a = 10000;
-    b = Tile::clip(a, -103, 105);
+    b = Jade::clip(a, -103, 105);
     see(b, "CLIP");
     double y = 7000;
     uint64_t z;

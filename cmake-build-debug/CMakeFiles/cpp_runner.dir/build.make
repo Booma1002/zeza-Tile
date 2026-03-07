@@ -97,19 +97,19 @@ CMakeFiles/cpp_runner.dir/examples/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_runner.dir/examples/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Booma/CLionProjects/CppForML/examples/main.cpp -o CMakeFiles/cpp_runner.dir/examples/main.cpp.s
 
-CMakeFiles/cpp_runner.dir/src/Tile.cpp.o: CMakeFiles/cpp_runner.dir/flags.make
-CMakeFiles/cpp_runner.dir/src/Tile.cpp.o: /mnt/c/Users/Booma/CLionProjects/CppForML/src/Tile.cpp
-CMakeFiles/cpp_runner.dir/src/Tile.cpp.o: CMakeFiles/cpp_runner.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/Booma/CLionProjects/CppForML/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cpp_runner.dir/src/Tile.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_runner.dir/src/Tile.cpp.o -MF CMakeFiles/cpp_runner.dir/src/Tile.cpp.o.d -o CMakeFiles/cpp_runner.dir/src/Tile.cpp.o -c /mnt/c/Users/Booma/CLionProjects/CppForML/src/Tile.cpp
+CMakeFiles/cpp_runner.dir/src/Jade.cpp.o: CMakeFiles/cpp_runner.dir/flags.make
+CMakeFiles/cpp_runner.dir/src/Jade.cpp.o: /mnt/c/Users/Booma/CLionProjects/CppForML/src/Jade.cpp
+CMakeFiles/cpp_runner.dir/src/Jade.cpp.o: CMakeFiles/cpp_runner.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/Booma/CLionProjects/CppForML/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cpp_runner.dir/src/Jade.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_runner.dir/src/Jade.cpp.o -MF CMakeFiles/cpp_runner.dir/src/Jade.cpp.o.d -o CMakeFiles/cpp_runner.dir/src/Jade.cpp.o -c /mnt/c/Users/Booma/CLionProjects/CppForML/src/Jade.cpp
 
-CMakeFiles/cpp_runner.dir/src/Tile.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp_runner.dir/src/Tile.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/Booma/CLionProjects/CppForML/src/Tile.cpp > CMakeFiles/cpp_runner.dir/src/Tile.cpp.i
+CMakeFiles/cpp_runner.dir/src/Jade.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp_runner.dir/src/Jade.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/Booma/CLionProjects/CppForML/src/Jade.cpp > CMakeFiles/cpp_runner.dir/src/Jade.cpp.i
 
-CMakeFiles/cpp_runner.dir/src/Tile.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_runner.dir/src/Tile.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Booma/CLionProjects/CppForML/src/Tile.cpp -o CMakeFiles/cpp_runner.dir/src/Tile.cpp.s
+CMakeFiles/cpp_runner.dir/src/Jade.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_runner.dir/src/Jade.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Booma/CLionProjects/CppForML/src/Jade.cpp -o CMakeFiles/cpp_runner.dir/src/Jade.cpp.s
 
 CMakeFiles/cpp_runner.dir/src/Dispatcher.cpp.o: CMakeFiles/cpp_runner.dir/flags.make
 CMakeFiles/cpp_runner.dir/src/Dispatcher.cpp.o: /mnt/c/Users/Booma/CLionProjects/CppForML/src/Dispatcher.cpp
@@ -125,47 +125,47 @@ CMakeFiles/cpp_runner.dir/src/Dispatcher.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_runner.dir/src/Dispatcher.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Booma/CLionProjects/CppForML/src/Dispatcher.cpp -o CMakeFiles/cpp_runner.dir/src/Dispatcher.cpp.s
 
-CMakeFiles/cpp_runner.dir/src/TileKernelsCpu.cpp.o: CMakeFiles/cpp_runner.dir/flags.make
-CMakeFiles/cpp_runner.dir/src/TileKernelsCpu.cpp.o: /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileKernelsCpu.cpp
-CMakeFiles/cpp_runner.dir/src/TileKernelsCpu.cpp.o: CMakeFiles/cpp_runner.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/Booma/CLionProjects/CppForML/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cpp_runner.dir/src/TileKernelsCpu.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_runner.dir/src/TileKernelsCpu.cpp.o -MF CMakeFiles/cpp_runner.dir/src/TileKernelsCpu.cpp.o.d -o CMakeFiles/cpp_runner.dir/src/TileKernelsCpu.cpp.o -c /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileKernelsCpu.cpp
+CMakeFiles/cpp_runner.dir/src/JadeCpuKernels.cpp.o: CMakeFiles/cpp_runner.dir/flags.make
+CMakeFiles/cpp_runner.dir/src/JadeCpuKernels.cpp.o: /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeCpuKernels.cpp
+CMakeFiles/cpp_runner.dir/src/JadeCpuKernels.cpp.o: CMakeFiles/cpp_runner.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/Booma/CLionProjects/CppForML/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cpp_runner.dir/src/JadeCpuKernels.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_runner.dir/src/JadeCpuKernels.cpp.o -MF CMakeFiles/cpp_runner.dir/src/JadeCpuKernels.cpp.o.d -o CMakeFiles/cpp_runner.dir/src/JadeCpuKernels.cpp.o -c /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeCpuKernels.cpp
 
-CMakeFiles/cpp_runner.dir/src/TileKernelsCpu.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp_runner.dir/src/TileKernelsCpu.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileKernelsCpu.cpp > CMakeFiles/cpp_runner.dir/src/TileKernelsCpu.cpp.i
+CMakeFiles/cpp_runner.dir/src/JadeCpuKernels.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp_runner.dir/src/JadeCpuKernels.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeCpuKernels.cpp > CMakeFiles/cpp_runner.dir/src/JadeCpuKernels.cpp.i
 
-CMakeFiles/cpp_runner.dir/src/TileKernelsCpu.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_runner.dir/src/TileKernelsCpu.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileKernelsCpu.cpp -o CMakeFiles/cpp_runner.dir/src/TileKernelsCpu.cpp.s
+CMakeFiles/cpp_runner.dir/src/JadeCpuKernels.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_runner.dir/src/JadeCpuKernels.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeCpuKernels.cpp -o CMakeFiles/cpp_runner.dir/src/JadeCpuKernels.cpp.s
 
-CMakeFiles/cpp_runner.dir/src/TileOperator.cpp.o: CMakeFiles/cpp_runner.dir/flags.make
-CMakeFiles/cpp_runner.dir/src/TileOperator.cpp.o: /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileOperator.cpp
-CMakeFiles/cpp_runner.dir/src/TileOperator.cpp.o: CMakeFiles/cpp_runner.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/Booma/CLionProjects/CppForML/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/cpp_runner.dir/src/TileOperator.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_runner.dir/src/TileOperator.cpp.o -MF CMakeFiles/cpp_runner.dir/src/TileOperator.cpp.o.d -o CMakeFiles/cpp_runner.dir/src/TileOperator.cpp.o -c /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileOperator.cpp
+CMakeFiles/cpp_runner.dir/src/JadeReactor.cpp.o: CMakeFiles/cpp_runner.dir/flags.make
+CMakeFiles/cpp_runner.dir/src/JadeReactor.cpp.o: /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeReactor.cpp
+CMakeFiles/cpp_runner.dir/src/JadeReactor.cpp.o: CMakeFiles/cpp_runner.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/Booma/CLionProjects/CppForML/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/cpp_runner.dir/src/JadeReactor.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_runner.dir/src/JadeReactor.cpp.o -MF CMakeFiles/cpp_runner.dir/src/JadeReactor.cpp.o.d -o CMakeFiles/cpp_runner.dir/src/JadeReactor.cpp.o -c /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeReactor.cpp
 
-CMakeFiles/cpp_runner.dir/src/TileOperator.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp_runner.dir/src/TileOperator.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileOperator.cpp > CMakeFiles/cpp_runner.dir/src/TileOperator.cpp.i
+CMakeFiles/cpp_runner.dir/src/JadeReactor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp_runner.dir/src/JadeReactor.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeReactor.cpp > CMakeFiles/cpp_runner.dir/src/JadeReactor.cpp.i
 
-CMakeFiles/cpp_runner.dir/src/TileOperator.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_runner.dir/src/TileOperator.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileOperator.cpp -o CMakeFiles/cpp_runner.dir/src/TileOperator.cpp.s
+CMakeFiles/cpp_runner.dir/src/JadeReactor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_runner.dir/src/JadeReactor.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeReactor.cpp -o CMakeFiles/cpp_runner.dir/src/JadeReactor.cpp.s
 
-CMakeFiles/cpp_runner.dir/src/TileKernelsGpu.cpp.o: CMakeFiles/cpp_runner.dir/flags.make
-CMakeFiles/cpp_runner.dir/src/TileKernelsGpu.cpp.o: /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileKernelsGpu.cpp
-CMakeFiles/cpp_runner.dir/src/TileKernelsGpu.cpp.o: CMakeFiles/cpp_runner.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/Booma/CLionProjects/CppForML/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/cpp_runner.dir/src/TileKernelsGpu.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_runner.dir/src/TileKernelsGpu.cpp.o -MF CMakeFiles/cpp_runner.dir/src/TileKernelsGpu.cpp.o.d -o CMakeFiles/cpp_runner.dir/src/TileKernelsGpu.cpp.o -c /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileKernelsGpu.cpp
+CMakeFiles/cpp_runner.dir/src/JadeGpuKernels.cpp.o: CMakeFiles/cpp_runner.dir/flags.make
+CMakeFiles/cpp_runner.dir/src/JadeGpuKernels.cpp.o: /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeGpuKernels.cpp
+CMakeFiles/cpp_runner.dir/src/JadeGpuKernels.cpp.o: CMakeFiles/cpp_runner.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/Booma/CLionProjects/CppForML/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/cpp_runner.dir/src/JadeGpuKernels.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_runner.dir/src/JadeGpuKernels.cpp.o -MF CMakeFiles/cpp_runner.dir/src/JadeGpuKernels.cpp.o.d -o CMakeFiles/cpp_runner.dir/src/JadeGpuKernels.cpp.o -c /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeGpuKernels.cpp
 
-CMakeFiles/cpp_runner.dir/src/TileKernelsGpu.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp_runner.dir/src/TileKernelsGpu.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileKernelsGpu.cpp > CMakeFiles/cpp_runner.dir/src/TileKernelsGpu.cpp.i
+CMakeFiles/cpp_runner.dir/src/JadeGpuKernels.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp_runner.dir/src/JadeGpuKernels.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeGpuKernels.cpp > CMakeFiles/cpp_runner.dir/src/JadeGpuKernels.cpp.i
 
-CMakeFiles/cpp_runner.dir/src/TileKernelsGpu.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_runner.dir/src/TileKernelsGpu.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileKernelsGpu.cpp -o CMakeFiles/cpp_runner.dir/src/TileKernelsGpu.cpp.s
+CMakeFiles/cpp_runner.dir/src/JadeGpuKernels.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_runner.dir/src/JadeGpuKernels.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeGpuKernels.cpp -o CMakeFiles/cpp_runner.dir/src/JadeGpuKernels.cpp.s
 
 CMakeFiles/cpp_runner.dir/src/Registry.cpp.o: CMakeFiles/cpp_runner.dir/flags.make
 CMakeFiles/cpp_runner.dir/src/Registry.cpp.o: /mnt/c/Users/Booma/CLionProjects/CppForML/src/Registry.cpp
@@ -223,61 +223,61 @@ CMakeFiles/cpp_runner.dir/src/Logger.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_runner.dir/src/Logger.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Booma/CLionProjects/CppForML/src/Logger.cpp -o CMakeFiles/cpp_runner.dir/src/Logger.cpp.s
 
-CMakeFiles/cpp_runner.dir/src/TileFactories.cpp.o: CMakeFiles/cpp_runner.dir/flags.make
-CMakeFiles/cpp_runner.dir/src/TileFactories.cpp.o: /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileFactories.cpp
-CMakeFiles/cpp_runner.dir/src/TileFactories.cpp.o: CMakeFiles/cpp_runner.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/Booma/CLionProjects/CppForML/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/cpp_runner.dir/src/TileFactories.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_runner.dir/src/TileFactories.cpp.o -MF CMakeFiles/cpp_runner.dir/src/TileFactories.cpp.o.d -o CMakeFiles/cpp_runner.dir/src/TileFactories.cpp.o -c /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileFactories.cpp
+CMakeFiles/cpp_runner.dir/src/JadeFactories.cpp.o: CMakeFiles/cpp_runner.dir/flags.make
+CMakeFiles/cpp_runner.dir/src/JadeFactories.cpp.o: /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeFactories.cpp
+CMakeFiles/cpp_runner.dir/src/JadeFactories.cpp.o: CMakeFiles/cpp_runner.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/Booma/CLionProjects/CppForML/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/cpp_runner.dir/src/JadeFactories.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_runner.dir/src/JadeFactories.cpp.o -MF CMakeFiles/cpp_runner.dir/src/JadeFactories.cpp.o.d -o CMakeFiles/cpp_runner.dir/src/JadeFactories.cpp.o -c /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeFactories.cpp
 
-CMakeFiles/cpp_runner.dir/src/TileFactories.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp_runner.dir/src/TileFactories.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileFactories.cpp > CMakeFiles/cpp_runner.dir/src/TileFactories.cpp.i
+CMakeFiles/cpp_runner.dir/src/JadeFactories.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp_runner.dir/src/JadeFactories.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeFactories.cpp > CMakeFiles/cpp_runner.dir/src/JadeFactories.cpp.i
 
-CMakeFiles/cpp_runner.dir/src/TileFactories.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_runner.dir/src/TileFactories.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileFactories.cpp -o CMakeFiles/cpp_runner.dir/src/TileFactories.cpp.s
+CMakeFiles/cpp_runner.dir/src/JadeFactories.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_runner.dir/src/JadeFactories.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeFactories.cpp -o CMakeFiles/cpp_runner.dir/src/JadeFactories.cpp.s
 
-CMakeFiles/cpp_runner.dir/src/TileTransformations.cpp.o: CMakeFiles/cpp_runner.dir/flags.make
-CMakeFiles/cpp_runner.dir/src/TileTransformations.cpp.o: /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileTransformations.cpp
-CMakeFiles/cpp_runner.dir/src/TileTransformations.cpp.o: CMakeFiles/cpp_runner.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/Booma/CLionProjects/CppForML/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/cpp_runner.dir/src/TileTransformations.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_runner.dir/src/TileTransformations.cpp.o -MF CMakeFiles/cpp_runner.dir/src/TileTransformations.cpp.o.d -o CMakeFiles/cpp_runner.dir/src/TileTransformations.cpp.o -c /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileTransformations.cpp
+CMakeFiles/cpp_runner.dir/src/JadeTransformations.cpp.o: CMakeFiles/cpp_runner.dir/flags.make
+CMakeFiles/cpp_runner.dir/src/JadeTransformations.cpp.o: /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeTransformations.cpp
+CMakeFiles/cpp_runner.dir/src/JadeTransformations.cpp.o: CMakeFiles/cpp_runner.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/Booma/CLionProjects/CppForML/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/cpp_runner.dir/src/JadeTransformations.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_runner.dir/src/JadeTransformations.cpp.o -MF CMakeFiles/cpp_runner.dir/src/JadeTransformations.cpp.o.d -o CMakeFiles/cpp_runner.dir/src/JadeTransformations.cpp.o -c /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeTransformations.cpp
 
-CMakeFiles/cpp_runner.dir/src/TileTransformations.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp_runner.dir/src/TileTransformations.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileTransformations.cpp > CMakeFiles/cpp_runner.dir/src/TileTransformations.cpp.i
+CMakeFiles/cpp_runner.dir/src/JadeTransformations.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp_runner.dir/src/JadeTransformations.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeTransformations.cpp > CMakeFiles/cpp_runner.dir/src/JadeTransformations.cpp.i
 
-CMakeFiles/cpp_runner.dir/src/TileTransformations.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_runner.dir/src/TileTransformations.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileTransformations.cpp -o CMakeFiles/cpp_runner.dir/src/TileTransformations.cpp.s
+CMakeFiles/cpp_runner.dir/src/JadeTransformations.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_runner.dir/src/JadeTransformations.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeTransformations.cpp -o CMakeFiles/cpp_runner.dir/src/JadeTransformations.cpp.s
 
-CMakeFiles/cpp_runner.dir/src/TileMath.cpp.o: CMakeFiles/cpp_runner.dir/flags.make
-CMakeFiles/cpp_runner.dir/src/TileMath.cpp.o: /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileMath.cpp
-CMakeFiles/cpp_runner.dir/src/TileMath.cpp.o: CMakeFiles/cpp_runner.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/Booma/CLionProjects/CppForML/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/cpp_runner.dir/src/TileMath.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_runner.dir/src/TileMath.cpp.o -MF CMakeFiles/cpp_runner.dir/src/TileMath.cpp.o.d -o CMakeFiles/cpp_runner.dir/src/TileMath.cpp.o -c /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileMath.cpp
+CMakeFiles/cpp_runner.dir/src/JadeMath.cpp.o: CMakeFiles/cpp_runner.dir/flags.make
+CMakeFiles/cpp_runner.dir/src/JadeMath.cpp.o: /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeMath.cpp
+CMakeFiles/cpp_runner.dir/src/JadeMath.cpp.o: CMakeFiles/cpp_runner.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/Booma/CLionProjects/CppForML/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/cpp_runner.dir/src/JadeMath.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_runner.dir/src/JadeMath.cpp.o -MF CMakeFiles/cpp_runner.dir/src/JadeMath.cpp.o.d -o CMakeFiles/cpp_runner.dir/src/JadeMath.cpp.o -c /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeMath.cpp
 
-CMakeFiles/cpp_runner.dir/src/TileMath.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp_runner.dir/src/TileMath.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileMath.cpp > CMakeFiles/cpp_runner.dir/src/TileMath.cpp.i
+CMakeFiles/cpp_runner.dir/src/JadeMath.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp_runner.dir/src/JadeMath.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeMath.cpp > CMakeFiles/cpp_runner.dir/src/JadeMath.cpp.i
 
-CMakeFiles/cpp_runner.dir/src/TileMath.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_runner.dir/src/TileMath.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileMath.cpp -o CMakeFiles/cpp_runner.dir/src/TileMath.cpp.s
+CMakeFiles/cpp_runner.dir/src/JadeMath.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_runner.dir/src/JadeMath.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeMath.cpp -o CMakeFiles/cpp_runner.dir/src/JadeMath.cpp.s
 
-CMakeFiles/cpp_runner.dir/src/TileReductions.cpp.o: CMakeFiles/cpp_runner.dir/flags.make
-CMakeFiles/cpp_runner.dir/src/TileReductions.cpp.o: /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileReductions.cpp
-CMakeFiles/cpp_runner.dir/src/TileReductions.cpp.o: CMakeFiles/cpp_runner.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/Booma/CLionProjects/CppForML/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/cpp_runner.dir/src/TileReductions.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_runner.dir/src/TileReductions.cpp.o -MF CMakeFiles/cpp_runner.dir/src/TileReductions.cpp.o.d -o CMakeFiles/cpp_runner.dir/src/TileReductions.cpp.o -c /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileReductions.cpp
+CMakeFiles/cpp_runner.dir/src/JadeReductions.cpp.o: CMakeFiles/cpp_runner.dir/flags.make
+CMakeFiles/cpp_runner.dir/src/JadeReductions.cpp.o: /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeReductions.cpp
+CMakeFiles/cpp_runner.dir/src/JadeReductions.cpp.o: CMakeFiles/cpp_runner.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/mnt/c/Users/Booma/CLionProjects/CppForML/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/cpp_runner.dir/src/JadeReductions.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cpp_runner.dir/src/JadeReductions.cpp.o -MF CMakeFiles/cpp_runner.dir/src/JadeReductions.cpp.o.d -o CMakeFiles/cpp_runner.dir/src/JadeReductions.cpp.o -c /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeReductions.cpp
 
-CMakeFiles/cpp_runner.dir/src/TileReductions.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp_runner.dir/src/TileReductions.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileReductions.cpp > CMakeFiles/cpp_runner.dir/src/TileReductions.cpp.i
+CMakeFiles/cpp_runner.dir/src/JadeReductions.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cpp_runner.dir/src/JadeReductions.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeReductions.cpp > CMakeFiles/cpp_runner.dir/src/JadeReductions.cpp.i
 
-CMakeFiles/cpp_runner.dir/src/TileReductions.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_runner.dir/src/TileReductions.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Booma/CLionProjects/CppForML/src/TileReductions.cpp -o CMakeFiles/cpp_runner.dir/src/TileReductions.cpp.s
+CMakeFiles/cpp_runner.dir/src/JadeReductions.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cpp_runner.dir/src/JadeReductions.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/Booma/CLionProjects/CppForML/src/JadeReductions.cpp -o CMakeFiles/cpp_runner.dir/src/JadeReductions.cpp.s
 
 CMakeFiles/cpp_runner.dir/src/Heatmap.cpp.o: CMakeFiles/cpp_runner.dir/flags.make
 CMakeFiles/cpp_runner.dir/src/Heatmap.cpp.o: /mnt/c/Users/Booma/CLionProjects/CppForML/src/Heatmap.cpp
@@ -297,19 +297,19 @@ CMakeFiles/cpp_runner.dir/src/Heatmap.cpp.s: cmake_force
 cpp_runner_OBJECTS = \
 "CMakeFiles/cpp_runner.dir/examples/playground.cpp.o" \
 "CMakeFiles/cpp_runner.dir/examples/main.cpp.o" \
-"CMakeFiles/cpp_runner.dir/src/Tile.cpp.o" \
+"CMakeFiles/cpp_runner.dir/src/Jade.cpp.o" \
 "CMakeFiles/cpp_runner.dir/src/Dispatcher.cpp.o" \
-"CMakeFiles/cpp_runner.dir/src/TileKernelsCpu.cpp.o" \
-"CMakeFiles/cpp_runner.dir/src/TileOperator.cpp.o" \
-"CMakeFiles/cpp_runner.dir/src/TileKernelsGpu.cpp.o" \
+"CMakeFiles/cpp_runner.dir/src/JadeCpuKernels.cpp.o" \
+"CMakeFiles/cpp_runner.dir/src/JadeReactor.cpp.o" \
+"CMakeFiles/cpp_runner.dir/src/JadeGpuKernels.cpp.o" \
 "CMakeFiles/cpp_runner.dir/src/Registry.cpp.o" \
 "CMakeFiles/cpp_runner.dir/src/Storage.cpp.o" \
 "CMakeFiles/cpp_runner.dir/src/Allocator.cpp.o" \
 "CMakeFiles/cpp_runner.dir/src/Logger.cpp.o" \
-"CMakeFiles/cpp_runner.dir/src/TileFactories.cpp.o" \
-"CMakeFiles/cpp_runner.dir/src/TileTransformations.cpp.o" \
-"CMakeFiles/cpp_runner.dir/src/TileMath.cpp.o" \
-"CMakeFiles/cpp_runner.dir/src/TileReductions.cpp.o" \
+"CMakeFiles/cpp_runner.dir/src/JadeFactories.cpp.o" \
+"CMakeFiles/cpp_runner.dir/src/JadeTransformations.cpp.o" \
+"CMakeFiles/cpp_runner.dir/src/JadeMath.cpp.o" \
+"CMakeFiles/cpp_runner.dir/src/JadeReductions.cpp.o" \
 "CMakeFiles/cpp_runner.dir/src/Heatmap.cpp.o"
 
 # External object files for target cpp_runner
@@ -317,19 +317,19 @@ cpp_runner_EXTERNAL_OBJECTS =
 
 cpp_runner: CMakeFiles/cpp_runner.dir/examples/playground.cpp.o
 cpp_runner: CMakeFiles/cpp_runner.dir/examples/main.cpp.o
-cpp_runner: CMakeFiles/cpp_runner.dir/src/Tile.cpp.o
+cpp_runner: CMakeFiles/cpp_runner.dir/src/Jade.cpp.o
 cpp_runner: CMakeFiles/cpp_runner.dir/src/Dispatcher.cpp.o
-cpp_runner: CMakeFiles/cpp_runner.dir/src/TileKernelsCpu.cpp.o
-cpp_runner: CMakeFiles/cpp_runner.dir/src/TileOperator.cpp.o
-cpp_runner: CMakeFiles/cpp_runner.dir/src/TileKernelsGpu.cpp.o
+cpp_runner: CMakeFiles/cpp_runner.dir/src/JadeCpuKernels.cpp.o
+cpp_runner: CMakeFiles/cpp_runner.dir/src/JadeReactor.cpp.o
+cpp_runner: CMakeFiles/cpp_runner.dir/src/JadeGpuKernels.cpp.o
 cpp_runner: CMakeFiles/cpp_runner.dir/src/Registry.cpp.o
 cpp_runner: CMakeFiles/cpp_runner.dir/src/Storage.cpp.o
 cpp_runner: CMakeFiles/cpp_runner.dir/src/Allocator.cpp.o
 cpp_runner: CMakeFiles/cpp_runner.dir/src/Logger.cpp.o
-cpp_runner: CMakeFiles/cpp_runner.dir/src/TileFactories.cpp.o
-cpp_runner: CMakeFiles/cpp_runner.dir/src/TileTransformations.cpp.o
-cpp_runner: CMakeFiles/cpp_runner.dir/src/TileMath.cpp.o
-cpp_runner: CMakeFiles/cpp_runner.dir/src/TileReductions.cpp.o
+cpp_runner: CMakeFiles/cpp_runner.dir/src/JadeFactories.cpp.o
+cpp_runner: CMakeFiles/cpp_runner.dir/src/JadeTransformations.cpp.o
+cpp_runner: CMakeFiles/cpp_runner.dir/src/JadeMath.cpp.o
+cpp_runner: CMakeFiles/cpp_runner.dir/src/JadeReductions.cpp.o
 cpp_runner: CMakeFiles/cpp_runner.dir/src/Heatmap.cpp.o
 cpp_runner: CMakeFiles/cpp_runner.dir/build.make
 cpp_runner: /usr/lib/gcc/x86_64-linux-gnu/13/libgomp.so

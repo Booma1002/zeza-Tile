@@ -1,6 +1,6 @@
 #include "header/Logger.hpp"
 #include <filesystem>
-using namespace zeza;
+using namespace bm;
 void Logger::log(LogLevel level, const std::string &msg) {
     log_counts[static_cast<int>(level)].fetch_add(1, std::memory_order_relaxed);
 
@@ -67,7 +67,7 @@ Logger::Logger() : running(true){
         count.store(0, std::memory_order_relaxed);
     }
     std::string log_dir = "logs";
-    if (const char* env_dir = std::getenv("TILE_LOG_DIR")) {
+    if (const char* env_dir = std::getenv("Jade_LOG_DIR")) {
         log_dir = env_dir;
     }
     std::filesystem::create_directories(log_dir);

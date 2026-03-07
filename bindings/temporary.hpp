@@ -6,7 +6,7 @@
 #include <cstring>
 #include <memory>
 #include <chrono>
-#include "header/Tile.hpp"
+#include "header/Jade.hpp"
 
 
 Tensor convolve(Tensor& input, Tensor& kernel, uint64_t n_filters, uint64_t step){

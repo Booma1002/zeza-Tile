@@ -1,5 +1,5 @@
 #include "header/Registry.hpp"
-using namespace zeza;
+using namespace bm;
 
 class RegistryException : public std::exception {
     std::string msg;

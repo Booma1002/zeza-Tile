@@ -2,8 +2,8 @@
 #include <cmath>
 #include <omp.h>
 #include "Registry.hpp"
-#include "TileOperator.hpp"
-namespace zeza {
+#include "JadeReactor.hpp"
+namespace bm {
 
 // ======================================================
 // =========={..........Helpers..........}===============
@@ -18,15 +18,15 @@ namespace zeza {
     ;
 
     template<typename Func>
-    void cpu_elementwise_unary_invoke(TileOperator &oper, Func op);
+    void cpu_elementwise_unary_invoke(JadeReactor &oper, Func op);
 
     template<typename Func>
-    void cpu_elementwise_scalar_invoke(TileOperator &oper, Func op);
+    void cpu_elementwise_scalar_invoke(JadeReactor &oper, Func op);
 
     template<typename Func>
-    void cpu_elementwise_binary_invoke(TileOperator &oper, Func op);
+    void cpu_elementwise_binary_invoke(JadeReactor &oper, Func op);
 
-    void cpu_MatMul_binary_invoke(TileOperator &oper);
+    void cpu_MatMul_binary_invoke(JadeReactor &oper);
 
 
 
@@ -35,31 +35,31 @@ namespace zeza {
 // ======================================================
     ;
 
-    void cpu_add_kernel(TileOperator &op);
+    void cpu_add_kernel(JadeReactor &op);
 
-    void cpu_sub_kernel(TileOperator &op);
+    void cpu_sub_kernel(JadeReactor &op);
 
-    void cpu_matmul_kernel(TileOperator &oper);
+    void cpu_matmul_kernel(JadeReactor &oper);
 
-    void cpu_copy_kernel(TileOperator &op);
+    void cpu_copy_kernel(JadeReactor &op);
 
-    void cpu_fill_kernel(TileOperator &op);
+    void cpu_fill_kernel(JadeReactor &op);
 
-    void cpu_mul_kernel(TileOperator &op);
+    void cpu_mul_kernel(JadeReactor &op);
 
-    void cpu_mul_kernel(TileOperator &op);
+    void cpu_mul_kernel(JadeReactor &op);
 
-    void cpu_sin_kernel(TileOperator &op);
+    void cpu_sin_kernel(JadeReactor &op);
 
-    void cpu_cos_kernel(TileOperator &op);
+    void cpu_cos_kernel(JadeReactor &op);
 
-    void cpu_tan_kernel(TileOperator &op);
+    void cpu_tan_kernel(JadeReactor &op);
 
-    void cpu_exp_kernel(TileOperator &op);
+    void cpu_exp_kernel(JadeReactor &op);
 
-    void cpu_log_kernel(TileOperator &op);
+    void cpu_log_kernel(JadeReactor &op);
 
-    void cpu_clip_kernel(TileOperator &oper)
+    void cpu_clip_kernel(JadeReactor &oper)
 
 // ===========================================================
 // =========={..........Registration..........}===============
@@ -82,4 +82,4 @@ namespace zeza {
 
 }
 
-#include "temp/TileKernelsCpu.tpp"
+#include "temp/JadeCpuKernels.tpp"

@@ -1,13 +1,13 @@
 #pragma once
-namespace zeza {
+namespace bm {
 // ==================================================================
 // =========={..........CPU K-nary Invoking..........}===============
 // ==================================================================
     ;
 
     template<typename T, typename Func>
-    void cpu_elementwise_unary_invoke(TileOperator &oper, Func op) {
-        std::string msg = std::format("[CPU Invoker] Performing Contiguous Tile Unary Operation. Operator Ndims={}{}",
+    void cpu_elementwise_unary_invoke(JadeReactor &oper, Func op) {
+        std::string msg = std::format("[CPU Invoker] Performing Contiguous Jade Unary Operation. Operator Ndims={}{}",
                                       std::to_string(oper.ndims), ".");
         LOG_INFO(msg);
         if (oper.is_contiguous) {
@@ -75,7 +75,7 @@ namespace zeza {
     }
 
     template<typename T, typename Func>
-    void cpu_elementwise_scalar_invoke(TileOperator &oper, Func op) {
+    void cpu_elementwise_scalar_invoke(JadeReactor &oper, Func op) {
         if (oper.is_contiguous) {
             auto out = static_cast<T *>(oper.phys[0]);
 ////////////////////////////////////////////////####{
@@ -137,8 +137,8 @@ namespace zeza {
 
 
     template<typename T, typename Func>
-    void cpu_elementwise_binary_invoke(TileOperator &oper, Func op) {
-        std::string msg = std::format("[CPU Invoker] Performing Contiguous Tile Binary Operation. Operator Ndims={}.",
+    void cpu_elementwise_binary_invoke(JadeReactor &oper, Func op) {
+        std::string msg = std::format("[CPU Invoker] Performing Contiguous Jade Binary Operation. Operator Ndims={}.",
                                       std::to_string(oper.ndims));
         LOG_INFO(msg);
         if (oper.is_contiguous) {
@@ -211,8 +211,8 @@ namespace zeza {
     }
 
     template<typename T>
-    void cpu_MatMul_binary_invoke(TileOperator &oper) {
-        std::string msg = std::format("[CPU Invoker] Performing Contiguous Tile MatMul Operation. Operator Ndims {}{}",
+    void cpu_MatMul_binary_invoke(JadeReactor &oper) {
+        std::string msg = std::format("[CPU Invoker] Performing Contiguous Jade MatMul Operation. Operator Ndims {}{}",
                                       std::to_string(oper.ndims), ".");
         LOG_INFO(msg);
         uint64_t M = oper.shape[oper.ndims - 2];

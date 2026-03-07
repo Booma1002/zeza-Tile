@@ -1,8 +1,8 @@
-#include "header/TileKernelsCpu.hpp"
+#include "header/JadeCpuKernels.hpp"
 #include <limits>
 #include <cmath>
 
-namespace zeza{
+namespace bm{
 #define DISPATCH_DTYPE(TYPE_ENUM, FUNCTOR, ...)                         \
 switch(TYPE_ENUM) {                                                     \
         case DType::FLOAT32: FUNCTOR<float>(__VA_ARGS__); break;        \
@@ -32,51 +32,51 @@ constexpr void get_cursor(uint64_t linear_idx, uint64_t* cursor, const uint64_t*
 // =========={..........Kernels..........}===============
 // ======================================================
 ;
-void cpu_add_kernel(TileOperator& op){
+void cpu_add_kernel(JadeReactor& op){
     DISPATCH_DTYPE(op.dtype, cpu_elementwise_binary_invoke, op, [](auto a, auto b) { return a + b; });
 }
 
-void cpu_mul_kernel(TileOperator& op){
+void cpu_mul_kernel(JadeReactor& op){
     DISPATCH_DTYPE(op.dtype, cpu_elementwise_binary_invoke, op, [](auto a, auto b) {return a * b;});
 }
 
-void cpu_sub_kernel(TileOperator& op) {
+void cpu_sub_kernel(JadeReactor& op) {
     DISPATCH_DTYPE(op.dtype, cpu_elementwise_binary_invoke, op, [](auto a, auto b) { return a - b; });
 }
 
-void cpu_matmul_kernel(TileOperator& oper) {
+void cpu_matmul_kernel(JadeReactor& oper) {
     DISPATCH_DTYPE(oper.dtype, cpu_MatMul_binary_invoke, oper);
 }
 
-void cpu_copy_kernel(TileOperator& op) {
+void cpu_copy_kernel(JadeReactor& op) {
     DISPATCH_DTYPE(op.dtype, cpu_elementwise_unary_invoke, op, [](auto a) { return a; });
 }
 
-void cpu_fill_kernel(TileOperator& op) {
+void cpu_fill_kernel(JadeReactor& op) {
     DISPATCH_DTYPE(op.dtype, cpu_elementwise_scalar_invoke, op, [&op](auto a) { return op.Val; });
 }
 
-void cpu_sin_kernel(TileOperator& op) {
+void cpu_sin_kernel(JadeReactor& op) {
     DISPATCH_DTYPE(op.dtype, cpu_elementwise_unary_invoke, op, [](auto a) { return static_cast<decltype(a)>(std::sin(a)); });
 }
 
-void cpu_cos_kernel(TileOperator& op) {
+void cpu_cos_kernel(JadeReactor& op) {
     DISPATCH_DTYPE(op.dtype, cpu_elementwise_unary_invoke, op, [](auto a) { return static_cast<decltype(a)>(std::cos(a)); });
 }
 
-void cpu_tan_kernel(TileOperator& op) {
+void cpu_tan_kernel(JadeReactor& op) {
     DISPATCH_DTYPE(op.dtype, cpu_elementwise_unary_invoke, op, [](auto a) { return static_cast<decltype(a)>(std::tan(a)); });
 }
 
-void cpu_exp_kernel(TileOperator& op) {
+void cpu_exp_kernel(JadeReactor& op) {
     DISPATCH_DTYPE(op.dtype, cpu_elementwise_unary_invoke, op, [](auto a) { return static_cast<decltype(a)>(std::exp(a)); });
 }
 
-void cpu_log_kernel(TileOperator& op) {
+void cpu_log_kernel(JadeReactor& op) {
     DISPATCH_DTYPE(op.dtype, cpu_elementwise_unary_invoke, op, [](auto a) { return static_cast<decltype(a)>(std::log(a)); });
 }
 
-void cpu_clip_kernel(TileOperator& oper) {
+void cpu_clip_kernel(JadeReactor& oper) {
     DISPATCH_DTYPE(oper.dtype, cpu_elementwise_unary_invoke, oper,
                    [&oper](auto a) {
                        auto l = oper.Left;

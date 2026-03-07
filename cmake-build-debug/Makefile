@@ -289,6 +289,210 @@ src/Heatmap.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/Heatmap.cpp.s
 .PHONY : src/Heatmap.cpp.s
 
+src/Jade.o: src/Jade.cpp.o
+.PHONY : src/Jade.o
+
+# target to build an object file
+src/Jade.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/Jade.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/Jade.cpp.o
+.PHONY : src/Jade.cpp.o
+
+src/Jade.i: src/Jade.cpp.i
+.PHONY : src/Jade.i
+
+# target to preprocess a source file
+src/Jade.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/Jade.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/Jade.cpp.i
+.PHONY : src/Jade.cpp.i
+
+src/Jade.s: src/Jade.cpp.s
+.PHONY : src/Jade.s
+
+# target to generate assembly for a file
+src/Jade.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/Jade.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/Jade.cpp.s
+.PHONY : src/Jade.cpp.s
+
+src/JadeCpuKernels.o: src/JadeCpuKernels.cpp.o
+.PHONY : src/JadeCpuKernels.o
+
+# target to build an object file
+src/JadeCpuKernels.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/JadeCpuKernels.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeCpuKernels.cpp.o
+.PHONY : src/JadeCpuKernels.cpp.o
+
+src/JadeCpuKernels.i: src/JadeCpuKernels.cpp.i
+.PHONY : src/JadeCpuKernels.i
+
+# target to preprocess a source file
+src/JadeCpuKernels.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/JadeCpuKernels.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeCpuKernels.cpp.i
+.PHONY : src/JadeCpuKernels.cpp.i
+
+src/JadeCpuKernels.s: src/JadeCpuKernels.cpp.s
+.PHONY : src/JadeCpuKernels.s
+
+# target to generate assembly for a file
+src/JadeCpuKernels.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/JadeCpuKernels.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeCpuKernels.cpp.s
+.PHONY : src/JadeCpuKernels.cpp.s
+
+src/JadeFactories.o: src/JadeFactories.cpp.o
+.PHONY : src/JadeFactories.o
+
+# target to build an object file
+src/JadeFactories.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeFactories.cpp.o
+.PHONY : src/JadeFactories.cpp.o
+
+src/JadeFactories.i: src/JadeFactories.cpp.i
+.PHONY : src/JadeFactories.i
+
+# target to preprocess a source file
+src/JadeFactories.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeFactories.cpp.i
+.PHONY : src/JadeFactories.cpp.i
+
+src/JadeFactories.s: src/JadeFactories.cpp.s
+.PHONY : src/JadeFactories.s
+
+# target to generate assembly for a file
+src/JadeFactories.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeFactories.cpp.s
+.PHONY : src/JadeFactories.cpp.s
+
+src/JadeGpuKernels.o: src/JadeGpuKernels.cpp.o
+.PHONY : src/JadeGpuKernels.o
+
+# target to build an object file
+src/JadeGpuKernels.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/JadeGpuKernels.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeGpuKernels.cpp.o
+.PHONY : src/JadeGpuKernels.cpp.o
+
+src/JadeGpuKernels.i: src/JadeGpuKernels.cpp.i
+.PHONY : src/JadeGpuKernels.i
+
+# target to preprocess a source file
+src/JadeGpuKernels.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/JadeGpuKernels.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeGpuKernels.cpp.i
+.PHONY : src/JadeGpuKernels.cpp.i
+
+src/JadeGpuKernels.s: src/JadeGpuKernels.cpp.s
+.PHONY : src/JadeGpuKernels.s
+
+# target to generate assembly for a file
+src/JadeGpuKernels.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/JadeGpuKernels.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeGpuKernels.cpp.s
+.PHONY : src/JadeGpuKernels.cpp.s
+
+src/JadeMath.o: src/JadeMath.cpp.o
+.PHONY : src/JadeMath.o
+
+# target to build an object file
+src/JadeMath.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeMath.cpp.o
+.PHONY : src/JadeMath.cpp.o
+
+src/JadeMath.i: src/JadeMath.cpp.i
+.PHONY : src/JadeMath.i
+
+# target to preprocess a source file
+src/JadeMath.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeMath.cpp.i
+.PHONY : src/JadeMath.cpp.i
+
+src/JadeMath.s: src/JadeMath.cpp.s
+.PHONY : src/JadeMath.s
+
+# target to generate assembly for a file
+src/JadeMath.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeMath.cpp.s
+.PHONY : src/JadeMath.cpp.s
+
+src/JadeReactor.o: src/JadeReactor.cpp.o
+.PHONY : src/JadeReactor.o
+
+# target to build an object file
+src/JadeReactor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/JadeReactor.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeReactor.cpp.o
+.PHONY : src/JadeReactor.cpp.o
+
+src/JadeReactor.i: src/JadeReactor.cpp.i
+.PHONY : src/JadeReactor.i
+
+# target to preprocess a source file
+src/JadeReactor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/JadeReactor.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeReactor.cpp.i
+.PHONY : src/JadeReactor.cpp.i
+
+src/JadeReactor.s: src/JadeReactor.cpp.s
+.PHONY : src/JadeReactor.s
+
+# target to generate assembly for a file
+src/JadeReactor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/JadeReactor.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeReactor.cpp.s
+.PHONY : src/JadeReactor.cpp.s
+
+src/JadeReductions.o: src/JadeReductions.cpp.o
+.PHONY : src/JadeReductions.o
+
+# target to build an object file
+src/JadeReductions.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeReductions.cpp.o
+.PHONY : src/JadeReductions.cpp.o
+
+src/JadeReductions.i: src/JadeReductions.cpp.i
+.PHONY : src/JadeReductions.i
+
+# target to preprocess a source file
+src/JadeReductions.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeReductions.cpp.i
+.PHONY : src/JadeReductions.cpp.i
+
+src/JadeReductions.s: src/JadeReductions.cpp.s
+.PHONY : src/JadeReductions.s
+
+# target to generate assembly for a file
+src/JadeReductions.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeReductions.cpp.s
+.PHONY : src/JadeReductions.cpp.s
+
+src/JadeTransformations.o: src/JadeTransformations.cpp.o
+.PHONY : src/JadeTransformations.o
+
+# target to build an object file
+src/JadeTransformations.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeTransformations.cpp.o
+.PHONY : src/JadeTransformations.cpp.o
+
+src/JadeTransformations.i: src/JadeTransformations.cpp.i
+.PHONY : src/JadeTransformations.i
+
+# target to preprocess a source file
+src/JadeTransformations.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeTransformations.cpp.i
+.PHONY : src/JadeTransformations.cpp.i
+
+src/JadeTransformations.s: src/JadeTransformations.cpp.s
+.PHONY : src/JadeTransformations.s
+
+# target to generate assembly for a file
+src/JadeTransformations.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/JadeTransformations.cpp.s
+.PHONY : src/JadeTransformations.cpp.s
+
 src/Logger.o: src/Logger.cpp.o
 .PHONY : src/Logger.o
 
@@ -361,210 +565,6 @@ src/Storage.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/Storage.cpp.s
 .PHONY : src/Storage.cpp.s
 
-src/Tile.o: src/Tile.cpp.o
-.PHONY : src/Tile.o
-
-# target to build an object file
-src/Tile.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/Tile.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/Tile.cpp.o
-.PHONY : src/Tile.cpp.o
-
-src/Tile.i: src/Tile.cpp.i
-.PHONY : src/Tile.i
-
-# target to preprocess a source file
-src/Tile.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/Tile.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/Tile.cpp.i
-.PHONY : src/Tile.cpp.i
-
-src/Tile.s: src/Tile.cpp.s
-.PHONY : src/Tile.s
-
-# target to generate assembly for a file
-src/Tile.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/Tile.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/Tile.cpp.s
-.PHONY : src/Tile.cpp.s
-
-src/TileFactories.o: src/TileFactories.cpp.o
-.PHONY : src/TileFactories.o
-
-# target to build an object file
-src/TileFactories.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileFactories.cpp.o
-.PHONY : src/TileFactories.cpp.o
-
-src/TileFactories.i: src/TileFactories.cpp.i
-.PHONY : src/TileFactories.i
-
-# target to preprocess a source file
-src/TileFactories.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileFactories.cpp.i
-.PHONY : src/TileFactories.cpp.i
-
-src/TileFactories.s: src/TileFactories.cpp.s
-.PHONY : src/TileFactories.s
-
-# target to generate assembly for a file
-src/TileFactories.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileFactories.cpp.s
-.PHONY : src/TileFactories.cpp.s
-
-src/TileKernelsCpu.o: src/TileKernelsCpu.cpp.o
-.PHONY : src/TileKernelsCpu.o
-
-# target to build an object file
-src/TileKernelsCpu.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/TileKernelsCpu.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileKernelsCpu.cpp.o
-.PHONY : src/TileKernelsCpu.cpp.o
-
-src/TileKernelsCpu.i: src/TileKernelsCpu.cpp.i
-.PHONY : src/TileKernelsCpu.i
-
-# target to preprocess a source file
-src/TileKernelsCpu.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/TileKernelsCpu.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileKernelsCpu.cpp.i
-.PHONY : src/TileKernelsCpu.cpp.i
-
-src/TileKernelsCpu.s: src/TileKernelsCpu.cpp.s
-.PHONY : src/TileKernelsCpu.s
-
-# target to generate assembly for a file
-src/TileKernelsCpu.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/TileKernelsCpu.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileKernelsCpu.cpp.s
-.PHONY : src/TileKernelsCpu.cpp.s
-
-src/TileKernelsGpu.o: src/TileKernelsGpu.cpp.o
-.PHONY : src/TileKernelsGpu.o
-
-# target to build an object file
-src/TileKernelsGpu.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/TileKernelsGpu.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileKernelsGpu.cpp.o
-.PHONY : src/TileKernelsGpu.cpp.o
-
-src/TileKernelsGpu.i: src/TileKernelsGpu.cpp.i
-.PHONY : src/TileKernelsGpu.i
-
-# target to preprocess a source file
-src/TileKernelsGpu.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/TileKernelsGpu.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileKernelsGpu.cpp.i
-.PHONY : src/TileKernelsGpu.cpp.i
-
-src/TileKernelsGpu.s: src/TileKernelsGpu.cpp.s
-.PHONY : src/TileKernelsGpu.s
-
-# target to generate assembly for a file
-src/TileKernelsGpu.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/TileKernelsGpu.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileKernelsGpu.cpp.s
-.PHONY : src/TileKernelsGpu.cpp.s
-
-src/TileMath.o: src/TileMath.cpp.o
-.PHONY : src/TileMath.o
-
-# target to build an object file
-src/TileMath.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileMath.cpp.o
-.PHONY : src/TileMath.cpp.o
-
-src/TileMath.i: src/TileMath.cpp.i
-.PHONY : src/TileMath.i
-
-# target to preprocess a source file
-src/TileMath.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileMath.cpp.i
-.PHONY : src/TileMath.cpp.i
-
-src/TileMath.s: src/TileMath.cpp.s
-.PHONY : src/TileMath.s
-
-# target to generate assembly for a file
-src/TileMath.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileMath.cpp.s
-.PHONY : src/TileMath.cpp.s
-
-src/TileOperator.o: src/TileOperator.cpp.o
-.PHONY : src/TileOperator.o
-
-# target to build an object file
-src/TileOperator.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/TileOperator.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileOperator.cpp.o
-.PHONY : src/TileOperator.cpp.o
-
-src/TileOperator.i: src/TileOperator.cpp.i
-.PHONY : src/TileOperator.i
-
-# target to preprocess a source file
-src/TileOperator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/TileOperator.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileOperator.cpp.i
-.PHONY : src/TileOperator.cpp.i
-
-src/TileOperator.s: src/TileOperator.cpp.s
-.PHONY : src/TileOperator.s
-
-# target to generate assembly for a file
-src/TileOperator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_engine.dir/build.make CMakeFiles/my_engine.dir/src/TileOperator.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileOperator.cpp.s
-.PHONY : src/TileOperator.cpp.s
-
-src/TileReductions.o: src/TileReductions.cpp.o
-.PHONY : src/TileReductions.o
-
-# target to build an object file
-src/TileReductions.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileReductions.cpp.o
-.PHONY : src/TileReductions.cpp.o
-
-src/TileReductions.i: src/TileReductions.cpp.i
-.PHONY : src/TileReductions.i
-
-# target to preprocess a source file
-src/TileReductions.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileReductions.cpp.i
-.PHONY : src/TileReductions.cpp.i
-
-src/TileReductions.s: src/TileReductions.cpp.s
-.PHONY : src/TileReductions.s
-
-# target to generate assembly for a file
-src/TileReductions.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileReductions.cpp.s
-.PHONY : src/TileReductions.cpp.s
-
-src/TileTransformations.o: src/TileTransformations.cpp.o
-.PHONY : src/TileTransformations.o
-
-# target to build an object file
-src/TileTransformations.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileTransformations.cpp.o
-.PHONY : src/TileTransformations.cpp.o
-
-src/TileTransformations.i: src/TileTransformations.cpp.i
-.PHONY : src/TileTransformations.i
-
-# target to preprocess a source file
-src/TileTransformations.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileTransformations.cpp.i
-.PHONY : src/TileTransformations.cpp.i
-
-src/TileTransformations.s: src/TileTransformations.cpp.s
-.PHONY : src/TileTransformations.s
-
-# target to generate assembly for a file
-src/TileTransformations.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp_runner.dir/build.make CMakeFiles/cpp_runner.dir/src/TileTransformations.cpp.s
-.PHONY : src/TileTransformations.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -593,6 +593,30 @@ help:
 	@echo "... src/Heatmap.o"
 	@echo "... src/Heatmap.i"
 	@echo "... src/Heatmap.s"
+	@echo "... src/Jade.o"
+	@echo "... src/Jade.i"
+	@echo "... src/Jade.s"
+	@echo "... src/JadeCpuKernels.o"
+	@echo "... src/JadeCpuKernels.i"
+	@echo "... src/JadeCpuKernels.s"
+	@echo "... src/JadeFactories.o"
+	@echo "... src/JadeFactories.i"
+	@echo "... src/JadeFactories.s"
+	@echo "... src/JadeGpuKernels.o"
+	@echo "... src/JadeGpuKernels.i"
+	@echo "... src/JadeGpuKernels.s"
+	@echo "... src/JadeMath.o"
+	@echo "... src/JadeMath.i"
+	@echo "... src/JadeMath.s"
+	@echo "... src/JadeReactor.o"
+	@echo "... src/JadeReactor.i"
+	@echo "... src/JadeReactor.s"
+	@echo "... src/JadeReductions.o"
+	@echo "... src/JadeReductions.i"
+	@echo "... src/JadeReductions.s"
+	@echo "... src/JadeTransformations.o"
+	@echo "... src/JadeTransformations.i"
+	@echo "... src/JadeTransformations.s"
 	@echo "... src/Logger.o"
 	@echo "... src/Logger.i"
 	@echo "... src/Logger.s"
@@ -602,30 +626,6 @@ help:
 	@echo "... src/Storage.o"
 	@echo "... src/Storage.i"
 	@echo "... src/Storage.s"
-	@echo "... src/Tile.o"
-	@echo "... src/Tile.i"
-	@echo "... src/Tile.s"
-	@echo "... src/TileFactories.o"
-	@echo "... src/TileFactories.i"
-	@echo "... src/TileFactories.s"
-	@echo "... src/TileKernelsCpu.o"
-	@echo "... src/TileKernelsCpu.i"
-	@echo "... src/TileKernelsCpu.s"
-	@echo "... src/TileKernelsGpu.o"
-	@echo "... src/TileKernelsGpu.i"
-	@echo "... src/TileKernelsGpu.s"
-	@echo "... src/TileMath.o"
-	@echo "... src/TileMath.i"
-	@echo "... src/TileMath.s"
-	@echo "... src/TileOperator.o"
-	@echo "... src/TileOperator.i"
-	@echo "... src/TileOperator.s"
-	@echo "... src/TileReductions.o"
-	@echo "... src/TileReductions.i"
-	@echo "... src/TileReductions.s"
-	@echo "... src/TileTransformations.o"
-	@echo "... src/TileTransformations.i"
-	@echo "... src/TileTransformations.s"
 .PHONY : help
 
 

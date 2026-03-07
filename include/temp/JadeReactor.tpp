@@ -1,37 +1,37 @@
 #pragma once
-#include "header/Tile.hpp"
-namespace zeza {
+#include "header/Jade.hpp"
+namespace bm {
     template<auto MemberFunc, typename T, typename Ret, typename... Args>
     struct Binder<MemberFunc, Ret (T::*)(Args...)> {
-        static void bind(TileOperator *op, OperatorMethod id) {
+        static void bind(JadeReactor *op, OperatorMethod id) {
             op->template create_thunk<T, Args..., MemberFunc>(id);
         }
     };
 
     template<auto MemberFunc, typename T, typename Ret, typename... Args>
     struct Binder<MemberFunc, Ret (T::*)(Args...) const> {
-        static void bind(TileOperator *op, OperatorMethod id) {
+        static void bind(JadeReactor *op, OperatorMethod id) {
             op->template create_thunk<T, Args..., MemberFunc>(id);
         }
     };
 
     template<auto MemberFunc, typename T, typename Ret, typename... Args>
     struct Binder<MemberFunc, Ret (T::*)(Args...) noexcept> {
-        static void bind(TileOperator *op, OperatorMethod id) {
+        static void bind(JadeReactor *op, OperatorMethod id) {
             op->template create_thunk<T, Args..., MemberFunc>(id);
         }
     };
 
     template<auto MemberFunc, typename T, typename Ret, typename... Args>
     struct Binder<MemberFunc, Ret (T::*)(Args...) const noexcept> {
-        static void bind(TileOperator *op, OperatorMethod id) {
+        static void bind(JadeReactor *op, OperatorMethod id) {
             op->template create_thunk<T, Args..., MemberFunc>(id);
         }
     };
 
 
     template<typename... Args>
-    void TileOperator::call(OperatorMethod id, Args... args) {
+    void JadeReactor::call(OperatorMethod id, Args... args) {
         int idx = static_cast<int>(id);
         if (idx >= MAX_OP_METHODS || idx < 0)
             throw OperatorException("[Operator]>> Method ID out of bounds.");
@@ -42,11 +42,11 @@ namespace zeza {
         auto func = reinterpret_cast<TypedFunc>(methods[idx]);
         func(bound_obj, args...);
 
-        if (bound_obj) phys[0] = static_cast<Tile *>(bound_obj)->memory->template data<float>();
+        if (bound_obj) phys[0] = static_cast<Jade *>(bound_obj)->memory->template data<float>();
     }
 
     template<typename T, typename... Args, auto MemberPtr>
-    void TileOperator::create_thunk(OperatorMethod id) {
+    void JadeReactor::create_thunk(OperatorMethod id) {
         int idx = static_cast<int>(id);
         if (idx >= MAX_OP_METHODS || idx < 0)
             throw OperatorException("[Operator]>> Method ID out of bounds.");
@@ -58,12 +58,12 @@ namespace zeza {
         methods[idx] = reinterpret_cast<GenericFunc>(+thunk);
     }
 
-    constexpr bool TileOperator::has(OperatorMethod id) const {
+    constexpr bool JadeReactor::has(OperatorMethod id) const {
         return methods[static_cast<int>(id)] != nullptr;
     }
 
     template<typename Func>
-    void TileOperator::bind(OperatorMethod id, Func &&f) {
+    void JadeReactor::bind(OperatorMethod id, Func &&f) {
         int idx = static_cast<int>(id);
         if (idx >= MAX_OP_METHODS || idx < 0)
             throw OperatorException("[Operator]>> Method ID out of bounds.");
@@ -74,7 +74,7 @@ namespace zeza {
     }
 
     template<auto MemberFunc>
-    void TileOperator::bind_private(OperatorMethod id) {
+    void JadeReactor::bind_private(OperatorMethod id) {
         Binder<MemberFunc>::bind(this, id);
     }
 }

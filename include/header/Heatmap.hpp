@@ -1,6 +1,6 @@
-#include "header/Tile.hpp"
-namespace zeza {
-    class Heatmap : Tile {
+#include "header/Jade.hpp"
+namespace bm {
+    class Heatmap : Jade {
         Heatmap() = default;
     };
-}// namespace zeza
+}// namespace bm
