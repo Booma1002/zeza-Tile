@@ -501,6 +501,14 @@ namespace bm {
     ///////////////////***********************//////////////////
     ////////////////////////////////////////////////////////////
     ;
+
+        /**
+        * @brief Extracts the raw scalar value from a 1-element Jade tensor.
+        * @throws std::runtime_error if the tensor contains more than 1 element.
+        */
+        template<typename T = double>
+        T item() const;
+
         /**
      * @brief Resolves a logical multi-dimensional coordinate to a physical double value.
      * Multiplies each index by its corresponding dimension stride and adds the base `offset`.

@@ -41,9 +41,6 @@ namespace bm {
         template<typename... Args>
         static void execute_scalar(OpCode op, Jade &out, double a, Args&... args);
 
-
-        template<typename... Args>
-        static void execute_variadic(OpCode op, Jade& out, Args&... args);
     };
 
 }// namespace bm

@@ -105,6 +105,24 @@ namespace bm {
         return view;
     }
 
+    template<typename T>
+    T Jade::item() const {
+        if (get_size() != 1) {
+            std::string msg = "[Jade] Cannot call .item() on a jade with " + std::to_string(get_size()) + " elements. Must be exactly 1.";
+            LOG_ERR(msg);
+            throw std::runtime_error(msg);
+        }
+        if (dtype == DType::FLOAT64) {
+            return static_cast<T>(static_cast<double*>(data_ptr())[0]);
+        } else if (dtype == DType::UINT64) {
+            return static_cast<T>(static_cast<uint64_t*>(data_ptr())[0]);
+        } else if (dtype == DType::FLOAT32) {
+            return static_cast<T>(static_cast<float*>(data_ptr())[0]);
+        }
+        // Todo: add other cases as needed later
+        return static_cast<T>(0);
+    }
+
     template<typename... Indices>
     double Jade::get(Indices... indices) const {
         if (sizeof...(Indices) != ndims) {

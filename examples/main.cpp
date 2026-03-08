@@ -33,5 +33,26 @@ int main(){
     see(c, "c.flatten();");
 
     // zeros ones test
+    Jade zeros = Jade::zeros(DType::UINT8, 7, 7);
+    see(zeros,"zeros");
+    Jade ones = Jade::ones(DType::UINT8, 7, 7);
+    see(ones,"ones");
+
+    auto res = Jade::max(a);
+    see(res,"max");
+    res = Jade::min(a);
+    see(res,"min");
+    res = Jade::argmax(a);
+    see(res,"argmax");
+    res = Jade::argmin(a);
+    see(res,"argmin");
+    res = Jade::std(a);
+    see(res,"std");
+    res = Jade::var(a);
+    see(res,"var");
+    res = Jade::mean(a);
+    see(res,"mean");
+    res = c.dot(a);
+    see(res,"dot");
 
 }

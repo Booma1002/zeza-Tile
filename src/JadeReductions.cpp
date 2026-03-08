@@ -1,17 +1,19 @@
 #include "header/Jade.hpp"
+#include "header/Dispatcher.hpp"
 using namespace bm;
 
+Jade Jade::std(const Jade& input) {
+    Jade output(input.dtype, 0.0, 1ULL);
+    Dispatcher::execute_unary(OpCode::STD, output, input);
+    return output;
+}
 
-Jade Jade::std(const Jade& input){
-    Jade view(input.dtype, 0.0f, input.shape.get(), input.ndims);
-    Dispatcher::execute_unary(OpCode::STD, view, input);
-    return view;
+Jade Jade::var(const Jade& input) {
+    Jade output(input.dtype, 0.0, 1ULL);
+    Dispatcher::execute_unary(OpCode::VAR, output, input);
+    return output;
 }
-Jade Jade::var(const Jade& input){
-    Jade view(input.dtype, 0.0f, input.shape.get(), input.ndims);
-    Dispatcher::execute_unary(OpCode::VAR, view, input);
-    return view;
-}
+
 Jade Jade::max(const Jade& input) {
     Jade output(input.dtype, 0.0, 1ULL);
     Dispatcher::execute_unary(OpCode::MAX, output, input);
@@ -36,14 +38,15 @@ Jade Jade::dot(const Jade& other) const {
     return output;
 }
 
-Jade Jade::argmax(const Jade& input){
-    Jade view(input.dtype, 0.0f, input.shape.get(), input.ndims);
-    Dispatcher::execute_variadic(OpCode::ARGMAX, view, input);
-    return view;
-}
-Jade Jade::argmin(const Jade& input){
-    Jade view(input.dtype, 0.0f, input.shape.get(), input.ndims);
-    Dispatcher::execute_variadic(OpCode::ARGMIN, view, input);
-    return view;
+Jade Jade::argmax(const Jade& input) {
+    // Indexes are strictly 64-bit unsigned integers
+    Jade output(DType::UINT64, 0.0, 1ULL);
+    Dispatcher::execute_unary(OpCode::ARGMAX, output, input);
+    return output;
 }
 
+Jade Jade::argmin(const Jade& input) {
+    Jade output(DType::UINT64, 0.0, 1ULL);
+    Dispatcher::execute_unary(OpCode::ARGMIN, output, input);
+    return output;
+}
