@@ -509,7 +509,6 @@ namespace bm {
             out[0] = global_acc;
         }
     }
-
     // --- MAX ---
     template<typename T>
     void cpu_max_invoke(JadeReactor& jr) {
@@ -526,6 +525,7 @@ namespace bm {
         cpu_reduction_unary_invoke<T>(jr, std::numeric_limits<T>::max(),
                                       [](T acc, T val) { return std::min(acc, val); });
     }
+
     // --- MEAN ---
     template<typename T>
     void cpu_mean_invoke(JadeReactor& jr) {
@@ -545,45 +545,39 @@ namespace bm {
                                        [](T acc, T a, T b) { return acc + (a * b); });
     }
 
-    // --- STD / VAR ---
-    template<typename T>
+    // ==================================================================
+    // =========={.......... STD / VAR REDUCTIONS ..........}============
+    // ==================================================================
+    template<typename T, bool IS_STD>
     void cpu_std_var_invoke(JadeReactor& jr) {
         double global_sum = 0.0;
         double global_sum_sq = 0.0;
 
-        auto std_mode = *static_cast<bool*>(jr.args[0]);
         if (jr.is_contiguous) {
             auto in = static_cast<T*>(jr.phys[1]);
-////////////////////////////////////////////////####{
 #if defined(_OPENMP)
 #pragma omp parallel default(none) shared(jr, in, global_sum, global_sum_sq)
 #endif
-////////////////////////////////////////////////####}
             {
                 double local_sum = 0.0;
                 double local_sum_sq = 0.0;
-////////////////////////////////////////////////####{
 #if defined(_OPENMP)
 #pragma omp for schedule(static) nowait
 #endif
-////////////////////////////////////////////////####}
                 for (uint64_t i = 0; i < jr.numel; ++i) {
-                    auto val = static_cast<double>(in[i]);//double to save precision bits
+                    auto val = static_cast<double>(in[i]);
                     local_sum += val;
                     local_sum_sq += (val * val);
                 }
-////////////////////////////////////////////////####{
 #if defined(_OPENMP)
 #pragma omp critical
 #endif
-////////////////////////////////////////////////####}
                 {
                     global_sum += local_sum;
                     global_sum_sq += local_sum_sq;
                 }
             }
-        }
-        else{
+        } else {
             auto in = static_cast<T*>(jr.phys[1]);
 ////////////////////////////////////////////////####{
 #if defined(_OPENMP)
@@ -591,6 +585,7 @@ namespace bm {
 #endif
 ////////////////////////////////////////////////####}
             {
+
                 double local_sum = 0.0;
                 double local_sum_sq = 0.0;
                 int thread = 0, num_threads = 1;
@@ -616,7 +611,7 @@ namespace bm {
                     }
 
                     for (uint64_t i = begin; i < end; ++i) {
-                        auto val = static_cast<double>(in[off]);//double to save precision bits
+                        auto val = static_cast<double>(in[off]);
                         local_sum += val;
                         local_sum_sq += (val * val);
 
@@ -640,84 +635,76 @@ namespace bm {
                 }
             }
         }
+
         auto n = static_cast<double>(jr.numel);
-        double mean = global_sum / n;
-        // bessel correction (N-1) makes it an unbiased estimator
         double variance = (global_sum_sq - (global_sum * global_sum / n)) / (n - 1.0);
         auto out = static_cast<T*>(jr.phys[0]);
-        if(std_mode)
-            out[0] = static_cast<T>(std::sqrt(std::max(0.0, variance))); // max() resolve floating point -0.0
-        else  out[0] = static_cast<T>(std::max(0.0, variance)); // var mode
+
+        if constexpr (IS_STD) {// compile time
+            out[0] = static_cast<T>(std::sqrt(std::max(0.0, variance)));
+        } else {
+            out[0] = static_cast<T>(std::max(0.0, variance));
+        }
     }
 
+    template<typename T> void cpu_std_invoke(JadeReactor& jr) { cpu_std_var_invoke<T, true>(jr); }
+    template<typename T> void cpu_var_invoke(JadeReactor& jr) { cpu_std_var_invoke<T, false>(jr); }
+
+    // ==================================================================
+    // =========={.......... ARGMAX / ARGMIN REDUCTIONS ..........}======
+    // ==================================================================
     template<typename T>
     struct ArgAcc {
         T val;
         uint64_t idx;
     };
 
-    template<typename T>
+    template<typename T, bool MAX_MODE>
     void cpu_arg_invoke(JadeReactor& jr) {
-        auto max_mode = *static_cast<bool*>(jr.args[0]);
-        ArgAcc<T> global_acc;
-        if(max_mode)
-            global_acc = {std::numeric_limits<T>::lowest(), 0};
-        else global_acc = {std::numeric_limits<T>::infinity(),0};
+        T init_limit = MAX_MODE ? std::numeric_limits<T>::lowest() : std::numeric_limits<T>::max();
+        ArgAcc<T> global_acc = {init_limit, 0};
 
         if (jr.is_contiguous) {
             auto in = static_cast<T*>(jr.phys[1]);
-////////////////////////////////////////////////####{
 #if defined(_OPENMP)
-#pragma omp parallel default(none) shared(jr, in, global_acc) private(max_mode)
+#pragma omp parallel default(none) shared(jr, in, global_acc, init_limit)
 #endif
-////////////////////////////////////////////////####}
             {
-                ArgAcc<T> local_acc;
-                if(max_mode)
-                    local_acc = {std::numeric_limits<T>::lowest(), 0};
-                else local_acc = {std::numeric_limits<T>::infinity(),0};
-////////////////////////////////////////////////####{
+                ArgAcc<T> local_acc = {init_limit, 0};
 #if defined(_OPENMP)
 #pragma omp for schedule(static) nowait
 #endif
-////////////////////////////////////////////////####}
                 for (uint64_t i = 0; i < jr.numel; ++i) {
-                    if (in[i] > local_acc.val && max_mode) {
-                        local_acc.val = in[i];
-                        local_acc.idx = i;
-                    }
-                    if (in[i] < local_acc.val && !max_mode) {
-                        local_acc.val = in[i];
-                        local_acc.idx = i;
+                    if constexpr (MAX_MODE) {
+                        if (in[i] > local_acc.val) { local_acc.val = in[i]; local_acc.idx = i; }
+                    } else {
+                        if (in[i] < local_acc.val) { local_acc.val = in[i]; local_acc.idx = i; }
                     }
                 }
-////////////////////////////////////////////////####{
 #if defined(_OPENMP)
 #pragma omp critical
 #endif
-////////////////////////////////////////////////####}
                 {
-                    if (local_acc.val > global_acc.val && max_mode) {
-                        global_acc = local_acc;
-                    }
-                    if (local_acc.val < global_acc.val && !max_mode) {
-                        global_acc = local_acc;
+                    if constexpr (MAX_MODE) {
+                        if (local_acc.val > global_acc.val) global_acc = local_acc;
+                    } else {
+                        if (local_acc.val < global_acc.val) global_acc = local_acc;
                     }
                 }
             }
         }
-        else{
+        else {
             auto in = static_cast<T*>(jr.phys[1]);
 ////////////////////////////////////////////////####{
 #if defined(_OPENMP)
-#pragma omp parallel default(none) shared(jr, in, global_acc, RE_MAX_DIMS) private(max_mode)
+#pragma omp parallel default(none) shared(jr, in, global_acc, RE_MAX_DIMS, init_limit)
 #endif
 ////////////////////////////////////////////////####}
             {
                 ArgAcc<T> local_acc;
-                if(max_mode)
+                if constexpr (MAX_MODE)
                     local_acc = {std::numeric_limits<T>::lowest(), 0};
-                else local_acc = {std::numeric_limits<T>::infinity(),0};
+                else local_acc = {std::numeric_limits<T>::max(),0};
                 int thread = 0, num_threads = 1;
 ////////////////////////////////////////////////####{
 #if defined(_OPENMP)
@@ -741,14 +728,16 @@ namespace bm {
                     }
 
                     for (uint64_t i = begin; i < end; ++i) {
-                        // Todo
-                        if (in[off] > local_acc.val && max_mode) {
-                            local_acc.val = in[off];
-                            local_acc.idx = off;
-                        }
-                        if (in[off] < local_acc.val && !max_mode) {
-                            local_acc.val = in[off];
-                            local_acc.idx = off;
+                        if constexpr (MAX_MODE){//compile time
+                                if (in[off] > local_acc.val) { //running time
+                                    local_acc.val = in[off];
+                                    local_acc.idx = off;
+                                }
+                        }else {
+                                if (in[off] < local_acc.val) {
+                                    local_acc.val = in[off];
+                                    local_acc.idx = off;
+                                }
                         }
 
                         for (long long dim = jr.ndims - 1; dim >= 0; --dim) {
@@ -766,34 +755,22 @@ namespace bm {
 #endif
 ////////////////////////////////////////////////####}
                 {
-                    if (local_acc.val > global_acc.val && max_mode) {
-                        global_acc = local_acc;
-                    }
-                    if (local_acc.val < global_acc.val && !max_mode) {
-                        global_acc = local_acc;
+                    if constexpr (MAX_MODE) {
+                        if (local_acc.val > global_acc.val) global_acc = local_acc;
+                    } else {
+                        if (local_acc.val < global_acc.val) global_acc = local_acc;
                     }
                 }
             }
         }
 
-        // out index type is explicitly a uint64_t.
         auto out = static_cast<uint64_t*>(jr.phys[0]);
         out[0] = global_acc.idx;
     }
 
-    // --- STD ---
-    template<typename T>
-    void cpu_std_invoke(JadeReactor& jr) {
-        bool f = true;
-        jr.args[0] = const_cast<void*>(static_cast<const void*>(&f));
-        cpu_std_var_invoke<T>(jr);
-    }
-    // --- VAR ---
-    template<typename T>
-    void cpu_var_invoke(JadeReactor& jr) {
-        bool f = false;
-        jr.args[0] = const_cast<void*>(static_cast<const void*>(&f));
-        cpu_std_var_invoke<T>(jr);
-    }
+    template<typename T> void cpu_argmax_invoke(JadeReactor& jr) { cpu_arg_invoke<T, true>(jr); }
+    template<typename T> void cpu_argmin_invoke(JadeReactor& jr) { cpu_arg_invoke<T, false>(jr); }
+
+
 
 }

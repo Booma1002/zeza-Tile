@@ -29,6 +29,7 @@ int main(){
            "    c = Jade::array(DType::FLOAT64, 2,4)\n"
            "            = {1, 2, 3, 4,\n"
            "               4, 3, 2, 1};");
+    Jade c_copy = c;
     c.flatten();
     see(c, "c.flatten();");
 
@@ -50,9 +51,9 @@ int main(){
     see(res,"std");
     res = Jade::var(a);
     see(res,"var");
-    res = Jade::mean(a);
+    res = Jade::mean(c_copy);
     see(res,"mean");
-    res = c.dot(a);
+    res = b.dot(a);
     see(res,"dot");
 
 }

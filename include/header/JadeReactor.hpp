@@ -5,6 +5,8 @@
 #include <utility>
 #include <string>
 #include "Enums.hpp"
+#include <tuple>
+#include <utility>
 
 namespace bm {
 /////////////////////////////////////////////////////////////////////
@@ -163,6 +165,20 @@ namespace bm {
  */
         template<typename T, typename... Args, auto MemberPtr>
         void create_thunk(ReactorMethod id);
+
+        template<typename... ArgsTypes, std::size_t... Is>
+        std::tuple<ArgsTypes...> unpack_impl(std::index_sequence<Is...>) const {
+            return { *static_cast<const ArgsTypes*>(args[Is])... };
+        }
+
+        /**
+         * @brief Cleanly unpacks type-erased void* arguments into a structured binding.
+         * @usage auto [start, step] = jr.unpack<double, double>();
+         */
+        template<typename... ArgsTypes>
+        std::tuple<ArgsTypes...> unpack() const {
+            return unpack_impl<ArgsTypes...>(std::index_sequence_for<ArgsTypes...>{});
+        }
 
 /**
 * @brief Greedily collapses adjacent contiguous dimensions.

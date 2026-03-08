@@ -342,7 +342,7 @@ namespace bm {
     ///////////////*************************///////////////
     ///////////////////////////////////////////////////////
     ;
-        Jade std(const Jade& input);
+        static Jade std(const Jade& input);
         static Jade var(const Jade& input);
         static Jade mean(const Jade& input);
         static Jade max(const Jade& input);

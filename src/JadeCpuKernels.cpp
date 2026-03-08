@@ -119,8 +119,8 @@ void cpu_dot_kernel(JadeReactor& jr) {
     DISPATCH_DTYPE(jr.dtype, cpu_dot_invoke, jr);
 }
 void cpu_argmax_kernel(JadeReactor& jr) {
-    DISPATCH_DTYPE(jr.dtype, cpu_arg_invoke, jr);
+    DISPATCH_DTYPE(jr.dtype, cpu_argmax_invoke, jr);
 }
 void cpu_argmin_kernel(JadeReactor& jr) {
-    DISPATCH_DTYPE(jr.dtype, cpu_arg_invoke, jr);}
+    DISPATCH_DTYPE(jr.dtype, cpu_argmin_invoke, jr);}
 };

@@ -33,9 +33,10 @@ Jade Jade::mean(const Jade& input) {
 }
 
 Jade Jade::dot(const Jade& other) const {
-    Jade output(this->dtype, 0.0, 1ULL);
-    Dispatcher::execute_reduction_binary(OpCode::DOT, output, *this, other);
-    return output;
+//    Jade output(this->dtype, 0.0, 1ULL);
+//    Dispatcher::execute_reduction_binary(OpCode::DOT, output, *this, other);
+//    return output;
+    return *this *other;
 }
 
 Jade Jade::argmax(const Jade& input) {
