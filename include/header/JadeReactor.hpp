@@ -258,6 +258,5 @@ namespace bm {
     template<auto MemberFunc, typename T, typename Ret, typename... Args>
     struct Binder<MemberFunc, Ret (T::*)(Args...) const noexcept>;
 
-
 }// namespace bm
 #include "temp/JadeReactor.tpp"

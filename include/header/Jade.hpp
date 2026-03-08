@@ -5,6 +5,10 @@
 #include <iomanip>
 #include <cstring>
 #include "Storage.hpp"
+#include <optional>
+#include <vector>
+#include <type_traits>
+
 namespace bm {
     ////////////////////////////////////////////////////////////
     /////////////////***************************////////////////
@@ -112,6 +116,10 @@ namespace bm {
         uint64_t ndims;
         uint64_t offset=0;
         DType dtype = DType::NONE;
+
+        template<typename... Dims>
+        class JadeBuilder;
+
     private:
         friend struct JadeReactor;
         std::shared_ptr<Storage> memory;
@@ -402,26 +410,46 @@ namespace bm {
     ///////////////*************************///////////////
     ///////////////////////////////////////////////////////
     ;
+    private:
+        static std::optional<uint64_t> globalSeed, localSeed;
+
+    public:
+        struct ArrayBuilder {
+            DType dtype;
+            std::vector<uint64_t> shape;
+            uint64_t nelm;
+            ArrayBuilder(DType dt, std::vector<uint64_t> sh, uint64_t n)
+                    : dtype(dt), shape(std::move(sh)), nelm(n) {};
+            Jade operator=(std::initializer_list<double> data);
+        };
+
+        template<typename T>
+        static void set_seed(T s);
+
+        template<typename T>
+        void seed(T s) ;
+
+        static uint64_t getSeed();
 
         template<typename... Dims>
-        Jade zeros(DType dtype, const Dims... dims);
+        static ArrayBuilder array(DType dType, const Dims... dims);
 
         template<typename... Dims>
-        Jade ones(DType dtype, const Dims... dims);
-
-        static Jade arange(DType dtype, Slice range);
+        static Jade zeros(DType dType, const Dims... dims);
 
         template<typename... Dims>
-        Jade array(DType dtype, const Dims... dims);
+        static Jade ones(DType dType, const Dims... dims);
+
+        static Jade arange(DType dType, Slice range);
 
         template<typename... Dims>
-        Jade rand(DType dtype, const Dims... dims);
+        static Jade rand(DType dType, const Dims... dims);
 
         template<typename... Dims>
-        Jade randn(DType dtype, const Dims... dims);
+        static Jade randn(DType dType, const Dims... dims);
 
         template<typename... Dims>
-        Jade randint(DType dtype, const Dims... dims);
+        static Jade randint(DType dType, double lo, double hi, const Dims... dims);
 
 
     /**
@@ -708,4 +736,4 @@ namespace bm {
 
 }// namespace bm
 #include "../temp/Jade.tpp";
-#include "../temp/JadeTransformations.tpp";
+#include "../temp/JadeTransformations.tpp"

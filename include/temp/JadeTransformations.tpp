@@ -20,37 +20,4 @@ namespace bm {
     }
 
 
-    template<typename... Dims>
-    Jade Jade::zeros(DType dType, const Dims... dims){
-        uint64_t shape_array[] = {static_cast<uint64_t>(dims)...};
-        Jade output(dtype, 0.0, shape_array, sizeof...(dims));
-        return output;
-    }
-
-    template<typename... Dims>
-    Jade Jade::ones(DType dType, const Dims... dims){
-        uint64_t shape_array[] = {static_cast<uint64_t>(dims)...};
-        Jade output(dtype, 1.0, shape_array, sizeof...(dims));
-        return output;
-    }
-
-    template<typename... Dims>
-    Jade Jade::array(DType dType, const Dims... dims){
-
-    }
-
-    template<typename... Dims>
-    Jade Jade::rand(DType dType, const Dims... dims){
-
-    }
-
-    template<typename... Dims>
-    Jade Jade::randn(DType dType, const Dims... dims){
-
-    }
-
-    template<typename... Dims>
-    Jade Jade::randint(DType dType, const Dims... dims){
-
-    }
 }

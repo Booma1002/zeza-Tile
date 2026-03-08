@@ -89,9 +89,8 @@ void cpu_clip_kernel(JadeReactor& jr) {
 }
 
 void cpu_arange_kernel(JadeReactor& reactor) {
-    Slice range = *static_cast<Slice*>(reactor.args[0]);
-    auto start = range.start;
-    auto step  = range.step;
+    double start = *static_cast<const double*>(reactor.args[0]);
+    double step  = *static_cast<const double*>(reactor.args[1]);
 
     DISPATCH_DTYPE(reactor.dtype, cpu_generator_invoke, reactor,
                    [start, step](uint64_t index) {
