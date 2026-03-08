@@ -50,7 +50,8 @@ namespace bm{
 
     template<typename... Dims>
     Jade Jade::randn(DType dType, const Dims... dims) {
-        Jade out(dType, 0.0, {static_cast<uint64_t>(dims)...}, sizeof...(dims));
+        uint64_t shape[] = {static_cast<uint64_t>(dims)...};
+        Jade out(dType, 0.0, shape, sizeof...(dims));
 
         std::mt19937 gen(getSeed());
         std::normal_distribution<double> dist(0.0, 1.0);
@@ -64,7 +65,8 @@ namespace bm{
 
     template<typename... Dims>
     Jade Jade::rand(DType dType, const Dims... dims) {
-        Jade out(dType, 0.0, {static_cast<uint64_t>(dims)...}, sizeof...(dims));
+        uint64_t shape[] = {static_cast<uint64_t>(dims)...};
+        Jade out(dType, 0.0, shape, sizeof...(dims));
 
         std::mt19937 gen(getSeed());
         std::uniform_real_distribution<double> dist(0.0, 1.0);
@@ -78,10 +80,11 @@ namespace bm{
 
     template<typename... Dims>
     Jade Jade::randint(DType dType, double lo, double hi, const Dims... dims) {
-        Jade out(dType, 0.0, {static_cast<uint64_t>(dims)...}, sizeof...(dims));
-
+        uint64_t shape[] = {static_cast<uint64_t>(dims)...};
+        Jade out(dType, 0.0, shape, sizeof...(dims));
+        if(lo > hi) std::swap(hi, lo);
         std::mt19937 gen(getSeed());
-        std::normal_distribution<double> dist(lo, hi);
+        std::uniform_real_distribution<double> dist(lo, hi);
 
         auto* ptr = static_cast<double*>(out.data_ptr());
         for(uint64_t i = 0; i < out.get_size(); ++i) {

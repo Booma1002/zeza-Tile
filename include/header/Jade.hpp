@@ -342,15 +342,16 @@ namespace bm {
     ///////////////*************************///////////////
     ///////////////////////////////////////////////////////
     ;
-        Jade& std(const Jade& input);
-        Jade& mean(const Jade& input);
-        Jade& max(const Jade& input);
-        Jade& min(const Jade& input);
-        Jade& argmax(const Jade& input);
-        Jade& argmin(const Jade& input);
-        Jade& dot(const Jade& input);
+        static Jade std(const Jade& input);
+        static Jade var(const Jade& input);
+        static Jade mean(const Jade& input);
+        static Jade max(const Jade& input);
+        static Jade min(const Jade& input);
+        static Jade argmax(const Jade& input);
+        static Jade argmin(const Jade& input);
+        Jade dot(const Jade& input) const;
 
-    ////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////
     ///////////////******************************///////////////
     ///////////////**  Jade Transformations  **///////////////
     ///////////////******************************///////////////
@@ -364,9 +365,7 @@ namespace bm {
      */
         Jade transpose();
 
-
         Jade& flatten();
-
 
         template<typename... Dims>
         Jade& reshape(Dims... dims);
@@ -737,3 +736,4 @@ namespace bm {
 }// namespace bm
 #include "../temp/Jade.tpp";
 #include "../temp/JadeTransformations.tpp"
+#include "../temp/JadeFactories.tpp"

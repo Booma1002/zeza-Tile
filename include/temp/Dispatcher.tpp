@@ -36,4 +36,14 @@ namespace bm{
         LOG_DEBUG(msg);
     }
 
+    template<typename... Args>
+    void Dispatcher::execute_variadic(OpCode op, Jade& out, Args&... args) {
+        Device target_device = Device::CPU;
+        JadeReactor react = JadeReactor::react_variadic(op, out, args...);
+        Kernel kernel_func = Registry::get().lookup(op, target_device);
+        kernel_func(react);
+        std::string msg = std::format("[Dispatcher] Executed Variadic Reaction: OpCode={:#x}" ,static_cast<int>(op));
+        LOG_DEBUG(msg);
+    }
+
 }

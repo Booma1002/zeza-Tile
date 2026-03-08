@@ -987,3 +987,545 @@
   -> DEBUG : 16
 ==================================================
 
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Registry] Registered Kernel: Op[0x6] on Dev[0x1]
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Registry] Registered Kernel: Op[0x1] on Dev[0x1]
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Registry] Registered Kernel: Op[0x4] on Dev[0x1]
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Registry] Registered Kernel: Op[0x3] on Dev[0x1]
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Registry] Registered Kernel: Op[0x5] on Dev[0x1]
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Registry] Registered Kernel: Op[0x2] on Dev[0x1]
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Registry] Registered Kernel: Op[0x7] on Dev[0x1]
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Registry] Registered Kernel: Op[0x8] on Dev[0x1]
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Registry] Registered Kernel: Op[0x9] on Dev[0x1]
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Registry] Registered Kernel: Op[0xa] on Dev[0x1]
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Registry] Registered Kernel: Op[0xb] on Dev[0x1]
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Registry] Registered Kernel: Op[0xc] on Dev[0x1]
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Registry] Registered Kernel: Op[0xd] on Dev[0x1]
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Engine] Initiating Bare Metal (BM) Ignition Sequence...
+[2026-03-08 07:43:29] [DEBUG] [Thread 140420589934528] [CPU Allocator] Allocated Memory: fulfilled the requested 224 B. 
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Storage] Storage Alloc: 224 B on Hardware[1]
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] New {Jade<"1D", 64-bit; 224Bytes> (21)} Filled with 0.000000's.
+[2026-03-08 07:43:29] [DEBUG] [Thread 140420589934528] [Unary Reactor] Shape (21) --> Shape (21).
+
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Unary Reactor] New ndims: 1.
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Unary Reactor] Saved Reactor Settings Successfully.
+[2026-03-08 07:43:29] [DEBUG] [Thread 140420589934528] [Dispatcher] Executed Unary Reaction: OpCode=0xd
+[2026-03-08 07:43:29] [DEBUG] [Thread 140420589934528] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 07:43:29] [DEBUG] [Thread 140420589934528] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 07:43:29] [DEBUG] [Thread 140420589934528] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 07:43:29] [DEBUG] [Thread 140420589934528] [CPU Allocator] Allocated Memory: fulfilled the requested 96 B. 
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Storage] Storage Alloc: 96 B on Hardware[1]
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] New {Jade<"2D", 64-bit; 96Bytes> (2,4)} Filled with 0.000000's.
+[2026-03-08 07:43:29] [DEBUG] [Thread 140420589934528] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Storage] Storage Freed. 0B
+[2026-03-08 07:43:29] [DEBUG] [Thread 140420589934528] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Storage] Storage Freed. 0B
+[2026-03-08 07:43:29] [DEBUG] [Thread 140420589934528] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Storage] Storage Freed. 0B
+[2026-03-08 07:43:29] [DEBUG] [Thread 140420589934528] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Storage] Storage Freed. 0B
+[2026-03-08 07:43:29] [DEBUG] [Thread 140420589934528] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:43:29] [INFO ] [Thread 140420589934528] [Storage] Storage Freed. 0B
+
+==================================================
+[SYSTEM] Execution Terminated. Telemetry Summary:
+  -> FATAL : 0
+  -> ERROR : 0
+  -> WARN  : 0
+  -> INFO  : 31
+  -> DEBUG : 12
+==================================================
+
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Registry] Registered Kernel: Op[0x6] on Dev[0x1]
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Registry] Registered Kernel: Op[0x1] on Dev[0x1]
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Registry] Registered Kernel: Op[0x4] on Dev[0x1]
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Registry] Registered Kernel: Op[0x3] on Dev[0x1]
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Registry] Registered Kernel: Op[0x5] on Dev[0x1]
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Registry] Registered Kernel: Op[0x2] on Dev[0x1]
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Registry] Registered Kernel: Op[0x7] on Dev[0x1]
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Registry] Registered Kernel: Op[0x8] on Dev[0x1]
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Registry] Registered Kernel: Op[0x9] on Dev[0x1]
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Registry] Registered Kernel: Op[0xa] on Dev[0x1]
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Registry] Registered Kernel: Op[0xb] on Dev[0x1]
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Registry] Registered Kernel: Op[0xc] on Dev[0x1]
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Registry] Registered Kernel: Op[0xd] on Dev[0x1]
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Engine] Initiating Bare Metal (BM) Ignition Sequence...
+[2026-03-08 07:44:07] [DEBUG] [Thread 140280422397888] [CPU Allocator] Allocated Memory: fulfilled the requested 224 B. 
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Storage] Storage Alloc: 224 B on Hardware[1]
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] New {Jade<"1D", 64-bit; 224Bytes> (21)} Filled with 0.000000's.
+[2026-03-08 07:44:07] [DEBUG] [Thread 140280422397888] [Unary Reactor] Shape (21) --> Shape (21).
+
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Unary Reactor] New ndims: 1.
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Unary Reactor] Saved Reactor Settings Successfully.
+[2026-03-08 07:44:07] [DEBUG] [Thread 140280422397888] [Dispatcher] Executed Unary Reaction: OpCode=0xd
+[2026-03-08 07:44:07] [DEBUG] [Thread 140280422397888] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 07:44:07] [DEBUG] [Thread 140280422397888] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 07:44:07] [DEBUG] [Thread 140280422397888] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 07:44:07] [DEBUG] [Thread 140280422397888] [CPU Allocator] Allocated Memory: fulfilled the requested 96 B. 
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Storage] Storage Alloc: 96 B on Hardware[1]
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] New {Jade<"2D", 64-bit; 96Bytes> (2,4)} Filled with 0.000000's.
+[2026-03-08 07:44:07] [DEBUG] [Thread 140280422397888] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Storage] Storage Freed. 0B
+[2026-03-08 07:44:07] [DEBUG] [Thread 140280422397888] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Storage] Storage Freed. 0B
+[2026-03-08 07:44:07] [DEBUG] [Thread 140280422397888] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Storage] Storage Freed. 0B
+[2026-03-08 07:44:07] [DEBUG] [Thread 140280422397888] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Storage] Storage Freed. 0B
+[2026-03-08 07:44:07] [DEBUG] [Thread 140280422397888] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:44:07] [INFO ] [Thread 140280422397888] [Storage] Storage Freed. 0B
+
+==================================================
+[SYSTEM] Execution Terminated. Telemetry Summary:
+  -> FATAL : 0
+  -> ERROR : 0
+  -> WARN  : 0
+  -> INFO  : 31
+  -> DEBUG : 12
+==================================================
+
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Registry] Registered Kernel: Op[0x6] on Dev[0x1]
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Registry] Registered Kernel: Op[0x1] on Dev[0x1]
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Registry] Registered Kernel: Op[0x4] on Dev[0x1]
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Registry] Registered Kernel: Op[0x3] on Dev[0x1]
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Registry] Registered Kernel: Op[0x5] on Dev[0x1]
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Registry] Registered Kernel: Op[0x2] on Dev[0x1]
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Registry] Registered Kernel: Op[0x7] on Dev[0x1]
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Registry] Registered Kernel: Op[0x8] on Dev[0x1]
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Registry] Registered Kernel: Op[0x9] on Dev[0x1]
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Registry] Registered Kernel: Op[0xa] on Dev[0x1]
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Registry] Registered Kernel: Op[0xb] on Dev[0x1]
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Registry] Registered Kernel: Op[0xc] on Dev[0x1]
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Registry] Registered Kernel: Op[0xd] on Dev[0x1]
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Engine] Initiating Bare Metal (BM) Ignition Sequence...
+[2026-03-08 07:48:35] [DEBUG] [Thread 139924572522432] [CPU Allocator] Allocated Memory: fulfilled the requested 224 B. 
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Storage] Storage Alloc: 224 B on Hardware[1]
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] New {Jade<"1D", 64-bit; 224Bytes> (21)} Filled with 0.000000's.
+[2026-03-08 07:48:35] [DEBUG] [Thread 139924572522432] [Unary Reactor] Shape (21) --> Shape (21).
+
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Unary Reactor] New ndims: 1.
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Unary Reactor] Saved Reactor Settings Successfully.
+[2026-03-08 07:48:35] [DEBUG] [Thread 139924572522432] [Dispatcher] Executed Unary Reaction: OpCode=0xd
+[2026-03-08 07:48:35] [DEBUG] [Thread 139924572522432] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 07:48:35] [DEBUG] [Thread 139924572522432] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 07:48:35] [DEBUG] [Thread 139924572522432] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 07:48:35] [DEBUG] [Thread 139924572522432] [CPU Allocator] Allocated Memory: fulfilled the requested 96 B. 
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Storage] Storage Alloc: 96 B on Hardware[1]
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] New {Jade<"2D", 64-bit; 96Bytes> (2,4)} Filled with 0.000000's.
+[2026-03-08 07:48:35] [DEBUG] [Thread 139924572522432] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Storage] Storage Freed. 0B
+[2026-03-08 07:48:35] [DEBUG] [Thread 139924572522432] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Storage] Storage Freed. 0B
+[2026-03-08 07:48:35] [DEBUG] [Thread 139924572522432] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Storage] Storage Freed. 0B
+[2026-03-08 07:48:35] [DEBUG] [Thread 139924572522432] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Storage] Storage Freed. 0B
+[2026-03-08 07:48:35] [DEBUG] [Thread 139924572522432] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:48:35] [INFO ] [Thread 139924572522432] [Storage] Storage Freed. 0B
+
+==================================================
+[SYSTEM] Execution Terminated. Telemetry Summary:
+  -> FATAL : 0
+  -> ERROR : 0
+  -> WARN  : 0
+  -> INFO  : 31
+  -> DEBUG : 12
+==================================================
+
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Registry] Registered Kernel: Op[0x6] on Dev[0x1]
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Registry] Registered Kernel: Op[0x1] on Dev[0x1]
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Registry] Registered Kernel: Op[0x4] on Dev[0x1]
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Registry] Registered Kernel: Op[0x3] on Dev[0x1]
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Registry] Registered Kernel: Op[0x5] on Dev[0x1]
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Registry] Registered Kernel: Op[0x2] on Dev[0x1]
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Registry] Registered Kernel: Op[0x7] on Dev[0x1]
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Registry] Registered Kernel: Op[0x8] on Dev[0x1]
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Registry] Registered Kernel: Op[0x9] on Dev[0x1]
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Registry] Registered Kernel: Op[0xa] on Dev[0x1]
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Registry] Registered Kernel: Op[0xb] on Dev[0x1]
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Registry] Registered Kernel: Op[0xc] on Dev[0x1]
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Registry] Registered Kernel: Op[0xd] on Dev[0x1]
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Engine] Initiating Bare Metal (BM) Ignition Sequence...
+[2026-03-08 07:49:35] [DEBUG] [Thread 140556459419584] [CPU Allocator] Allocated Memory: fulfilled the requested 224 B. 
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Storage] Storage Alloc: 224 B on Hardware[1]
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] New {Jade<"1D", 64-bit; 224Bytes> (21)} Filled with 0.000000's.
+[2026-03-08 07:49:35] [DEBUG] [Thread 140556459419584] [Unary Reactor] Shape (21) --> Shape (21).
+
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Unary Reactor] New ndims: 1.
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Unary Reactor] Saved Reactor Settings Successfully.
+[2026-03-08 07:49:35] [DEBUG] [Thread 140556459419584] [Dispatcher] Executed Unary Reaction: OpCode=0xd
+[2026-03-08 07:49:35] [DEBUG] [Thread 140556459419584] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 07:49:35] [DEBUG] [Thread 140556459419584] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 07:49:35] [DEBUG] [Thread 140556459419584] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 07:49:35] [DEBUG] [Thread 140556459419584] [CPU Allocator] Allocated Memory: fulfilled the requested 96 B. 
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Storage] Storage Alloc: 96 B on Hardware[1]
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] New {Jade<"2D", 64-bit; 96Bytes> (2,4)} Filled with 0.000000's.
+[2026-03-08 07:49:35] [DEBUG] [Thread 140556459419584] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Storage] Storage Freed. 0B
+[2026-03-08 07:49:35] [DEBUG] [Thread 140556459419584] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Storage] Storage Freed. 0B
+[2026-03-08 07:49:35] [DEBUG] [Thread 140556459419584] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Storage] Storage Freed. 0B
+[2026-03-08 07:49:35] [DEBUG] [Thread 140556459419584] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Storage] Storage Freed. 0B
+[2026-03-08 07:49:35] [DEBUG] [Thread 140556459419584] [CPU Allocator] Deallocated Memory.
+[2026-03-08 07:49:35] [INFO ] [Thread 140556459419584] [Storage] Storage Freed. 0B
+
+==================================================
+[SYSTEM] Execution Terminated. Telemetry Summary:
+  -> FATAL : 0
+  -> ERROR : 0
+  -> WARN  : 0
+  -> INFO  : 31
+  -> DEBUG : 12
+==================================================
+
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Registry] Registered Kernel: Op[0x6] on Dev[0x1]
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Registry] Registered Kernel: Op[0x1] on Dev[0x1]
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Registry] Registered Kernel: Op[0x4] on Dev[0x1]
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Registry] Registered Kernel: Op[0x3] on Dev[0x1]
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Registry] Registered Kernel: Op[0x5] on Dev[0x1]
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Registry] Registered Kernel: Op[0x2] on Dev[0x1]
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Registry] Registered Kernel: Op[0x7] on Dev[0x1]
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Registry] Registered Kernel: Op[0x8] on Dev[0x1]
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Registry] Registered Kernel: Op[0x9] on Dev[0x1]
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Registry] Registered Kernel: Op[0xa] on Dev[0x1]
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Registry] Registered Kernel: Op[0xb] on Dev[0x1]
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Registry] Registered Kernel: Op[0xc] on Dev[0x1]
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Registry] Registered Kernel: Op[0xd] on Dev[0x1]
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Engine] Initiating Bare Metal (BM) Ignition Sequence...
+[2026-03-08 08:00:08] [DEBUG] [Thread 140605933578176] [CPU Allocator] Allocated Memory: fulfilled the requested 224 B. 
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Storage] Storage Alloc: 224 B on Hardware[1]
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] New {Jade<"1D", 64-bit; 224Bytes> (21)} Filled with 0.000000's.
+[2026-03-08 08:00:08] [DEBUG] [Thread 140605933578176] [Unary Reactor] Shape (21) --> Shape (21).
+
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Unary Reactor] New ndims: 1.
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Unary Reactor] Saved Reactor Settings Successfully.
+[2026-03-08 08:00:08] [DEBUG] [Thread 140605933578176] [Dispatcher] Executed Unary Reaction: OpCode=0xd
+[2026-03-08 08:00:08] [DEBUG] [Thread 140605933578176] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 08:00:08] [DEBUG] [Thread 140605933578176] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 08:00:08] [DEBUG] [Thread 140605933578176] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 08:00:08] [DEBUG] [Thread 140605933578176] [CPU Allocator] Allocated Memory: fulfilled the requested 96 B. 
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Storage] Storage Alloc: 96 B on Hardware[1]
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] New {Jade<"2D", 64-bit; 96Bytes> (2,4)} Filled with 0.000000's.
+[2026-03-08 08:00:08] [DEBUG] [Thread 140605933578176] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Storage] Storage Freed. 0B
+[2026-03-08 08:00:08] [DEBUG] [Thread 140605933578176] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Storage] Storage Freed. 0B
+[2026-03-08 08:00:08] [DEBUG] [Thread 140605933578176] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Storage] Storage Freed. 0B
+[2026-03-08 08:00:08] [DEBUG] [Thread 140605933578176] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Storage] Storage Freed. 0B
+[2026-03-08 08:00:08] [DEBUG] [Thread 140605933578176] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:00:08] [INFO ] [Thread 140605933578176] [Storage] Storage Freed. 0B
+
+==================================================
+[SYSTEM] Execution Terminated. Telemetry Summary:
+  -> FATAL : 0
+  -> ERROR : 0
+  -> WARN  : 0
+  -> INFO  : 31
+  -> DEBUG : 12
+==================================================
+
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Registry] Registered Kernel: Op[0x6] on Dev[0x1]
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Registry] Registered Kernel: Op[0x1] on Dev[0x1]
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Registry] Registered Kernel: Op[0x4] on Dev[0x1]
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Registry] Registered Kernel: Op[0x3] on Dev[0x1]
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Registry] Registered Kernel: Op[0x5] on Dev[0x1]
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Registry] Registered Kernel: Op[0x2] on Dev[0x1]
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Registry] Registered Kernel: Op[0x7] on Dev[0x1]
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Registry] Registered Kernel: Op[0x8] on Dev[0x1]
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Registry] Registered Kernel: Op[0x9] on Dev[0x1]
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Registry] Registered Kernel: Op[0xa] on Dev[0x1]
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Registry] Registered Kernel: Op[0xb] on Dev[0x1]
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Registry] Registered Kernel: Op[0xc] on Dev[0x1]
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Registry] Registered Kernel: Op[0xd] on Dev[0x1]
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Engine] Initiating Bare Metal (BM) Ignition Sequence...
+[2026-03-08 08:00:33] [DEBUG] [Thread 139773281961920] [CPU Allocator] Allocated Memory: fulfilled the requested 224 B. 
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Storage] Storage Alloc: 224 B on Hardware[1]
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] New {Jade<"1D", 64-bit; 224Bytes> (21)} Filled with 0.000000's.
+[2026-03-08 08:00:33] [DEBUG] [Thread 139773281961920] [Unary Reactor] Shape (21) --> Shape (21).
+
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Unary Reactor] New ndims: 1.
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Unary Reactor] Saved Reactor Settings Successfully.
+[2026-03-08 08:00:33] [DEBUG] [Thread 139773281961920] [Dispatcher] Executed Unary Reaction: OpCode=0xd
+[2026-03-08 08:00:33] [DEBUG] [Thread 139773281961920] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 08:00:33] [DEBUG] [Thread 139773281961920] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 08:00:33] [DEBUG] [Thread 139773281961920] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 08:00:33] [DEBUG] [Thread 139773281961920] [CPU Allocator] Allocated Memory: fulfilled the requested 96 B. 
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Storage] Storage Alloc: 96 B on Hardware[1]
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] New {Jade<"2D", 64-bit; 96Bytes> (2,4)} Filled with 0.000000's.
+[2026-03-08 08:00:33] [DEBUG] [Thread 139773281961920] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Storage] Storage Freed. 0B
+[2026-03-08 08:00:33] [DEBUG] [Thread 139773281961920] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Storage] Storage Freed. 0B
+[2026-03-08 08:00:33] [DEBUG] [Thread 139773281961920] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Storage] Storage Freed. 0B
+[2026-03-08 08:00:33] [DEBUG] [Thread 139773281961920] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Storage] Storage Freed. 0B
+[2026-03-08 08:00:33] [DEBUG] [Thread 139773281961920] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:00:33] [INFO ] [Thread 139773281961920] [Storage] Storage Freed. 0B
+
+==================================================
+[SYSTEM] Execution Terminated. Telemetry Summary:
+  -> FATAL : 0
+  -> ERROR : 0
+  -> WARN  : 0
+  -> INFO  : 31
+  -> DEBUG : 12
+==================================================
+
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Registry] Registered Kernel: Op[0x6] on Dev[0x1]
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Registry] Registered Kernel: Op[0x1] on Dev[0x1]
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Registry] Registered Kernel: Op[0x4] on Dev[0x1]
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Registry] Registered Kernel: Op[0x3] on Dev[0x1]
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Registry] Registered Kernel: Op[0x5] on Dev[0x1]
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Registry] Registered Kernel: Op[0x2] on Dev[0x1]
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Registry] Registered Kernel: Op[0x7] on Dev[0x1]
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Registry] Registered Kernel: Op[0x8] on Dev[0x1]
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Registry] Registered Kernel: Op[0x9] on Dev[0x1]
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Registry] Registered Kernel: Op[0xa] on Dev[0x1]
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Registry] Registered Kernel: Op[0xb] on Dev[0x1]
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Registry] Registered Kernel: Op[0xc] on Dev[0x1]
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Registry] Registered Kernel: Op[0xd] on Dev[0x1]
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Engine] Initiating Bare Metal (BM) Ignition Sequence...
+[2026-03-08 08:00:50] [DEBUG] [Thread 140617803577280] [CPU Allocator] Allocated Memory: fulfilled the requested 224 B. 
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Storage] Storage Alloc: 224 B on Hardware[1]
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] New {Jade<"1D", 64-bit; 224Bytes> (21)} Filled with 0.000000's.
+[2026-03-08 08:00:50] [DEBUG] [Thread 140617803577280] [Unary Reactor] Shape (21) --> Shape (21).
+
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Unary Reactor] New ndims: 1.
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Unary Reactor] Saved Reactor Settings Successfully.
+[2026-03-08 08:00:50] [DEBUG] [Thread 140617803577280] [Dispatcher] Executed Unary Reaction: OpCode=0xd
+[2026-03-08 08:00:50] [DEBUG] [Thread 140617803577280] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 08:00:50] [DEBUG] [Thread 140617803577280] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 08:00:50] [DEBUG] [Thread 140617803577280] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 08:00:50] [DEBUG] [Thread 140617803577280] [CPU Allocator] Allocated Memory: fulfilled the requested 96 B. 
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Storage] Storage Alloc: 96 B on Hardware[1]
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] New {Jade<"2D", 64-bit; 96Bytes> (2,4)} Filled with 0.000000's.
+[2026-03-08 08:00:50] [DEBUG] [Thread 140617803577280] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Storage] Storage Freed. 0B
+[2026-03-08 08:00:50] [DEBUG] [Thread 140617803577280] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Storage] Storage Freed. 0B
+[2026-03-08 08:00:50] [DEBUG] [Thread 140617803577280] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Storage] Storage Freed. 0B
+[2026-03-08 08:00:50] [DEBUG] [Thread 140617803577280] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Storage] Storage Freed. 0B
+[2026-03-08 08:00:50] [DEBUG] [Thread 140617803577280] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:00:50] [INFO ] [Thread 140617803577280] [Storage] Storage Freed. 0B
+
+==================================================
+[SYSTEM] Execution Terminated. Telemetry Summary:
+  -> FATAL : 0
+  -> ERROR : 0
+  -> WARN  : 0
+  -> INFO  : 31
+  -> DEBUG : 12
+==================================================
+
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Registry] Registered Kernel: Op[0x6] on Dev[0x1]
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Registry] Registered Kernel: Op[0x1] on Dev[0x1]
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Registry] Registered Kernel: Op[0x4] on Dev[0x1]
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Registry] Registered Kernel: Op[0x3] on Dev[0x1]
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Registry] Registered Kernel: Op[0x5] on Dev[0x1]
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Registry] Registered Kernel: Op[0x2] on Dev[0x1]
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Registry] Registered Kernel: Op[0x7] on Dev[0x1]
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Registry] Registered Kernel: Op[0x8] on Dev[0x1]
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Registry] Registered Kernel: Op[0x9] on Dev[0x1]
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Registry] Registered Kernel: Op[0xa] on Dev[0x1]
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Registry] Registered Kernel: Op[0xb] on Dev[0x1]
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Registry] Registered Kernel: Op[0xc] on Dev[0x1]
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Registry] Registered Kernel: Op[0xd] on Dev[0x1]
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Engine] Initiating Bare Metal (BM) Ignition Sequence...
+[2026-03-08 08:01:06] [DEBUG] [Thread 140156979664832] [CPU Allocator] Allocated Memory: fulfilled the requested 224 B. 
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Storage] Storage Alloc: 224 B on Hardware[1]
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] New {Jade<"1D", 64-bit; 224Bytes> (21)} Filled with 0.000000's.
+[2026-03-08 08:01:06] [DEBUG] [Thread 140156979664832] [Unary Reactor] Shape (21) --> Shape (21).
+
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Unary Reactor] New ndims: 1.
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Unary Reactor] Saved Reactor Settings Successfully.
+[2026-03-08 08:01:06] [DEBUG] [Thread 140156979664832] [Dispatcher] Executed Unary Reaction: OpCode=0xd
+[2026-03-08 08:01:06] [DEBUG] [Thread 140156979664832] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 08:01:06] [DEBUG] [Thread 140156979664832] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 08:01:06] [DEBUG] [Thread 140156979664832] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 08:01:06] [DEBUG] [Thread 140156979664832] [CPU Allocator] Allocated Memory: fulfilled the requested 96 B. 
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Storage] Storage Alloc: 96 B on Hardware[1]
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] New {Jade<"2D", 64-bit; 96Bytes> (2,4)} Filled with 0.000000's.
+[2026-03-08 08:01:06] [DEBUG] [Thread 140156979664832] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Storage] Storage Freed. 0B
+[2026-03-08 08:01:06] [DEBUG] [Thread 140156979664832] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Storage] Storage Freed. 0B
+[2026-03-08 08:01:06] [DEBUG] [Thread 140156979664832] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Storage] Storage Freed. 0B
+[2026-03-08 08:01:06] [DEBUG] [Thread 140156979664832] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Storage] Storage Freed. 0B
+[2026-03-08 08:01:06] [DEBUG] [Thread 140156979664832] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:01:06] [INFO ] [Thread 140156979664832] [Storage] Storage Freed. 0B
+
+==================================================
+[SYSTEM] Execution Terminated. Telemetry Summary:
+  -> FATAL : 0
+  -> ERROR : 0
+  -> WARN  : 0
+  -> INFO  : 31
+  -> DEBUG : 12
+==================================================
+
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Registry] Registered Kernel: Op[0x6] on Dev[0x1]
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Registry] Registered Kernel: Op[0x1] on Dev[0x1]
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Registry] Registered Kernel: Op[0x4] on Dev[0x1]
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Registry] Registered Kernel: Op[0x3] on Dev[0x1]
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Registry] Registered Kernel: Op[0x5] on Dev[0x1]
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Registry] Registered Kernel: Op[0x2] on Dev[0x1]
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Registry] Registered Kernel: Op[0x7] on Dev[0x1]
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Registry] Registered Kernel: Op[0x8] on Dev[0x1]
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Registry] Registered Kernel: Op[0x9] on Dev[0x1]
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Registry] Registered Kernel: Op[0xa] on Dev[0x1]
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Registry] Registered Kernel: Op[0xb] on Dev[0x1]
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Registry] Registered Kernel: Op[0xc] on Dev[0x1]
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Registry] Registered Kernel: Op[0xd] on Dev[0x1]
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Engine] Initiating Bare Metal (BM) Ignition Sequence...
+[2026-03-08 08:03:36] [DEBUG] [Thread 140223371282368] [CPU Allocator] Allocated Memory: fulfilled the requested 224 B. 
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Storage] Storage Alloc: 224 B on Hardware[1]
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] New {Jade<"1D", 64-bit; 224Bytes> (21)} Filled with 0.000000's.
+[2026-03-08 08:03:36] [DEBUG] [Thread 140223371282368] [Unary Reactor] Shape (21) --> Shape (21).
+
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Unary Reactor] New ndims: 1.
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Unary Reactor] Saved Reactor Settings Successfully.
+[2026-03-08 08:03:36] [DEBUG] [Thread 140223371282368] [Dispatcher] Executed Unary Reaction: OpCode=0xd
+[2026-03-08 08:03:36] [DEBUG] [Thread 140223371282368] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 08:03:36] [DEBUG] [Thread 140223371282368] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 08:03:36] [DEBUG] [Thread 140223371282368] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 08:03:36] [DEBUG] [Thread 140223371282368] [CPU Allocator] Allocated Memory: fulfilled the requested 96 B. 
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Storage] Storage Alloc: 96 B on Hardware[1]
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] New {Jade<"2D", 64-bit; 96Bytes> (2,4)} Filled with 0.000000's.
+[2026-03-08 08:03:36] [DEBUG] [Thread 140223371282368] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Storage] Storage Freed. 0B
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] Reshaped Jade from {Jade<"2D", 64-bit; 96Bytes> (2,4)} Into {Jade<"1D", 64-bit; 96Bytes> (8)}
+[2026-03-08 08:03:36] [DEBUG] [Thread 140223371282368] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Storage] Storage Freed. 0B
+[2026-03-08 08:03:36] [DEBUG] [Thread 140223371282368] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Storage] Storage Freed. 0B
+[2026-03-08 08:03:36] [DEBUG] [Thread 140223371282368] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Storage] Storage Freed. 0B
+[2026-03-08 08:03:36] [DEBUG] [Thread 140223371282368] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:03:36] [INFO ] [Thread 140223371282368] [Storage] Storage Freed. 0B
+
+==================================================
+[SYSTEM] Execution Terminated. Telemetry Summary:
+  -> FATAL : 0
+  -> ERROR : 0
+  -> WARN  : 0
+  -> INFO  : 32
+  -> DEBUG : 12
+==================================================
+
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Registry] Registered Kernel: Op[0x6] on Dev[0x1]
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Registry] Registered Kernel: Op[0x1] on Dev[0x1]
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Registry] Registered Kernel: Op[0x4] on Dev[0x1]
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Registry] Registered Kernel: Op[0x3] on Dev[0x1]
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Registry] Registered Kernel: Op[0x5] on Dev[0x1]
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Registry] Registered Kernel: Op[0x2] on Dev[0x1]
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Registry] Registered Kernel: Op[0x7] on Dev[0x1]
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Registry] Registered Kernel: Op[0x8] on Dev[0x1]
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Registry] Registered Kernel: Op[0x9] on Dev[0x1]
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Registry] Registered Kernel: Op[0xa] on Dev[0x1]
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Registry] Registered Kernel: Op[0xb] on Dev[0x1]
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Registry] Registered Kernel: Op[0xc] on Dev[0x1]
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Registry] Registered Kernel: Op[0xd] on Dev[0x1]
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Engine] Initiating Bare Metal (BM) Ignition Sequence...
+[2026-03-08 08:03:57] [DEBUG] [Thread 140541238593472] [CPU Allocator] Allocated Memory: fulfilled the requested 224 B. 
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Storage] Storage Alloc: 224 B on Hardware[1]
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] New {Jade<"1D", 64-bit; 224Bytes> (21)} Filled with 0.000000's.
+[2026-03-08 08:03:57] [DEBUG] [Thread 140541238593472] [Unary Reactor] Shape (21) --> Shape (21).
+
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Unary Reactor] New ndims: 1.
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Unary Reactor] Saved Reactor Settings Successfully.
+[2026-03-08 08:03:57] [DEBUG] [Thread 140541238593472] [Dispatcher] Executed Unary Reaction: OpCode=0xd
+[2026-03-08 08:03:57] [DEBUG] [Thread 140541238593472] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 08:03:57] [DEBUG] [Thread 140541238593472] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 08:03:57] [DEBUG] [Thread 140541238593472] [CPU Allocator] Allocated Memory: fulfilled the requested 160 B. 
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Storage] Storage Alloc: 160 B on Hardware[1]
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] New {Jade<"2D", 64-bit; 160Bytes> (4,4)} Filled with 0.000000's.
+[2026-03-08 08:03:57] [DEBUG] [Thread 140541238593472] [CPU Allocator] Allocated Memory: fulfilled the requested 96 B. 
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Storage] Storage Alloc: 96 B on Hardware[1]
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] New {Jade<"2D", 64-bit; 96Bytes> (2,4)} Filled with 0.000000's.
+[2026-03-08 08:03:57] [DEBUG] [Thread 140541238593472] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Storage] Storage Freed. 0B
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] Reshaped Jade from {Jade<"2D", 64-bit; 96Bytes> (2,4)} Into {Jade<"1D", 64-bit; 96Bytes> (8)}
+[2026-03-08 08:03:57] [DEBUG] [Thread 140541238593472] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Storage] Storage Freed. 0B
+[2026-03-08 08:03:57] [DEBUG] [Thread 140541238593472] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Storage] Storage Freed. 0B
+[2026-03-08 08:03:57] [DEBUG] [Thread 140541238593472] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Storage] Storage Freed. 0B
+[2026-03-08 08:03:57] [DEBUG] [Thread 140541238593472] [CPU Allocator] Deallocated Memory.
+[2026-03-08 08:03:57] [INFO ] [Thread 140541238593472] [Storage] Storage Freed. 0B
+
+==================================================
+[SYSTEM] Execution Terminated. Telemetry Summary:
+  -> FATAL : 0
+  -> ERROR : 0
+  -> WARN  : 0
+  -> INFO  : 32
+  -> DEBUG : 12
+==================================================
+

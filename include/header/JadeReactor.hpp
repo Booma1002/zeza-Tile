@@ -71,7 +71,7 @@ namespace bm {
         DType dtype = DType::NONE;
         bool is_contiguous = false;
         uint64_t ndims = 0;
-        uint64_t nelm = 0;
+        uint64_t numel = 0;
         uint64_t inner_k = 0;
         void* args[RE_MAX_ARGS];
 
@@ -212,6 +212,9 @@ namespace bm {
 
         template<typename... Args>
         static JadeReactor react_scalar(OpCode opcode, Jade &out, Args&... args);
+
+        template<typename... Args>
+        static JadeReactor react_variadic(OpCode opcode, Jade& out, Args&... args);
 
 /**
  * @brief Prepares an execution context for General Matrix Multiplication (GEMM).

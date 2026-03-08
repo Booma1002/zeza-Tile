@@ -53,6 +53,10 @@ Jade Jade::copy(){
 
 
 Jade& Jade::flatten(){
+    uint64_t sz = 1;
+    for (size_t d = 0; d< ndims; ++d) sz*= shape[d];
+    reshape(sz);
+
     return *this;
 };
 

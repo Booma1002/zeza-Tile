@@ -1,7 +1,7 @@
 #include "header/JadeCpuKernels.hpp"
 #include <limits>
 #include <cmath>
-
+#include <cmath>
 namespace bm{
 #define DISPATCH_DTYPE(TYPE_ENUM, FUNCTOR, ...)                         \
 switch(TYPE_ENUM) {                                                     \
@@ -88,15 +88,39 @@ void cpu_clip_kernel(JadeReactor& jr) {
                    });
 }
 
-void cpu_arange_kernel(JadeReactor& reactor) {
-    double start = *static_cast<const double*>(reactor.args[0]);
-    double step  = *static_cast<const double*>(reactor.args[1]);
+void cpu_arange_kernel(JadeReactor& jr) {
+    double start = *static_cast<const double*>(jr.args[0]);
+    double step  = *static_cast<const double*>(jr.args[1]);
 
-    DISPATCH_DTYPE(reactor.dtype, cpu_generator_invoke, reactor,
+    DISPATCH_DTYPE(jr.dtype, cpu_generator_invoke, jr,
                    [start, step](uint64_t index) {
                        auto val = start + (static_cast<double>(index) * step);
                        return static_cast<decltype(val)>(val);
                    });
 }
 
+void cpu_std_kernel(JadeReactor& jr){
+    DISPATCH_DTYPE(jr.dtype, cpu_std_invoke, jr);
 }
+
+void cpu_var_kernel(JadeReactor& jr) {
+    DISPATCH_DTYPE(jr.dtype, cpu_var_invoke, jr);
+}
+void cpu_mean_kernel(JadeReactor& jr) {
+    DISPATCH_DTYPE(jr.dtype, cpu_mean_invoke, jr);
+}
+void cpu_max_kernel(JadeReactor& jr) {
+    DISPATCH_DTYPE(jr.dtype, cpu_max_invoke, jr);
+}
+void cpu_min_kernel(JadeReactor& jr) {
+    DISPATCH_DTYPE(jr.dtype, cpu_min_invoke, jr);
+}
+void cpu_dot_kernel(JadeReactor& jr) {
+    DISPATCH_DTYPE(jr.dtype, cpu_dot_invoke, jr);
+}
+void cpu_argmax_kernel(JadeReactor& jr) {
+    DISPATCH_DTYPE(jr.dtype, cpu_arg_invoke, jr);
+}
+void cpu_argmin_kernel(JadeReactor& jr) {
+    DISPATCH_DTYPE(jr.dtype, cpu_arg_invoke, jr);}
+};

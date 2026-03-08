@@ -56,7 +56,7 @@ namespace bm {
                 react.strides[2][i] = 0;
             }
         }
-        react.nelm = out.get_size();
+        react.numel = out.get_size();
         react.phys[0] = out.data_ptr();
         react.phys[1] = a.data_ptr();
         react.phys[2] = b.data_ptr();
@@ -113,7 +113,7 @@ namespace bm {
         }(), ...);
         react.dtype = out.dtype;
         std::string msg;
-        react.nelm = out.get_size();
+        react.numel = out.get_size();
         react.ndims = out.ndims;
         for(int i=0; i < react.ndims; ++i) {
             react.shape[i] = out.shape[i];
@@ -158,7 +158,7 @@ namespace bm {
                 react.args[arg_idx++] = const_cast<void*>(static_cast<const void*>(&args));
             }
         }(), ...);
-        react.nelm = out.get_size();
+        react.numel = out.get_size();
         react.ndims = out.ndims;
         for(int i=0; i < react.ndims; ++i) {
             react.shape[i] = out.shape[i];
@@ -188,6 +188,52 @@ namespace bm {
         msg= std::format("[Scalar Reactor] New ndims: {}.", std::to_string(react.ndims));
         LOG_INFO(msg);
         msg= "[Scalar Reactor] Saved Reactor Settings Successfully.";
+        LOG_INFO(msg);
+        return react;
+    }
+
+    template<typename... Args>
+    JadeReactor JadeReactor::react_variadic(OpCode opcode, Jade& out, Args&... args){
+        JadeReactor react;
+        react.dtype = out.dtype;
+        react.opcode = (int)opcode;
+        int arg_idx = 0;
+        ([&] {
+            if (arg_idx < RE_MAX_ARGS) {
+                react.args[arg_idx++] = const_cast<void*>(static_cast<const void*>(&args));
+            }
+        }(), ...);
+        react.numel = out.get_size();
+        react.ndims = out.ndims;
+        for(int i=0; i < react.ndims; ++i) {
+            react.shape[i] = out.shape[i];
+            react.strides[0][i] = out.strides[i]; // Output
+            react.strides[1][i] = 0;   // Input
+            react.strides[2][i] = 0;   // Dummy
+        }
+        react.phys[0] = out.data_ptr();
+        react.phys[1] = out.data_ptr();
+        react.phys[2] = nullptr; // Dummy
+
+        std::string msg;
+        msg+= std::format("[Variadic Reactor] Shape (");
+        for (int i=0; i < out.ndims; ++i) msg += std::to_string(out.shape[i]) + ((i!=out.ndims-1)?", ":"");
+        msg+= std::format(") --> ");
+
+        react.merge_dims();
+
+        react.is_contiguous = true;
+        if (react.ndims == 1 && (react.strides[0][0] != 1 || react.strides[1][0] != 1))
+            react.is_contiguous = false;
+        if (react.ndims > 1) react.is_contiguous = false;
+
+        msg+= std::format("Shape (");
+        for (int i=0; i < react.ndims; ++i) msg+= std::to_string(react.shape[i]) + ((i != react.ndims - 1) ? ", " : "");
+        msg+= std::format(").\n");
+        if(react.ndims) LOG_DEBUG(msg);
+        msg= std::format("[Variadic Reactor] New ndims: {}.", std::to_string(react.ndims));
+        LOG_INFO(msg);
+        msg= "[Variadic Reactor] Saved Reactor Settings Successfully.";
         LOG_INFO(msg);
         return react;
     }
@@ -243,7 +289,7 @@ namespace bm {
             else react.strides[2][i] = 0;
         }
 
-        react.nelm = out.get_size();
+        react.numel = out.get_size();
         react.phys[0] = out.data_ptr();
         react.phys[1] = a.data_ptr();
         react.phys[2] = b.data_ptr();

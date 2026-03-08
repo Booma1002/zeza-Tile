@@ -53,7 +53,15 @@ namespace bm {
         EXP       = 0X0A,
         LOG       = 0X0B,
         CLIP      = 0X0C,
-        ARANGE      = 0X0D,
+        ARANGE    = 0X0D,
+        STD       = 0X0E,
+        MEAN      = 0X0F,
+        MAX       = 0X10,
+        MIN       = 0X11,
+        DOT       = 0X12,
+        ARGMAX    = 0X13,
+        ARGMIN    = 0X14,
+        VAR       = 0X15,
 
         MAX_OPS    = 0XFF
     };

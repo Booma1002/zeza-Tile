@@ -21,13 +21,19 @@ namespace bm {
     void cpu_elementwise_unary_invoke(JadeReactor &jr, Func kernel);
 
     template<typename Func>
-    void cpu_elementwise_scalar_invoke(JadeReactor &react, Func lambda);
+    void cpu_elementwise_scalar_invoke(JadeReactor &jr, Func lambda);
 
     template<typename Func>
-    void cpu_elementwise_binary_invoke(JadeReactor &react, Func lambda);
+    void cpu_elementwise_binary_invoke(JadeReactor &jr, Func lambda);
 
-    void cpu_MatMul_binary_invoke(JadeReactor &react);
+    template<typename T>
+    void cpu_MatMul_binary_invoke(JadeReactor &jr);
 
+    template<typename T, typename Func>
+    void cpu_reduction_binary_invoke(JadeReactor &react, Func lambda);
+
+    template<typename T, typename Func>
+    void cpu_reduction_unary_invoke(JadeReactor &react, Func lambda);
 
 
 // ======================================================
@@ -61,7 +67,23 @@ namespace bm {
 
     void cpu_clip_kernel(JadeReactor &jr);
 
-    void cpu_arange_kernel(JadeReactor& reactor);
+    void cpu_arange_kernel(JadeReactor& jr);
+
+    void cpu_std_kernel(JadeReactor& jr);
+
+    void cpu_var_kernel(JadeReactor& jr);
+
+    void cpu_mean_kernel(JadeReactor& jr);
+
+    void cpu_min_kernel(JadeReactor& jr);
+
+    void cpu_max_kernel(JadeReactor& jr);
+
+    void cpu_dot_kernel(JadeReactor& jr);
+
+    void cpu_argmin_kernel(JadeReactor& jr);
+
+    void cpu_argmax_kernel(JadeReactor& jr);
 
 // ===========================================================
 // =========={..........Registration..........}===============
@@ -81,6 +103,14 @@ namespace bm {
     REGISTER_KERNEL(LOG, CPU, cpu_log_kernel);
     REGISTER_KERNEL(CLIP, CPU, cpu_clip_kernel);
     REGISTER_KERNEL(ARANGE, CPU, cpu_arange_kernel);
+    REGISTER_KERNEL(STD, CPU, cpu_std_kernel);
+    REGISTER_KERNEL(VAR, CPU, cpu_var_kernel);
+    REGISTER_KERNEL(MEAN, CPU, cpu_mean_kernel);
+    REGISTER_KERNEL(MAX, CPU, cpu_max_kernel);
+    REGISTER_KERNEL(MIN, CPU, cpu_min_kernel);
+    REGISTER_KERNEL(DOT, CPU, cpu_dot_kernel);
+    REGISTER_KERNEL(ARGMAX, CPU, cpu_argmax_kernel);
+    REGISTER_KERNEL(ARGMIN,CPU, cpu_argmin_kernel);
 
 }
 

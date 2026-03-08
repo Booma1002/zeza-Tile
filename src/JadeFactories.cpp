@@ -1,8 +1,8 @@
 #include "header/Jade.hpp"
 #include "header/Dispatcher.hpp"
 using namespace bm;
-// Allocate the static set_seed state in the object file
 std::optional<uint64_t> Jade::globalSeed = std::nullopt;
+std::optional<uint64_t> Jade::localSeed = std::nullopt;
 
 Jade Jade::ArrayBuilder::operator=(std::initializer_list<double> data) {
     if (data.size() != nelm) {
