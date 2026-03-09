@@ -120,6 +120,7 @@ namespace bm {
         template<typename... Dims>
         class JadeBuilder;
 
+
     private:
         friend struct JadeReactor;
         std::shared_ptr<Storage> memory;
@@ -310,6 +311,8 @@ namespace bm {
      */
         template <typename... Args>
         Jade operator[](Args... args) const;
+        template <typename T>
+        Jade operator[](std::initializer_list<uint64_t> il) const;
 
         /**
      * @brief Reassigns the jade to become a view of another jade.
@@ -342,13 +345,13 @@ namespace bm {
     ///////////////*************************///////////////
     ///////////////////////////////////////////////////////
     ;
-        static Jade std(const Jade& input);
-        static Jade var(const Jade& input);
-        static Jade mean(const Jade& input);
-        static Jade max(const Jade& input);
-        static Jade min(const Jade& input);
-        static Jade argmax(const Jade& input);
-        static Jade argmin(const Jade& input);
+        static Jade std(const Jade& input, std::initializer_list<uint64_t> axes = {});
+        static Jade var(const Jade& input, std::initializer_list<uint64_t> axes = {});
+        static Jade mean(const Jade& input, std::initializer_list<uint64_t> axes = {});
+        static Jade max(const Jade& input, std::initializer_list<uint64_t> ilist = {});
+        static Jade min(const Jade& input, std::initializer_list<uint64_t> axes = {});
+        static Jade argmax(const Jade& input, std::initializer_list<uint64_t> axes = {});
+        static Jade argmin(const Jade& input, std::initializer_list<uint64_t> axes ={});
         Jade dot(const Jade& input) const;
 
         ////////////////////////////////////////////////////////////
@@ -400,7 +403,7 @@ namespace bm {
      * pull data from the current layout into a densely packed, C-contiguous format.
      * @return A newly allocated, contiguous jade.
      */
-        Jade copy();
+        Jade copy() const;
 
 
     ///////////////////////////////////////////////////////
@@ -439,6 +442,9 @@ namespace bm {
         template<typename... Dims>
         static Jade ones(DType dType, const Dims... dims);
 
+        template<typename... Dims>
+        Jade full(DType dType, const double val, const Dims... dims);
+
         static Jade arange(DType dType, Slice range);
 
         template<typename... Dims>
@@ -459,6 +465,7 @@ namespace bm {
      * @return A new physical jade.
      */
         static Jade zeros_like(const Jade& other);
+        static Jade ones_like(const Jade& other);
 
         /**
      * @brief Creates an identical uninitialized jade with the same logical layout.
@@ -468,7 +475,7 @@ namespace bm {
      * @param val The fill value.
      * @return A new physical jade.
      */
-        static Jade fill_like(const Jade& other, const double val);
+        static Jade full_like(const Jade& other, const double val);
 
 
     ////////////////////////////////////////////////////////////
@@ -491,7 +498,7 @@ namespace bm {
      * physical byte capacity.
      * @return Total number of logical elements.
      */
-        [[nodiscard]] uint64_t get_size() const;
+        [[nodiscard]] uint64_t get_numel() const;
         [[nodiscard]] uint64_t get_size_physical() const;
         [[nodiscard]] void* data_ptr() const;
 
@@ -622,8 +629,12 @@ namespace bm {
      * @param shp_2 Output array_like for the new view's shape.
      * @param str_2 Output array_like for the new view's strides.
      */
+
         void apply_slice(uint64_t dim, uint64_t& ndim_tracker, uint64_t& offset_tracker,
                          uint64_t* shp_2, uint64_t* str_2) const;
+        void apply_slice_from_array(uint64_t dim, uint64_t &ndim_tracker, uint64_t &offset_tracker,
+                                    uint64_t *shape_out, uint64_t *stride_out,
+                                    const uint64_t* axis, size_t N) const;
 
         /**
      * @brief Recursively processes slice arguments to calculate new bounds.

@@ -19,7 +19,7 @@ namespace bm {
             }
         }(), ...);
         react.ndims = out.ndims;
-        react.numel = out.get_size();
+        react.numel = out.get_numel();
         react.dtype = out.dtype;
         for(long long i = 0; i < react.ndims; ++i) {
             react.shape[i] = out.shape[i];
@@ -81,7 +81,7 @@ namespace bm {
         }(), ...);
 
         react.dtype = out.dtype;
-        react.numel = out.get_size();
+        react.numel = out.get_numel();
         react.ndims = out.ndims;
 
         for(long long i = 0; i < react.ndims; ++i) {
@@ -136,7 +136,7 @@ namespace bm {
                 react.args[arg_idx++] = const_cast<void*>(static_cast<const void*>(&args));
             }
         }(), ...);
-        react.numel = out.get_size();
+        react.numel = out.get_numel();
         react.ndims = out.ndims;
         for(int i=0; i < react.ndims; ++i) {
             react.shape[i] = out.shape[i];
@@ -191,7 +191,7 @@ namespace bm {
         react.dtype = out.dtype;
         react.inner_k = a.shape[a.ndims - 1];
         react.ndims = out.ndims;
-        react.numel = out.get_size();
+        react.numel = out.get_numel();
 
         // Lock in the innermost Matrix dimensions (M, N, K)
         react.strides[0][react.ndims - 1] = out.strides[out.ndims - 1];
@@ -247,7 +247,7 @@ namespace bm {
 
         react.dtype = out.dtype;
         // 🔥 Reductions iterate over the INPUT space.
-        react.numel = a.get_size();
+        react.numel = a.get_numel();
         react.ndims = a.ndims;
 
         for(long long i = 0; i < react.ndims; ++i) {
@@ -271,7 +271,7 @@ namespace bm {
 
     template<typename... Args>
     JadeReactor JadeReactor::react_reduction_binary(OpCode opcode, Jade& out, const Jade& a, const Jade& b, Args&... args){
-        if (a.ndims != b.ndims || a.get_size() != b.get_size()) {
+        if (a.ndims != b.ndims || a.get_numel() != b.get_numel()) {
             throw ShapeMismatchException("[Reduction Binary] Inputs must have matching shapes for dot product.");
         }
         JadeReactor react;
@@ -282,7 +282,7 @@ namespace bm {
         }(), ...);
 
         react.dtype = out.dtype;
-        react.numel = a.get_size();
+        react.numel = a.get_numel();
         react.ndims = a.ndims;
 
         for(long long i = 0; i < react.ndims; ++i) {

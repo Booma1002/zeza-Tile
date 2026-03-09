@@ -78,7 +78,7 @@ namespace bm {
         INT64       = 0X8,
         UINT64      = 0X9,
 
-        MAX_DTYPES = 0XF
+        MAX_DTYPES = 0XF,
     };
 
     /**

@@ -41,3 +41,19 @@ Jade Jade::arange(DType dtype, Slice range) {
 
     return output;
 }
+
+
+Jade Jade::zeros_like(const Jade& other) {
+    Jade output(other.dtype, 0.0f, other.shape.get(), other.ndims);
+    return output;
+}
+
+Jade Jade::ones_like(const Jade& other) {
+    Jade output(other.dtype, 1.0f, other.shape.get(), other.ndims);
+    return output;
+}
+
+Jade Jade::full_like(const Jade& other, const double val){
+    Jade output(other.dtype, val, other.shape.get(), other.ndims);
+    return output;
+}

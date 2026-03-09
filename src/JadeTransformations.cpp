@@ -16,17 +16,12 @@ Jade  Jade::transpose() {
     return newJade;
 }
 
-Jade Jade::zeros_like(const Jade& other) {
-    Jade output(other.dtype, 0.0f, other.shape.get(), other.ndims);
-    return output;
-}
-
-Jade Jade::fill_like(const Jade& other, const double val){
-    Jade output(other.dtype, val, other.shape.get(), other.ndims);
-    return output;
-}
-
 Jade Jade::pad(double fill_val, const uint64_t* pads) const {
+    // Todo : implement Pad specs, such as:
+    //          Pad(len=x, optional fill=0.0f, optional axes={}<uint64_t>),
+    //          Pad(len=x, optional fill=0.0f), //applies on all dims if axes{} is empty
+    //          Pad(len=x, optional fill=0.0f, optional axes={}<std::pair<uint64_t, uint64_t>>) // applies before/after if ilist<T> T is pair.
+
     auto new_shape = std::make_unique<uint64_t[]>(ndims);
     for(size_t i=0; i<ndims; ++i)
         new_shape[i] = shape[i] + pads[i*2] + pads[i*2+1];
@@ -36,7 +31,6 @@ Jade Jade::pad(double fill_val, const uint64_t* pads) const {
         view.offset += pads[i*2] * output.strides[i];
         view.shape[i] = this-> shape[i];
     }
-
     view.copy_from(*this);
     return output;
 }
@@ -45,7 +39,7 @@ void Jade::copy_from(const Jade& other) {
     Dispatcher::execute_unary(OpCode::COPY, *this, other);
 }
 
-Jade Jade::copy(){
+Jade Jade::copy() const {
     Jade view = Jade(*this);
     Dispatcher::execute_unary(OpCode::COPY, view, *this);
     return view;

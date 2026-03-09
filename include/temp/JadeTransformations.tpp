@@ -3,10 +3,12 @@
 namespace bm {
     template<typename... Dims>
     Jade &Jade::reshape(Dims... dims) {
+        // Todo : make specs :
+        //          reshape(ilist{}), reshape(uint64_t[])
         uint64_t sz = 1;
         ((sz *= dims), ...); // check size match
         uint64_t n = sizeof...(Dims);
-        if (get_size() != sz) {
+        if (get_numel() != sz) {
             LOG_ERR("[Jade] Cannot reshape Jade into the given dims.");
             throw ShapeMismatchException("Cannot reshape Jade into the given dims.");
         }
@@ -18,6 +20,5 @@ namespace bm {
         LOG_INFO(msg);
         return *this;
     }
-
 
 }

@@ -2,6 +2,8 @@
 
 namespace bm {
     ;
+
+
 ////////////////////////////////////////////////////////////
 /////////////////***************************////////////////
 /////////////////**  Jade Constructors  **////////////////
@@ -33,7 +35,7 @@ namespace bm {
             ndims(sizeof...(Dims)), memory(other.memory), dtype(dtype) {
         uint64_t sz = 1;
         ((sz *= dims), ...); // check size match
-        if (other.get_size() != sz) {
+        if (other.get_numel() != sz) {
             std::string msg = "Cannot reshape Jade into the given dims.";
             LOG_ERR(msg);
             throw ShapeMismatchException(msg);
@@ -106,21 +108,43 @@ namespace bm {
     }
 
     template<typename T>
+    Jade Jade::operator[](std::initializer_list<uint64_t> il) const {
+        auto new_shape = std::make_unique<uint64_t[]>(ndims);
+        auto new_strides = std::make_unique<uint64_t[]>(ndims);
+        uint64_t new_offset = this->offset;
+        uint64_t new_ndims = 0;
+
+        apply_slice_from_array(0, new_ndims, new_offset, new_shape.get(), new_strides.get(), il.begin(), il.size());
+
+        Jade view(*this);
+        view.ndims = new_ndims;
+        view.offset = new_offset;
+        view.shape = std::move(new_shape);
+        view.strides = std::move(new_strides);
+        return view;
+    }
+
+
+
+    template<typename T>
     T Jade::item() const {
-        if (get_size() != 1) {
-            std::string msg = "[Jade] Cannot call .item() on a jade with " + std::to_string(get_size()) + " elements. Must be exactly 1.";
+        if (get_numel() != 1) {
+            std::string msg = "[Jade] Cannot call .item() on a jade with " + std::to_string(get_numel()) + " elements. Must be exactly 1.";
             LOG_ERR(msg);
             throw std::runtime_error(msg);
         }
-        if (dtype == DType::FLOAT64) {
-            return static_cast<T>(static_cast<double*>(data_ptr())[0]);
-        } else if (dtype == DType::UINT64) {
-            return static_cast<T>(static_cast<uint64_t*>(data_ptr())[0]);
-        } else if (dtype == DType::FLOAT32) {
-            return static_cast<T>(static_cast<float*>(data_ptr())[0]);
+        switch(this->dtype) {
+            case DType::FLOAT32: return static_cast<T>(static_cast<float*>(data_ptr())[0]);
+            case DType::FLOAT64: return static_cast<T>(static_cast<double*>(data_ptr())[0]);
+            case DType::INT32:   return static_cast<T>(static_cast<int32_t*>(data_ptr())[0]);
+            case DType::UINT8:   return static_cast<T>(static_cast<uint8_t*>(data_ptr())[0]);
+            case DType::UINT16 : return static_cast<T>(static_cast<int16_t*>(data_ptr())[0]);
+            case DType::UINT32:  return static_cast<T>(static_cast<uint32_t*>(data_ptr())[0]);
+            case DType::INT16:   return static_cast<T>(static_cast<int16_t*>(data_ptr())[0]);
+            case DType::UINT64:  return static_cast<T>(static_cast<uint64_t*>(data_ptr())[0]);
+            case DType::INT64:   return static_cast<T>(static_cast<int64_t*>(data_ptr())[0]);
+            default: return static_cast<T>(0);;
         }
-        // Todo: add other cases as needed later
-        return static_cast<T>(0);
     }
 
     template<typename... Indices>

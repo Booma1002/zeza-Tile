@@ -29,6 +29,7 @@ Jade::Jade(Jade& other):
     LOG_INFO(msg);
 }
 
+
 Jade::Jade(const Jade& other):
     ndims(other.ndims), offset(other.offset), memory(other.memory), dtype(other.dtype) {
     clone_metadata(other);
@@ -56,7 +57,7 @@ uint64_t Jade::get_capacity() const{
     return memory->capacity();
 }
 
-uint64_t Jade::get_size() const{
+uint64_t Jade::get_numel() const{
     uint64_t sz = 1;
     for (size_t i = 0; i < ndims; ++i) sz *= shape[i];
     return sz;
@@ -157,6 +158,27 @@ void Jade::apply_slice(uint64_t dim, uint64_t& ndim_tracker, uint64_t& offset_tr
     }
 }
 
+void Jade::apply_slice_from_array(uint64_t dim, uint64_t &ndim_tracker, uint64_t &offset_tracker,
+                                  uint64_t *shape_out, uint64_t *stride_out,
+                                  const uint64_t* axis, size_t N) const {
+    size_t i = 0;
+    for (; i < N && dim < ndims; ++i, ++dim) {
+        auto ax = static_cast<long long>(axis[i]);
+        if (ax < 0) ax += shape[dim];
+        if (ax < 0 || static_cast<uint64_t>(ax) >= shape[dim]){
+            LOG_ERR("Jade index out of range.");
+            throw SlicingException("Jade index out of range.");
+        }
+        offset_tracker += static_cast<uint64_t>(ax) * strides[dim];
+    }
+    for (; dim < ndims; ++dim) {
+        shape_out[ndim_tracker] = shape[dim];
+        stride_out[ndim_tracker] = strides[dim];
+        ++ndim_tracker;
+    }
+}
+
+
 void Jade::calc_strides(const uint64_t* sh, uint64_t* st, const uint64_t ndims) {
     uint64_t cur = 1;
     for (long i = ndims - 1; i >= 0; --i) {
@@ -171,7 +193,7 @@ void Jade::reshape_like(const uint64_t* dims, uint64_t* stride, uint64_t N){
 //    for (int i = 0; i < N; ++i) {
 //        sz*= dims[i];
 //    }
-//    if (get_size() != sz)
+//    if (get_numel() != sz)
 //        throw ShapeMismatchException("Cannot reshape Jade into the given dims.");
     std::string repr1 = repr();
     ndims = N;
@@ -253,6 +275,21 @@ std::string Jade::display(const uint64_t dim_tracker, const uint64_t offset_trac
             case DType::INT64:   val = static_cast<double>(*static_cast<int64_t*>(ptr)); break;
             default: throw std::runtime_error("Unsupported DType in display");
         }
+        if(this->get_numel()==1){
+            switch(this->dtype) {
+                case DType::FLOAT32: val = static_cast<double>(item<float>()); break;
+                case DType::FLOAT64: val = static_cast<double>(item<double>()); break;
+                case DType::INT32:   val = static_cast<double>(item<int32_t>()); break;
+                case DType::UINT8:   val = static_cast<double>(item<uint8_t>()); break;
+                case DType::UINT16 : val = static_cast<double>(item<uint16_t>()); break;
+                case DType::UINT32:  val = static_cast<double>(item<uint32_t>()); break;
+                case DType::INT16:   val = static_cast<double>(item<int16_t>()); break;
+                case DType::UINT64:  val = static_cast<double>(item<uint64_t>()); break;
+                case DType::INT64:   val = static_cast<double>(item<int64_t>()); break;
+                default: throw std::runtime_error("Unsupported DType in display");
+            }
+        }
+
         std::ostringstream out;
         out << std::fixed << std::setprecision(round) << val;
         return out.str();
@@ -291,7 +328,6 @@ std::string Jade::display(const uint64_t dim_tracker, const uint64_t offset_trac
             }
         }
     }
-
     placeholder += "]";
     return placeholder;
 }
