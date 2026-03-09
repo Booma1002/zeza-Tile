@@ -51,6 +51,9 @@ namespace bm {
         // The frontend pusher
         void log(LogLevel level, const std::string& msg);
 
+        // teardown for exceptions
+        void shutdown();
+
         // Deleted copy semantics
         Logger(const Logger&) = delete;
         Logger& operator=(const Logger&) = delete;
@@ -59,6 +62,7 @@ namespace bm {
 #define LOG_DEBUG(msg) if (Logger::get().get_level() <= LogLevel::DEBUG) Logger::get().log(LogLevel::DEBUG, msg)
 #define LOG_INFO(msg)  if (Logger::get().get_level() <= LogLevel::INFO)  Logger::get().log(LogLevel::INFO, msg)
 #define LOG_WARN(msg)  if (Logger::get().get_level() <= LogLevel::WARN)  Logger::get().log(LogLevel::WARN, msg)
+#define LOG_ERR_LN(msg, file, line)   if (Logger::get().get_level() <= LogLevel::ERR)   Logger::get().log(LogLevel::ERR, std::string(file) + ":" + std::to_string(line) + " " + msg)
 #define LOG_ERR(msg)   if (Logger::get().get_level() <= LogLevel::ERR)   Logger::get().log(LogLevel::ERR, std::string(__FILE__) + ":" + std::to_string(__LINE__) + " " + msg)
 #define LOG_FATAL(msg) if (Logger::get().get_level() <= LogLevel::FATAL) Logger::get().log(LogLevel::FATAL, msg)
 

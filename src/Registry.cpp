@@ -4,7 +4,9 @@ using namespace bm;
 class RegistryException : public std::exception {
     std::string msg;
 public:
-    RegistryException(const std::string &message) : msg(message) {}
+    RegistryException(const std::string &message) : msg(message) {
+        bm::Logger::get().shutdown();
+    }
     virtual const char *what() const noexcept override { return msg.c_str(); }
 };
 

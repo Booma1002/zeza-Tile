@@ -56,13 +56,23 @@ Jade Jade::operator*(const Jade &other) const{
         throw ShapeMismatchException(msg);
     }
 
-    uint64_t M = (this->ndims > 1) ? this->shape[this->ndims - 2] : 1;
-    if (this->ndims < 2 || other.ndims < 2){
-        std::string msg = "Strict MatMul requires at least 2D jade for now.";
-        LOG_ERR(msg);
-        throw ShapeMismatchException(msg);
+    auto sh = std::make_unique<uint64_t[]>(2);
+    std::optional<Jade> ths = std::nullopt;
+    if (this->ndims == 1){
+        sh[0] = 1;
+        sh[1] = shape[0];
+        Jade THIS (dtype, 0, sh.get(), (uint64_t)2);
+        ths = THIS;
     }
+    else ths =
+    if (other.ndims == 1){
+        sh[0] = 1;
+        sh[1] = other.shape[0];
+        Jade OTHER (dtype, 0, sh.get(), (uint64_t)2);
+    }
+    auto& ths = (this->ndims == 1)? THIS : *this;
 
+    uint64_t M = (ths.ndims > 1) ? this->shape[this->ndims - 2] : 1;
     uint64_t N = other.shape[other.ndims - 1];
     uint64_t NA = this->ndims - 2;
     uint64_t NB = other.ndims - 2;

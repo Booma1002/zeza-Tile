@@ -81,7 +81,7 @@ std::unique_ptr<uint64_t[]> Jade::broadcast(Jade A, Jade B){
     return Jade::broadcast(A.shape.get(), A.ndims, B.shape.get(), B.ndims);
 }
 
-std::unique_ptr<uint64_t[]> Jade::broadcast(uint64_t* A_shape, uint64_t A_ndims, uint64_t* B_shape, uint64_t B_ndims ) {
+std::unique_ptr<uint64_t[]> Jade:: broadcast(uint64_t* A_shape, uint64_t A_ndims, uint64_t* B_shape, uint64_t B_ndims ) {
     auto shape1 = std::make_unique<uint64_t[]>(A_ndims);
     auto shape2 = std::make_unique<uint64_t[]>(B_ndims);
     std::memcpy(shape1.get(), A_shape, A_ndims * sizeof(uint64_t));
@@ -89,7 +89,7 @@ std::unique_ptr<uint64_t[]> Jade::broadcast(uint64_t* A_shape, uint64_t A_ndims,
     Jade::reverse(shape1.get(), A_ndims);
     Jade::reverse(shape2.get(), B_ndims);
 
-    auto max_dims = std::max(A_ndims, B_ndims);
+    auto max_dims = std::max((uint64_t)2ull, std::max(B_ndims, A_ndims));
     auto shape_out = std::make_unique<uint64_t[]>(max_dims);
     uint64_t i =0;
     for (uint64_t dim = 0; dim <max_dims; ++dim){
@@ -111,9 +111,13 @@ std::unique_ptr<uint64_t[]> Jade::broadcast(uint64_t* A_shape, uint64_t A_ndims,
 
 bool Jade::can_matmul(Jade& A, Jade& B){
     if (A.ndims == 0 || B.ndims == 0) return false;
-    long long a = (A.ndims>=0)?(long long) A.ndims-2:0;
-    long long b = (B.ndims>=0)?(long long) B.ndims-2:0;
+    long long a = (long long) A.ndims-2;
+    long long b = (long long) B.ndims-2;
+    if(A.ndims == B.ndims && B.ndims == 1){
+        return A.shape[0] == B.shape[0];
+    }
     if(a>0 and b>0){
+        // if you can broadcast the batch, we pass step 1.
         try{
             Jade::broadcast(A.shape.get(), a, B.shape.get(), b);
         }
@@ -121,8 +125,10 @@ bool Jade::can_matmul(Jade& A, Jade& B){
             return false;
         }
     }
-    auto a2 = A.shape[A.ndims-1];
-    auto b2 = (B.ndims ==1)? 1 : B.shape[B.ndims-2];
+    // if innermost match, we pass step 2.
+
+    auto a2 = A.shape[A.ndims-1]; // innermost A
+    auto b2 = (B.ndims ==1)? 1 : B.shape[B.ndims-2]; // 2nd innermost B, 1 when broadcastable
     return a2 == b2;
 }
 

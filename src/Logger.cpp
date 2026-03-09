@@ -1,15 +1,44 @@
 #include "header/Logger.hpp"
 #include <filesystem>
 using namespace bm;
+
+void Logger::shutdown() {
+    bool expected = true;
+    if (running.compare_exchange_strong(expected, false)) {
+        cond.notify_all();
+
+        if (worker.joinable()) {
+            worker.join();
+        }
+
+        if (file.is_open()) {
+            file << "\n==================================================\n";
+            file << "[SYSTEM] Execution Terminated. Telemetry Summary:\n";
+            file << "  -> FATAL : " << log_counts[static_cast<int>(LogLevel::FATAL)].load(std::memory_order_relaxed) << "\n";
+            file << "  -> ERROR : " << log_counts[static_cast<int>(LogLevel::ERR)].load(std::memory_order_relaxed) << "\n";
+            file << "  -> WARN  : " << log_counts[static_cast<int>(LogLevel::WARN)].load(std::memory_order_relaxed) << "\n";
+            file << "  -> INFO  : " << log_counts[static_cast<int>(LogLevel::INFO)].load(std::memory_order_relaxed) << "\n";
+            file << "  -> DEBUG : " << log_counts[static_cast<int>(LogLevel::DEBUG)].load(std::memory_order_relaxed) << "\n";
+            file << "==================================================\n\n";
+            file.close();
+        }
+    }
+}
+
+
+
 void Logger::log(LogLevel level, const std::string &msg) {
     log_counts[static_cast<int>(level)].fetch_add(1, std::memory_order_relaxed);
 
+    if (!running.load(std::memory_order_relaxed)) {
+        std::cerr << "[POST-SHUTDOWN LOG] " << msg << std::endl;
+        return;
+    }
     LogMessage message;
     message.level = level;
     message.timestamp = std::chrono::system_clock::now();
     message.thread_id = std::this_thread::get_id();
     message.message = msg;
-
     {
         std::lock_guard<std::mutex> lock(mut);
         buffer.push(message);
@@ -81,22 +110,9 @@ Logger::Logger() : running(true){
 }
 
 Logger::~Logger(){
-    running = false;
-    cond.notify_one();
-    if (worker.joinable()) worker.join();
-
-    if (file.is_open()) {
-        file << "\n==================================================\n";
-        file << "[SYSTEM] Execution Terminated. Telemetry Summary:\n";
-        file << "  -> FATAL : " << log_counts[static_cast<int>(LogLevel::FATAL)].load(std::memory_order_relaxed) << "\n";
-        file << "  -> ERROR : " << log_counts[static_cast<int>(LogLevel::ERR)].load(std::memory_order_relaxed) << "\n";
-        file << "  -> WARN  : " << log_counts[static_cast<int>(LogLevel::WARN)].load(std::memory_order_relaxed) << "\n";
-        file << "  -> INFO  : " << log_counts[static_cast<int>(LogLevel::INFO)].load(std::memory_order_relaxed) << "\n";
-        file << "  -> DEBUG : " << log_counts[static_cast<int>(LogLevel::DEBUG)].load(std::memory_order_relaxed) << "\n";
-        file << "==================================================\n\n";
-        file.close();
-    }
+    shutdown();
 }
+
 
 
 

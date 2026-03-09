@@ -26,9 +26,10 @@ namespace bm {
     class ReactorException : public std::exception {
         std::string msg;
     public:
-        explicit ReactorException(std::string message) : msg(std::move(message)) {}
-
-        [[nodiscard]] const char *what() const noexcept override { return msg.c_str(); }
+        explicit ReactorException(std::string message) : msg(std::move(message)) {
+            bm::Logger::get().shutdown();
+        }
+        const char *what() const noexcept override { return msg.c_str(); }
     };
 
     enum class ReactorMethod: uint32_t{

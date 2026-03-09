@@ -6,7 +6,9 @@ using namespace bm;
 class AllocatorException : public std::exception {
     std::string msg;
 public:
-    explicit AllocatorException(std::string message) : msg(std::move(message)) {}
+    explicit AllocatorException(std::string message) : msg(std::move(message)) {
+        bm::Logger::get().shutdown();
+    }
     virtual const char *what() const noexcept override { return msg.c_str(); }
 };
 

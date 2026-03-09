@@ -116,7 +116,8 @@ void cpu_min_kernel(JadeReactor& jr) {
     DISPATCH_DTYPE(jr.dtype, cpu_min_invoke, jr);
 }
 void cpu_dot_kernel(JadeReactor& jr) {
-    DISPATCH_DTYPE(jr.dtype, cpu_dot_invoke, jr);
+    auto val = *static_cast<double*>(jr.args[0]);
+    DISPATCH_DTYPE(jr.dtype, cpu_dot_invoke, jr, val);
 }
 void cpu_argmax_kernel(JadeReactor& jr) {
     DISPATCH_DTYPE(jr.dtype, cpu_argmax_invoke, jr);

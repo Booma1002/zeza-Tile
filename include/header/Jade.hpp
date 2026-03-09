@@ -26,7 +26,18 @@ namespace bm {
     class ShapeMismatchException : public std::exception {
         std::string msg;
     public:
-        ShapeMismatchException(const std::string &message) : msg(message) {}
+        ShapeMismatchException(const std::string &message) : msg(message) {
+            bm::Logger::get().shutdown();
+        }
+        virtual const char *what() const noexcept override { return msg.c_str(); }
+    };
+
+    class JadeException : public std::exception {
+        std::string msg;
+    public:
+        JadeException(const std::string &message) : msg(message) {
+            bm::Logger::get().shutdown();
+        }
         virtual const char *what() const noexcept override { return msg.c_str(); }
     };
     /**
@@ -37,7 +48,9 @@ namespace bm {
     class SlicingException : public std::exception {
         std::string msg;
     public:
-        SlicingException(const std::string &message) : msg(message) {}
+        SlicingException(const std::string &message) : msg(message) {
+            bm::Logger::get().shutdown();
+        }
         virtual const char *what() const noexcept override { return msg.c_str(); }
     };
     /**
@@ -48,7 +61,9 @@ namespace bm {
     class PaddingException : public std::exception {
         std::string msg;
     public:
-        explicit PaddingException(std::string message) : msg(std::move(message)) {}
+        explicit PaddingException(std::string message) : msg(std::move(message)) {
+            bm::Logger::get().shutdown();
+        }
         virtual const char *what() const noexcept override { return msg.c_str(); }
     };
     /**
@@ -57,7 +72,9 @@ namespace bm {
     class MemoryException : public std::exception {
         std::string msg;
     public:
-        explicit MemoryException(std::string message) : msg(std::move(message)) {}
+        explicit MemoryException(std::string message) : msg(std::move(message)) {
+            bm::Logger::get().shutdown();
+        }
         virtual const char *what() const noexcept override { return msg.c_str(); }
     };
     /**
@@ -66,7 +83,9 @@ namespace bm {
     class BroadcastException : public std::exception {
         std::string msg;
     public:
-        explicit BroadcastException(std::string message) : msg(std::move(message)) {}
+        explicit BroadcastException(std::string message) : msg(std::move(message)) {
+            bm::Logger::get().shutdown();
+        }
         virtual const char *what() const noexcept override { return msg.c_str(); }
     };
     /**
@@ -443,7 +462,7 @@ namespace bm {
         static Jade ones(DType dType, const Dims... dims);
 
         template<typename... Dims>
-        Jade full(DType dType, const double val, const Dims... dims);
+        static Jade full(DType dType, const double val, const Dims... dims);
 
         static Jade arange(DType dType, Slice range);
 

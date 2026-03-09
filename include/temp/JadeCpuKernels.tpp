@@ -542,9 +542,8 @@ namespace bm {
 
     // --- DOT ---
     template<typename T>
-    void cpu_dot_invoke(JadeReactor& jr) {
-        cpu_reduction_binary_invoke<T>(jr, static_cast<T>(0),
-                                       [](T acc, T a, T b) { return acc + (a * b); });
+    void cpu_dot_invoke(JadeReactor& jr, double val) {
+        cpu_elementwise_scalar_invoke<T>(jr, [&val](T a) { return static_cast<T>(val * a);});
     }
 
     // ==================================================================

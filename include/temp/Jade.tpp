@@ -128,8 +128,8 @@ namespace bm {
 
     template<typename T>
     T Jade::item() const {
-        if (get_numel() != 1) {
-            std::string msg = "[Jade] Cannot call .item() on a jade with " + std::to_string(get_numel()) + " elements. Must be exactly 1.";
+        if (get_numel() <= 0) {
+            std::string msg = "[Jade] Cannot call .item() on a jade with " + std::to_string(get_numel()) + " elements. Must be >= 1.";
             LOG_ERR(msg);
             throw std::runtime_error(msg);
         }
@@ -157,7 +157,7 @@ namespace bm {
         uint64_t IDX = 0;
         size_t id = 0;
         ((IDX += indices * strides[id++]), ...);
-        return memory->get<float>(this->offset + IDX);
+        return static_cast<double*>(data_ptr())[IDX];
     }
 
     template<typename... Indices>
@@ -170,7 +170,7 @@ namespace bm {
         uint64_t IDX = 0;
         size_t id = 0;
         ((IDX += indices * strides[id++]), ...);
-        memory->set<float>(this->offset + IDX, val);
+        static_cast<double*>(data_ptr())[IDX] = val;
     }
 
     template<typename T, typename... Rest>
