@@ -42,7 +42,7 @@ namespace bm {
         static void execute_scalar(OpCode op, Jade &out, double a, Args&... args);
 
         template<typename... Args>
-        static void execute_reduction(OpCode op, Jade& out, const Jade& a, Args&... args);
+        static void execute_reduction_unary(OpCode op, Jade& out, const Jade& a, Args&... args);
 
         template<typename... Args>
         static void execute_reduction_binary(OpCode op, Jade& out, const Jade& a, const Jade& b, Args&... args);

@@ -101,15 +101,23 @@ void phase_math() {
     chk_v(g.get(1), 10.0);
 
     Jade h = a * 2.0;
+    h.display();
+    std::cout << "h\n";
     chk_v(h.get(3), 8.0);
 
     Jade i = Jade::sin(a);
+    i.display();
+    std::cout << "i\n";
     chk_v(i.get(0), std::sin(1.0));
 
     Jade j = Jade::cos(a);
+    j.display();
+    std::cout << "j\n";
     chk_v(j.get(0), std::cos(1.0));
 
     Jade k = Jade::tan(a);
+    k.display();
+    std::cout << "k\n";
     chk_v(k.get(0), std::tan(1.0));
 
     Jade l = Jade::exp(a);
