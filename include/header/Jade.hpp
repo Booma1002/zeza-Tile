@@ -329,9 +329,9 @@ namespace bm {
      * @warning UB Warning: Drops original memory reference. Does not mutate the original physical memory.
      * @param other The addend jade.
      */
-        void operator+=(Jade& other)&&;
+        void operator+=(const Jade& other)&&;
         void operator+=(const double& val)&&;
-        void operator+=(Jade& other)&;
+        void operator+=(const Jade& other)&;
         void operator+=(const double& val)&;
 
         /**

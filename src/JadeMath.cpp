@@ -2,6 +2,8 @@
 #include "header/Dispatcher.hpp"
 using namespace bm;
 
+// todo : implement r-value inplace mathops
+//  for every count of memory manipulation
 bool Jade::can_takeover(const Jade& jade, const uint64_t* target_shape, uint64_t target_ndims) {
     if (jade.memory.use_count() != 1) return false;
     if (jade.ndims != target_ndims) return false;
@@ -103,47 +105,6 @@ Jade& Jade::operator=(const Jade& other) &&{
     return *this;
 }
 
-Jade Jade::matmul(const Jade& other) const {
-    if(!Jade::can_matmul(const_cast<Jade &>(*this), const_cast<Jade &>(other))){
-        std::string msg = "Cannot Apply MatMul: " + this->repr() + " @ " + other.repr();
-        LOG_ERR(msg);
-        throw ShapeMismatchException(msg);
-    }
-
-    Jade a = *this;
-    Jade b = other;
-    std::unique_ptr<uint64_t[]> sh = std::make_unique<uint64_t[]>(ndims);
-    if (this->ndims == 1){
-        a.reshape(1, shape[0]);
-    }
-    if (other.ndims == 1){
-        b.reshape(shape[0], 1);
-    }
-
-    uint64_t M = (a.ndims > 1) ? a.shape[a.ndims - 2] : 1;
-    uint64_t N = b.shape[b.ndims - 1];
-    uint64_t NA = a.ndims - 2;
-    uint64_t NB = b.ndims - 2;
-    std::unique_ptr<uint64_t[]> batch_shape;
-    uint64_t res = 0;
-
-    if (NA > 0 || NB > 0) {
-        batch_shape = Jade::broadcast(a.shape.get(), NA, b.shape.get(), NB);
-        res = std::max(NA, NB);
-    }
-    uint64_t N_OUT = res + 2;
-    auto output_shape = std::make_unique<uint64_t[]>(N_OUT);
-    if (res > 0) std::memcpy(output_shape.get(), batch_shape.get(), res * sizeof(uint64_t));
-
-    output_shape[N_OUT - 2] = M;
-    output_shape[N_OUT - 1] = N;
-
-    Jade view(this->dtype, 0.0f, output_shape.get(), N_OUT);
-    Dispatcher::execute_binary(OpCode::MATMUL, view, *this, other);
-    view.init_metadata_like(output_shape.get());
-    return view;
-}
-
 Jade Jade::operator*(const Jade& other) const &{
     uint64_t max_dims = std::max(this->ndims, other.ndims);
     auto out_shape = Jade::broadcast(*this, other);
@@ -217,10 +178,10 @@ void Jade::operator*=(const double & val) &&{
     Dispatcher::execute_binary(OpCode::MUL, *this, *this, other);
 }
 
-void Jade::operator+=(Jade& other) &{
+void Jade::operator+=(const Jade& other) &{
     Dispatcher::execute_binary(OpCode::ADD, *this, *this, other);
 }
-void Jade::operator+=(Jade& other) &&{
+void Jade::operator+=(const Jade& other) &&{
     Dispatcher::execute_binary(OpCode::ADD, *this, *this, other);
 }
 
@@ -270,4 +231,48 @@ Jade Jade::clip(const Jade& input, double lower, double upper){
     Dispatcher::execute_unary(OpCode::CLIP, view, input, lower, upper);
     return view;
 }
+
+
+Jade Jade::matmul(const Jade& other) const {
+    if(!Jade::can_matmul(const_cast<Jade &>(*this), const_cast<Jade &>(other))){
+        std::string msg = "Cannot Apply MatMul: " + this->repr() + " @ " + other.repr();
+        LOG_ERR(msg);
+        throw ShapeMismatchException(msg);
+    }
+
+    Jade a = *this;
+    Jade b = other;
+    std::unique_ptr<uint64_t[]> sh = std::make_unique<uint64_t[]>(ndims);
+    if (this->ndims == 1){
+        a.reshape(1, shape[0]);
+    }
+    if (other.ndims == 1){
+        b.reshape(shape[0], 1);
+    }
+
+    uint64_t M = (a.ndims > 1) ? a.shape[a.ndims - 2] : 1;
+    uint64_t N = b.shape[b.ndims - 1];
+    uint64_t NA = a.ndims - 2;
+    uint64_t NB = b.ndims - 2;
+    std::unique_ptr<uint64_t[]> batch_shape;
+    uint64_t res = 0;
+
+    if (NA > 0 || NB > 0) {
+        batch_shape = Jade::broadcast(a.shape.get(), NA, b.shape.get(), NB);
+        res = std::max(NA, NB);
+    }
+    uint64_t N_OUT = res + 2;
+    auto output_shape = std::make_unique<uint64_t[]>(N_OUT);
+    if (res > 0) std::memcpy(output_shape.get(), batch_shape.get(), res * sizeof(uint64_t));
+
+    output_shape[N_OUT - 2] = M;
+    output_shape[N_OUT - 1] = N;
+
+    Jade view(this->dtype, 0.0f, output_shape.get(), N_OUT);
+    Dispatcher::execute_binary(OpCode::MATMUL, view, *this, other);
+    view.init_metadata_like(output_shape.get());
+    return view;
+}
+
+// todo: add() sub() mul()
 
