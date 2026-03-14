@@ -22,7 +22,7 @@ void chk_v(double a, double b, const char* file = __builtin_FILE(), int line = _
 #define chk_v(...) chk_v(__VA_ARGS__, __FILE__, __LINE__)
 
 void phase_factories() {
-    std::cout << "PHASE 1\n";
+    LOG_INFO("PHASE 1");
     Jade::set_seed(42);
 
     Jade a = Jade::zeros(DType::FLOAT64, 10, 10, 10);
@@ -66,7 +66,7 @@ void phase_factories() {
 }
 
 void phase_math() {
-    std::cout << "PHASE 2\n";
+    LOG_INFO("PHASE 2");
     Jade a = Jade::array(DType::FLOAT64, 4) = {1, 2, 3, 4};
     Jade b = Jade::array(DType::FLOAT64, 4) = {10, 20, 30, 40};
 
@@ -111,7 +111,7 @@ void phase_math() {
 }
 
 void phase_reductions() {
-    std::cout << "PHASE 3\n";
+    LOG_INFO("PHASE 3");
     Jade a = Jade::array(DType::FLOAT64, 2, 4) = {
             10, 20, 30, 40,
             50, 60, 70, 80
@@ -141,7 +141,7 @@ void phase_reductions() {
 }
 
 void phase_broadcasting() {
-    std::cout << "PHASE 4\n";
+    LOG_INFO("PHASE 4");
     Jade a = Jade::ones(DType::FLOAT64, 4, 4, 4);
     Jade b = Jade::full(DType::FLOAT64, 5.0, 4);
 
@@ -158,7 +158,7 @@ void phase_broadcasting() {
 }
 
 void phase_matmul() {
-    std::cout << "PHASE 5\n";
+    LOG_INFO("PHASE 5");
     Jade a = Jade::array(DType::FLOAT64, 2, 3) = {
             1, 2, 3,
             4, 5, 6
@@ -170,8 +170,7 @@ void phase_matmul() {
             11, 12
     };
 
-    std::cout << "ping!\n";
-    Jade c = a.dot(b);
+    Jade c = a.matmul(b);
     chk(c.shape[0] == 2 && c.shape[1] == 2);
     chk_v(c.get(0, 0), 58.0);
     chk_v(c.get(0, 1), 64.0);
@@ -180,7 +179,7 @@ void phase_matmul() {
 
     Jade d = Jade::ones(DType::FLOAT64, 10, 5, 4);
     Jade e = Jade::ones(DType::FLOAT64, 4, 6);
-    Jade f = d.dot(e);
+    Jade f = d.matmul(e);
 
     chk(f.ndims == 3);
     chk(f.shape[0] == 10 && f.shape[1] == 5 && f.shape[2] == 6);
@@ -188,7 +187,7 @@ void phase_matmul() {
 }
 
 void phase_transformations() {
-    std::cout << "PHASE 6\n";
+    LOG_INFO("PHASE 6");
     Jade a = Jade::arange(DType::FLOAT64, Slice(0, 24));
     a.reshape(2, 3, 4);
 
@@ -223,12 +222,11 @@ void phase_transformations() {
 }
 
 void phase_mutation() {
-    std::cout << "PHASE 7\n";
+    LOG_INFO("PHASE 7");
     Jade a = Jade::ones(DType::FLOAT64, 10, 10);
     Jade b = a[Slice(0, 5), Slice(0, 5)];
 
     b += 9.0;
-    a.display();
     chk_v(a.get(0, 0), 10.0);
     chk_v(a.get(9, 9), 1.0);
 
@@ -240,12 +238,11 @@ void phase_mutation() {
 }
 
 void phase_stress() {
-    std::cout << "PHASE 8\n";
     Jade seq = Jade::arange(DType::FLOAT64, Slice(0, 1000000));
     seq.reshape(10, 100, 1000);
 
     Jade w = Jade::ones(DType::FLOAT64, 1000, 50);
-    Jade out = seq.dot(w);
+    Jade out = seq.matmul(w);
 
     chk(out.shape[0] == 10 && out.shape[1] == 100 && out.shape[2] == 50);
 
@@ -267,7 +264,7 @@ int main() {
     phase_math();
     phase_reductions();
     phase_broadcasting();
-//    phase_matmul();
+    phase_matmul();
     phase_transformations();
     phase_mutation();
     phase_stress();

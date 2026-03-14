@@ -19,18 +19,6 @@ Jade Jade::operator-(const Jade& other) const {
     return view;
 }
 
-void Jade::operator+=(Jade& other) {
-    *this = *this + other;
-}
-
-
-void Jade::operator-=(const Jade& other) {
-    *this = *this - other;
-}
-
-void Jade::operator*=(const Jade& other) {
-    *this = *this * other;
-}
 
 Jade& Jade::operator=(const Jade& other) &{
     if (this != &other) {
@@ -113,18 +101,6 @@ Jade Jade::operator-(const double & val) const {
     return view;
 }
 
-void Jade::operator+=(const double & val) {
-    *this = *this + val;
-}
-
-void Jade::operator-=(const double & val) {
-    *this = *this - val;
-}
-
-
-void Jade::operator*=(const double & val) {
-    *this = *this * val;
-}
 
 
 Jade& Jade::operator=(const double val) {
@@ -139,6 +115,32 @@ Jade Jade::operator*(const double & val) const {
     return view;
 }
 
+void Jade::operator+=(const double & val) {
+    Jade other = Jade::full_like(*this, val);
+    Dispatcher::execute_binary(OpCode::ADD, *this, *this, other);
+}
+
+void Jade::operator-=(const double & val) {
+    Jade other = Jade::full_like(*this, val);
+    Dispatcher::execute_binary(OpCode::SUB, *this, *this, other);
+}
+
+void Jade::operator*=(const double & val) {
+    Jade other = Jade::full_like(*this, val);
+    Dispatcher::execute_binary(OpCode::MUL, *this, *this, other);
+}
+
+void Jade::operator+=(Jade& other) {
+    Dispatcher::execute_binary(OpCode::ADD, *this, *this, other);
+}
+
+void Jade::operator-=(const Jade& other) {
+    Dispatcher::execute_binary(OpCode::SUB, *this, *this, other);
+}
+
+void Jade::operator*=(const Jade& other) {
+    Dispatcher::execute_binary(OpCode::MUL, *this, *this, other);
+}
 
 Jade Jade::sin(const Jade& input){
     Jade view(input.dtype, 0.0f, input.shape.get(), input.ndims);
