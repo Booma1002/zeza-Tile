@@ -1,5 +1,6 @@
 #pragma once
 #include "Registry.hpp"
+#include "Vein.hpp"
 namespace bm {
 ////////////////////////////////////////////////////////////////////////
 /////////////////***************************************////////////////
@@ -46,6 +47,18 @@ namespace bm {
 
         template<typename... Args>
         static void execute_reduction_binary(OpCode op, Jade& out, const Jade& a, const Jade& b, Args&... args);
+
+        template<typename... Args>
+        static void execute_backward_binary(OpCode fwd_op, Jade a, Jade b, Vein* out_vein);
+
+        template<typename... Args>
+        static void execute_backward_unary(OpCode fwd_op, Jade a, Vein* out_vein);
+
+        template<typename... Args>
+        static void execute_backward_reduction_unary(OpCode fwd_op, Jade a, Vein* out_vein);
+
+        template<typename... Args>
+        static void execute_backward_reduction_binary(OpCode fwd_op, Jade a, Jade b, Vein* out_vein);
     };
 
 }// namespace bm

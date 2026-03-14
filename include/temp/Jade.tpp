@@ -9,7 +9,7 @@ namespace bm {
 /////////////////**  Jade Constructors  **////////////////
 /////////////////***************************////////////////
 ////////////////////////////////////////////////////////////
-
+;
     template<typename... Dims>
     Jade::Jade(DType dtype, double Val, Dims... dims) : ndims(sizeof...(Dims)), dtype(dtype) {
         init_metadata(dims...);

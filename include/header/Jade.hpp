@@ -8,6 +8,7 @@
 #include <optional>
 #include <vector>
 #include <type_traits>
+#include <functional>
 
 namespace bm {
     ////////////////////////////////////////////////////////////
@@ -17,7 +18,7 @@ namespace bm {
     ////////////////////////////////////////////////////////////
     struct JadeReactor;
     struct Dispatcher;
-
+    struct Vein;
     /**
      * @brief Exception thrown when jade dimensions or ranks are incompatible for an reaction.
      * Usually triggered during binary reactions, broadcasting attempts, or matrix multiplications
@@ -136,8 +137,9 @@ namespace bm {
         uint64_t offset=0;
         DType dtype = DType::NONE;
 
-        template<typename... Dims>
-        class JadeBuilder;
+        // autograd metadata
+        std::shared_ptr<Vein> vein;
+        Jade grad() const;
 
 
     private:

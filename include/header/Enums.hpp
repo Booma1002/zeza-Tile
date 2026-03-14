@@ -41,6 +41,7 @@ namespace bm {
      */
     enum class OpCode : uint32_t {
         NONE      = 0X00,
+        // forward ascending opcodes
         SUB       = 0X01,
         MUL       = 0X02,
         COPY      = 0X03,
@@ -62,6 +63,29 @@ namespace bm {
         ARGMAX    = 0X13,
         ARGMIN    = 0X14,
         VAR       = 0X15,
+
+        // backward descending opcodes
+        SUB_BACKWARD       = 0XE9,
+        MUL_BACKWARD       = 0XEA,
+//        COPY_BACKWARD      = 0XEB,
+        MATMUL_BACKWARD    = 0XEC,
+//        FILL_BACKWARD      = 0XED,
+        ADD_BACKWARD       = 0XEE,
+        SIN_BACKWARD       = 0XEF,
+        COS_BACKWARD       = 0XF1,
+        TAN_BACKWARD       = 0XF2,
+        EXP_BACKWARD       = 0XF3,
+        LOG_BACKWARD       = 0XF4,
+//        CLIP_BACKWARD      = 0XF5,
+//        ARANGE_BACKWARD    = 0XF6,
+        STD_BACKWARD       = 0XF7,
+        MEAN_BACKWARD      = 0XF8,
+        MAX_BACKWARD       = 0XF9,
+        MIN_BACKWARD       = 0XFA,
+        DOT_BACKWARD       = 0XFB,
+//        ARGMAX_BACKWARD    = 0XFC,
+//        ARGMIN_BACKWARD    = 0XFD,
+        VAR_BACKWARD       = 0XFE,
 
         MAX_OPS    = 0XFF
     };

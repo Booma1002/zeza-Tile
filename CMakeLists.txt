@@ -55,8 +55,8 @@ add_executable(cpp_runner
         include/header/Engine.hpp
         include/header/Heatmap.hpp
         src/Heatmap.cpp
-        include/header/Autograd.hpp
-        src/Autograd.cpp
+        include/header/Vein.hpp
+        src/Vein.cpp
 )
 # Let the executable see the .hpp files
 target_include_directories(cpp_runner PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
